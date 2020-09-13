@@ -1,0 +1,50 @@
+.sidenav {
+    height: 100%;
+    width: 16.6666666%;
+    position: fixed;
+    z-index: 1;
+    top: 10;
+    left: 0;
+    background-color: aqua;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 15px;  /*leave this the minimum size that will be used under sidenav links*/
+    color: #000000;
+    display: block;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+
+
+  .sidenav .navtopic a{
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 19px;
+    font-weight: bold;
+    color: #000000;
+    display: block;
+  }
+
+  .sidenav .navtopic a:hover{
+    color: #f1f1f1;
+  }
+
+  .sidenav .collapse a{
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #000000;
+    display: block;
+  }
+
+  .sidenav .collapse a:hover{
+    color: #f1f1f1;
+  }
+

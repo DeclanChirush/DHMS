@@ -1,0 +1,11 @@
+.modal .modal-header{
+
+    color: white;
+    background-color: darkblue;
+  
+  }
+  
+  .modal .modal-footer{
+    text-align: center;
+    background-color: darkgrey;
+  }
