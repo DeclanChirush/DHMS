@@ -1,11 +1,13 @@
 <!-- By IT19180526 -->
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-
+<meta charset="ISO-8859-1">
 <link href="/accountingManagement/style/css/bootstrap.min.css"
 	rel="stylesheet" type="text/css">
 <link href="/accountingManagement/style/css/font-awesome.min.css"
@@ -17,7 +19,19 @@
 <link href="/accountingManagement/style/css/css.css" rel="stylesheet"
 	type="text/css">
 
-<meta charset="ISO-8859-1">
+<style type="text/css">
+.srhdiv {
+	border: 2px solid #3e3e3e;
+	height: 290px;
+	padding: 20px;
+	margin-left: 20px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	background-color: white;
+	border-radius: 5px;
+}
+</style>
 <title>Dhammika Hotel | Account Management</title>
 </head>
 <body>
@@ -64,8 +78,6 @@
 					class="fa fa-navicon"></em> New Transaction</a></li>
 			<li><a class="" href="/showTransactionList"><em
 					class="fa fa-navicon"></em> Transaction History</a></li>
-			<li><a class="" href="/categories"><em class="fa fa-navicon"></em>
-					Categories</a></li>
 			<li class="active"><a class="" href="/search"><em
 					class="fa fa-navicon"></em> Search</a></li>
 			<li><a class="" href="/report"><em class="fa fa-navicon"></em>
@@ -96,40 +108,59 @@
 		</div>
 		<!--/.row-->
 
-		<div class="panel panel-container">
-			<div class="row">
-				<div class="">
-					<div class="col-md-3">
-						<form action="/">
-							<caption>Search Transactions by Period</caption>
-							<br> <br>
-							<div class="form-group">
-								<label for="stdate">Start Date:</label> <input type="date"
-									id="stdate" name="stdate" class="form-control">
-							</div>
-							<div class="form-group">
-								<label for="enddate">End Date:</label>
-								</td> <input type="date" id="enddate" name="enddate"
-									class="form-control">
-							</div>
-							<button type="submit" class="btn btn-primary">Search</button>
-						</form>
+		<div class="panel panel-container"></div>
+
+		<div class="row">
+			<div class="col-md-3 srhdiv">
+				<form action="/searchByDate">
+					<caption>Search Transactions by Period</caption>
+					<br> <br>
+					<div class="form-group">
+						<label for="startdate">Start Date:</label> <input type="date"
+							id="startdate" name="startdate" class="form-control">
 					</div>
-					<div class="col-md-3">
-						<form action="/">
-							<caption>Search</caption>
-							<br> <br>
-							<div class="form-group">
-								<label for="search">Enter here:</label> <input type="text"
-									id="search" name="search" class="form-control">
-							</div>
-							<button type="submit" class="btn btn-primary">Search</button>
-						</form>
+					<div class="form-group">
+						<label for="enddate">End Date:</label>
+						</td> <input type="date" id="enddate" name="enddate"
+							class="form-control">
 					</div>
-				</div>
+					<button type="submit" class="btn btn-primary">Search</button>
+				</form>
 			</div>
-			<!--/.row-->
+			<div class="col-md-3 srhdiv">
+				<form action="/searchByType" method="get">
+					<caption>Search by Type</caption>
+					<br> <br>
+					<div class="form-group">
+						<label for="type">Select Type:</label> <select name="type"
+							id="type" class="form-control">
+							<option value="Income">Income</option>
+							<option value="Expense">Expense</option>
+						</select>
+					</div>
+					<button type="submit" class="btn btn-primary">Search</button>
+				</form>
+			</div>
+			<div class="col-md-3 srhdiv">
+				<form action="/searchByCategorie" method="get">
+					<caption>Search by Categories</caption>
+					<br> <br>
+					<div class="form-group">
+						<label for="categorie">Select Categorie:</label> <select
+							name="categorie" id="categorie" class="form-control">
+							<option value="Sales">Sales</option>
+							<option value="Purchases">Purchases</option>
+							<option value="Office supplies expense">Office supplies
+								expense</option>
+							<option value="Misc. labor">Misc. labor</option>
+							<option value="Inventory Purchases">Inventory Purchases</option>
+						</select>
+					</div>
+					<button type="submit" class="btn btn-primary">Search</button>
+				</form>
+			</div>
 		</div>
+		<!--/.row-->
 
 		<div class="row"></div>
 		<!--/.row-->
@@ -153,25 +184,18 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td class="column1">TC0001</td>
-											<td class="column2">2017-09-29 01:22</td>
-											<td class="column3">iPhone</td>
-											<td class="column4">X Series</td>
-											<td class="column5">XR</td>
-											<td class="column6">$999.00</td>
-											<td class="column7"><button>View</button></td>
-										</tr>
-										<tr>
-											<td class="column1">TC0002</td>
-											<td class="column2">2017-09-28 05:57</td>
-											<td class="column3">Samsung</td>
-											<td class="column4">S Series</td>
-											<td class="column5">S9 Plus</td>
-											<td class="column6">$756.00</td>
-											<td class="column7"><button>View</button></td>
-										</tr>
-
+										<c:forEach items="${transactionList}" var="transaction">
+											<tr>
+												<td>${transaction.id }</td>
+												<td>${transaction.date }</td>
+												<td>${transaction.type }</td>
+												<td>${transaction.categorie }</td>
+												<td>${transaction.description }</td>
+												<td>${transaction.amount }</td>
+												<td><a href="/viewTransaction?id=${transaction.id }"
+													type="button">View</a></td>
+											</tr>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>

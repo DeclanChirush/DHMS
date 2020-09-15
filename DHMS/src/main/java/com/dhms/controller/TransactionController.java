@@ -30,19 +30,36 @@ public class TransactionController {
 		return (List<Transaction>) dao.findAll();
 	}
 
+	public void deleteTransactionById(int id) {
+
+		System.out.println("==========deleteTransactionById Called==========");
+		dao.deleteById(id);
+	}
+
 	public Transaction getTransactionById(int id) {
 
 		System.out.println("==========getTransactionById Called==========");
 		return dao.findById(id).get();
 	}
 
-	public void deleteTransactionById(int id) {
+	public List<Transaction> getTransactionByType(String type) {
 
-		System.out.println("==========deleteTransactionById Called==========");
-		dao.deleteById(id);
+		System.out.println("==========getTransactionByType Called==========");
+		return (List<Transaction>) dao.findByType(type);
 	}
-	
-	
+
+	public List<Transaction> getTransactionByCategorie(String categorie) {
+
+		System.out.println("==========getTransactionByCategorie Called==========");
+		return (List<Transaction>) dao.findByCategorie(categorie);
+	}
+
+//	public List<Transaction> getTransactionByDate(String startdate, String enddate) {
+//
+//		System.out.println("==========getTransactionByDate Called==========");
+//		return (List<Transaction>) dao.findByDateBetween(startdate, enddate);
+//	}
+
 	// View Accounting Dashboard page
 	@RequestMapping("/accountmgt")
 	public ModelAndView accountingManagement() {
@@ -64,7 +81,7 @@ public class TransactionController {
 		return object;
 	}
 
-	// Insert Method
+	// Insert Transaction Method
 	@RequestMapping(value = "/insertTransaction", method = RequestMethod.POST)
 	public ModelAndView insertTransaction(@ModelAttribute("transactionobj") Transaction transaction) {
 
@@ -140,5 +157,58 @@ public class TransactionController {
 
 		return object;
 	}
+
+	// View Search page
+	@RequestMapping("/search")
+	public ModelAndView searchAccountMgt() {
+
+		ModelAndView object = new ModelAndView("accountingManagement/search.jsp");
+		return object;
+	}
+
+	// Search Transaction By Type method
+	@RequestMapping(value = "/searchByType")
+	public ModelAndView transactionByType(@RequestParam String type) {
+
+		System.out.println("==========searchByType Called==========");
+
+		ModelAndView object = new ModelAndView("/accountingManagement/search.jsp");
+		List<Transaction> transactionList = getTransactionByType(type);
+		object.addObject("transactionList", transactionList);
+
+		System.out.println("==========searchByType Executed==========\n");
+
+		return object;
+	}
+
+	// Search Transaction By Categories method
+	@RequestMapping(value = "/searchByCategorie", method = RequestMethod.GET)
+	public ModelAndView transactionByCategorie(@RequestParam String categorie) {
+
+		System.out.println("==========searchByCategorie Called==========");
+
+		ModelAndView object = new ModelAndView("/accountingManagement/search.jsp");
+		List<Transaction> transactionList = getTransactionByCategorie(categorie);
+		object.addObject("transactionList", transactionList);
+
+		System.out.println("==========searchByCategorie Executed==========\n");
+
+		return object;
+	}
+
+	// Search Transaction By Date method
+//	@RequestMapping(value = "/searchByDate", method = RequestMethod.GET)
+//	public ModelAndView transactionByDate(@RequestParam String startdate, @RequestParam String enddate) {
+//
+//		System.out.println("==========searchByDate Called==========");
+//
+//		ModelAndView object = new ModelAndView("/accountingManagement/search.jsp");
+//		List<Transaction> transactionList = getTransactionByDate(startdate, enddate);
+//		object.addObject("transactionList", transactionList);
+//
+//		System.out.println("==========searchByDate Executed==========\n");
+//
+//		return object;
+//	}
 
 }

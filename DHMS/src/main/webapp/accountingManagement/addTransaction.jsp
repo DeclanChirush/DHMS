@@ -65,8 +65,6 @@
 					class="fa fa-navicon"></em> New Transaction</a></li>
 			<li><a class="" href="/showTransactionList"><em
 					class="fa fa-navicon"></em> Transaction History</a></li>
-			<li><a class="" href="/categories"><em class="fa fa-navicon"></em>
-					Categories</a></li>
 			<li><a class="" href="/search"><em class="fa fa-navicon"></em>
 					Search</a></li>
 			<li><a class="" href="/report"><em class="fa fa-navicon"></em>
@@ -103,7 +101,7 @@
 
 			<div class="row">
 				<div class="col-md-6">
-				
+
 					<spring:url value="/insertTransaction" var="saveTransaction" />
 					<form:form modelAttribute="transactionobj" method="post"
 						action="${saveTransaction}">
@@ -131,7 +129,7 @@
 							</form:select>
 
 						</div>
-						
+
 						<div class="form-group">
 
 							<label for="type">Transaction Type:</label> &nbsp; &nbsp; &nbsp;

@@ -64,8 +64,6 @@
 					class="fa fa-navicon"></em> New Transaction</a></li>
 			<li><a class="" href="/showTransactionList"><em
 					class="fa fa-navicon"></em> Transaction History</a></li>
-			<li><a class="" href="/categories"><em class="fa fa-navicon"></em>
-					Categories</a></li>
 			<li><a class="" href="/search"><em class="fa fa-navicon"></em>
 					Search</a></li>
 			<li class="active"><a class="" href="/report"><em
