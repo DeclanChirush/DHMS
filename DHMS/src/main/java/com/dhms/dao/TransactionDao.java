@@ -14,7 +14,6 @@ public interface TransactionDao extends JpaRepository<Transaction, Integer> {
 
 	List<Transaction> findByCategorie(String categorie);
 
-//	@Query("from transaction t where t.date between ?1 and ?2")
-//	List<Transaction> findByDateBetween(String startdate, String enddate);
+	List<Transaction> findByDate(String date);
 
 }

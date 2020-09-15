@@ -18,6 +18,19 @@
 <link href="/accountingManagement/style/css/styles.css" rel="stylesheet"
 	type="text/css">
 
+<style type="text/css">
+.srhdiv {
+	border: 2px solid #3e3e3e;
+	padding: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	background-color: white;
+	border-radius: 10px;
+}
+</style>
+
 <meta charset="ISO-8859-1">
 <title>Dhammika Hotel | Account Management</title>
 </head>
@@ -65,10 +78,10 @@
 					class="fa fa-navicon"></em> New Transaction</a></li>
 			<li><a class="" href="/showTransactionList"><em
 					class="fa fa-navicon"></em> Transaction History</a></li>
-			<li><a class="" href="/search"><em class="fa fa-navicon"></em>
-					Search</a></li>
-			<li><a class="" href="/report"><em class="fa fa-navicon"></em>
-					Report</a></li>
+			<li><a class="" href="/searchTransaction"><em
+					class="fa fa-navicon"></em> Search</a></li>
+			<li><a class="" href="/reportTransaction"><em
+					class="fa fa-navicon"></em> Report</a></li>
 			<li><a href="/logout"><em class="fa fa-power-off">&nbsp;</em>
 					Logout</a></li>
 		</ul>
@@ -94,99 +107,81 @@
 		</div>
 		<!--/.row-->
 
-		<div class="panel panel-container">
+		<div class="row">
+			<div class="col-md-6 srhdiv">
 
-			<div class="row"></div>
-			<!--/.row-->
+				<spring:url value="/insertTransaction" var="saveTransaction" />
+				<form:form modelAttribute="transactionobj" method="post"
+					action="${saveTransaction}">
 
-			<div class="row">
-				<div class="col-md-6">
-
-					<spring:url value="/insertTransaction" var="saveTransaction" />
-					<form:form modelAttribute="transactionobj" method="post"
-						action="${saveTransaction}">
-
-						<div class="form-group">
-							<form:hidden path="id" class="form-control" />
-							<!-- 
+					<div class="form-group">
+						<form:hidden path="id" class="form-control" />
+						<!-- 
 							<label for="id">Transaction ID:</label>
 							<form:input path="id" class="form-control" />
 							 -->
 
-						</div>
+					</div>
 
-						<div class="form-group">
+					<div class="form-group">
 
-							<label for="categorie">Transaction Categorie:</label>
-							<form:select path="categorie" class="form-control">
+						<label for="categorie">Transaction Categorie:</label>
+						<form:select path="categorie" class="form-control">
 
-								<form:option value="Sales" />
-								<form:option value="Purchases" />
-								<form:option value="Office supplies expense" />
-								<form:option value="Misc. labor" />
-								<form:option value="Inventory Purchases" />
+							<form:option value="Sales" />
+							<form:option value="Purchases" />
+							<form:option value="Office supplies expense" />
+							<form:option value="Misc. labor" />
+							<form:option value="Inventory Purchases" />
 
-							</form:select>
+						</form:select>
 
-						</div>
+					</div>
 
-						<div class="form-group">
+					<div class="form-group">
 
-							<label for="type">Transaction Type:</label> &nbsp; &nbsp; &nbsp;
+						<label for="type">Transaction Type:</label> &nbsp; &nbsp; &nbsp;
 
-							<form:radiobutton path="type" value="Income" />
-							<label for="income">Income</label> &nbsp; &nbsp; &nbsp; &nbsp;
+						<form:radiobutton path="type" value="Income" />
+						<label for="income">Income</label> &nbsp; &nbsp; &nbsp; &nbsp;
 
-							<form:radiobutton path="type" value="Expense" />
-							<label for="expense">Expense</label>
-						</div>
+						<form:radiobutton path="type" value="Expense" />
+						<label for="expense">Expense</label>
+					</div>
 
-						<div class="form-group">
+					<div class="form-group">
 
-							<label for="amount">Amount:</label>
-							<form:input path="amount" class="form-control" />
+						<label for="amount">Amount:</label>
+						<form:input path="amount" class="form-control" />
 
-						</div>
+					</div>
 
-						<div class="form-group">
+					<div class="form-group">
 
-							<label for="date">Date:</label>
-							<form:input type="date" path="date" class="form-control" />
+						<label for="date">Date:</label>
+						<form:input type="date" path="date" class="form-control" />
 
-						</div>
+					</div>
 
-						<div class="form-group">
+					<div class="form-group">
 
-							<label for="description">Description:</label>
-							<form:input path="description" class="form-control" />
+						<label for="description">Description:</label>
+						<form:input path="description" class="form-control" />
 
-						</div>
+					</div>
 
-						<button type="submit" class="btn btn-primary">Add
-							Transaction</button>
+					<button type="submit" class="btn btn-primary">Add
+						Transaction</button>
 
-					</form:form>
+				</form:form>
 
-				</div>
-
-				<div class="col-md-6">
-					<h1>Clock Here</h1>
-				</div>
 			</div>
-			<!--/.row-->
 
-			<div class="row">
-				<div class="col-xs-6 col-md-3"></div>
-				<div class="col-xs-6 col-md-3"></div>
+			<div class="col-md-6 srhdiv">
+				<h1>Calendar Here</h1>
 			</div>
-			<!--/.row-->
-
-			<div class="row">
-				<div class="col-md-6"></div>
-				<div class="col-sm-12"></div>
-			</div>
-			<!--/.row-->
 		</div>
+		<!--/.row-->
 	</div>
 	<!--/.main-->
 
@@ -199,16 +194,6 @@
 	<script src="/accountingManagement/style/js/easypiechart-data.js"></script>
 	<script src="/accountingManagement/style/js/bootstrap-datepicker.js"></script>
 	<script src="/accountingManagement/style/js/custom.js"></script>
-	<script>
-		window.onload = function() {
-			var chart1 = document.getElementById("line-chart").getContext("2d");
-			window.myLine = new Chart(chart1).Line(lineChartData, {
-				responsive : true,
-				scaleLineColor : "rgba(0,0,0,.2)",
-				scaleGridLineColor : "rgba(0,0,0,.05)",
-				scaleFontColor : "#c5c7cc"
-			});
-		};
-	</script>
+
 </body>
 </html>

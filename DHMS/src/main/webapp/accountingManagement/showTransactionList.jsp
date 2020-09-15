@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <link href="/accountingManagement/style/css/bootstrap.min.css"
 	rel="stylesheet" type="text/css">
@@ -20,6 +20,14 @@
 	type="text/css">
 <link href="/accountingManagement/style/css/css.css" rel="stylesheet"
 	type="text/css">
+
+<style type="text/css">
+.srhdiv {
+	border: 2px solid #3e3e3e;
+	background-color: white;
+	border-radius: 10px;
+}
+</style>
 
 <meta charset="ISO-8859-1">
 <title>Dhammika Hotel | Account Management</title>
@@ -68,10 +76,10 @@
 					class="fa fa-navicon"></em> New Transaction</a></li>
 			<li class="active"><a class="" href="/showTransactionList"><em
 					class="fa fa-navicon"></em> Transaction History</a></li>
-			<li><a class="" href="/search"><em class="fa fa-navicon"></em>
-					Search</a></li>
-			<li><a class="" href="/report"><em class="fa fa-navicon"></em>
-					Report</a></li>
+			<li><a class="" href="/searchTransaction"><em
+					class="fa fa-navicon"></em> Search</a></li>
+			<li><a class="" href="/reportTransaction"><em
+					class="fa fa-navicon"></em> Report</a></li>
 			<li><a href="/logout"><em class="fa fa-power-off">&nbsp;</em>
 					Logout</a></li>
 		</ul>
@@ -98,51 +106,35 @@
 		</div>
 		<!--/.row-->
 
-		<div class="panel panel-container">
-			<div class="row">
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding"></div>
-			</div>
-			<!--/.row-->
-		</div>
-
 		<div class="row">
-			<div class="col-md-12">
-				<div class="limiter">
-					<div class="container-table100">
-						<div class="wrap-table100">
-							<div class="table100">
-								<table>
-									<thead>
-										<tr class="table100-head">
-											<th class="column1">Transaction ID</th>
-											<th class="column2">Date & Time</th>
-											<th class="column3">Type</th>
-											<th class="column4">Categorie</th>
-											<th class="column5">Description</th>
-											<th class="column6">Amount</th>
-											<th class="column7"></th>
-										</tr>
-									</thead>
-									<tbody>
-										<c:forEach items="${transactionList}" var="transaction">
-											<tr>
-												<td>${transaction.id }</td>
-												<td>${transaction.date }</td>
-												<td>${transaction.type }</td>
-												<td>${transaction.categorie }</td>
-												<td>${transaction.description }</td>
-												<td>${transaction.amount }</td>
-												<td>
-													<a href="/viewTransaction?id=${transaction.id }" type="button">View</a>
-												</td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
+			<div class="col-md-12 srhdiv">
+				<table class="table-fill">
+					<thead>
+						<tr>
+							<th class="column1">Transaction ID</th>
+							<th class="column2">Date & Time</th>
+							<th class="column3">Type</th>
+							<th class="column4">Categorie</th>
+							<th class="column5">Description</th>
+							<th class="column6">Amount</th>
+							<th class="column7"></th>
+						</tr>
+					</thead>
+					<tbody  class="table-hover">
+						<c:forEach items="${transactionList}" var="transaction">
+							<tr>
+								<td class="text-center">${transaction.id }</td>
+								<td class="text-center">${transaction.date }</td>
+								<td class="text-center">${transaction.type }</td>
+								<td class="text-center">${transaction.categorie }</td>
+								<td class="text-center">${transaction.description }</td>
+								<td class="text-center">${transaction.amount }</td>
+								<td><a href="/viewTransaction?id=${transaction.id }"
+									type="button">View</a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
 		</div>
 		<!--/.row-->
@@ -170,16 +162,6 @@
 	<script src="/accountingManagement/style/js/easypiechart-data.js"></script>
 	<script src="/accountingManagement/style/js/bootstrap-datepicker.js"></script>
 	<script src="/accountingManagement/style/js/custom.js"></script>
-	<script>
-		window.onload = function() {
-			var chart1 = document.getElementById("line-chart").getContext("2d");
-			window.myLine = new Chart(chart1).Line(lineChartData, {
-				responsive : true,
-				scaleLineColor : "rgba(0,0,0,.2)",
-				scaleGridLineColor : "rgba(0,0,0,.05)",
-				scaleFontColor : "#c5c7cc"
-			});
-		};
-	</script>
+
 </body>
 </html>

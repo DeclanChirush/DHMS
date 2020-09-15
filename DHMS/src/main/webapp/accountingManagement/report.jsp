@@ -17,6 +17,21 @@
 <link href="/accountingManagement/style/css/css.css" rel="stylesheet"
 	type="text/css">
 
+<style type="text/css">
+.srhdiv {
+	border: 2px solid #3e3e3e;
+	height: 220px;
+	width: 300px;
+	padding: 20px;
+	margin-left: 20px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	background-color: white;
+	border-radius: 10px;
+}
+</style>
+
 <meta charset="ISO-8859-1">
 <title>Dhammika Hotel | Account Management</title>
 </head>
@@ -64,9 +79,9 @@
 					class="fa fa-navicon"></em> New Transaction</a></li>
 			<li><a class="" href="/showTransactionList"><em
 					class="fa fa-navicon"></em> Transaction History</a></li>
-			<li><a class="" href="/search"><em class="fa fa-navicon"></em>
-					Search</a></li>
-			<li class="active"><a class="" href="/report"><em
+			<li><a class="" href="/searchTransaction"><em
+					class="fa fa-navicon"></em> Search</a></li>
+			<li class="active"><a class="" href="/reportTransaction"><em
 					class="fa fa-navicon"></em> Report</a></li>
 			<li><a href="/logout"><em class="fa fa-power-off">&nbsp;</em>
 					Logout</a></li>
@@ -94,35 +109,69 @@
 		</div>
 		<!--/.row-->
 
-		<div class="panel panel-container">
-			<div class="row">
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding"></div>
+		<div class="row">
+			<div class="col-md-3 srhdiv">
+				<caption>All Transactions</caption>
+				<br> <br>
+				<div class="form-group">
+					<label for="">Click Here:</label>
+				</div>
+				<button onclick="location.href='/reportAllTransaction'"
+					type="button" class="btn btn-primary">Generate</button>
 			</div>
-			<!--/.row-->
+			<div class="col-md-3 srhdiv">
+				<form action="/reportType" method="get">
+					<caption>Transactions by Type</caption>
+					<br> <br>
+					<div class="form-group">
+						<label for="type">Select Type:</label> <select name="type"
+							id="type" class="form-control">
+							<option value="Income">Income</option>
+							<option value="Expense">Expense</option>
+						</select>
+					</div>
+					<button type="submit" class="btn btn-primary">Generate</button>
+				</form>
+			</div>
+			<div class="col-md-3 srhdiv">
+				<form action="/reportCategories" method="get">
+					<caption>Transactions by Categories</caption>
+					<br> <br>
+					<div class="form-group">
+						<label for="categorie">Select Categorie:</label> <select
+							name="categorie" id="categorie" class="form-control">
+							<option value="Sales">Sales</option>
+							<option value="Purchases">Purchases</option>
+							<option value="Office supplies expense">Office supplies
+								expense</option>
+							<option value="Misc. labor">Misc. labor</option>
+							<option value="Inventory Purchases">Inventory Purchases</option>
+						</select>
+					</div>
+					<button type="submit" class="btn btn-primary">Generate</button>
+				</form>
+			</div>
 		</div>
+		<!--/.row-->
 
 		<div class="row">
-			<div class="col-md-12"></div>
+			<div class="col-md-3 srhdiv">
+				<form action="/reportDate">
+					<caption>Transactions by Date</caption>
+					<br> <br>
+					<div class="form-group">
+						<label for="date">Start Date:</label> <input type="date" id="date"
+							name="date" class="form-control">
+					</div>
+					<button type="submit" class="btn btn-primary">Generate</button>
+				</form>
+			</div>
 		</div>
 		<!--/.row-->
 
 
 		<div class="row">
 			<div class="col-xs-6 col-md-3"></div>
-		</div>
-		<!--/.row-->
-
-		<div class="row">
-			<div class="col-md-6">
-				<form action="ListPayment" method="POST">
-					<div id="buttons">
-						<input type="submit" value="Payment Summary"
-							style="border-radius: 5px; padding: 5px 10px; font-size: 22px; text-decoration: none; margin: 20px; color: #fff; position: relative; display: inline-block; background-color: #9b59b6; box-shadow: 0px 5px 0px 0px #82409D;" />
-					</div>
-				</form>
-			</div>
-
-			<div class="col-sm-12"></div>
 		</div>
 		<!--/.row-->
 	</div>
@@ -137,16 +186,6 @@
 	<script src="/accountingManagement/style/js/easypiechart-data.js"></script>
 	<script src="/accountingManagement/style/js/bootstrap-datepicker.js"></script>
 	<script src="/accountingManagement/style/js/custom.js"></script>
-	<script>
-		window.onload = function() {
-			var chart1 = document.getElementById("line-chart").getContext("2d");
-			window.myLine = new Chart(chart1).Line(lineChartData, {
-				responsive : true,
-				scaleLineColor : "rgba(0,0,0,.2)",
-				scaleGridLineColor : "rgba(0,0,0,.05)",
-				scaleFontColor : "#c5c7cc"
-			});
-		};
-	</script>
+	
 </body>
 </html>

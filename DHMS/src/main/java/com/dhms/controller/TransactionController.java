@@ -7,8 +7,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import java.util.List;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 
+import com.dhms.service.GenerateAccountingReport;
 import com.dhms.dao.TransactionDao;
 import com.dhms.model.Transaction;
 
@@ -54,11 +61,11 @@ public class TransactionController {
 		return (List<Transaction>) dao.findByCategorie(categorie);
 	}
 
-//	public List<Transaction> getTransactionByDate(String startdate, String enddate) {
-//
-//		System.out.println("==========getTransactionByDate Called==========");
-//		return (List<Transaction>) dao.findByDateBetween(startdate, enddate);
-//	}
+	public List<Transaction> getTransactionByDate(String date) {
+
+		System.out.println("==========getTransactionByDate Called==========");
+		return (List<Transaction>) dao.findByDate(date);
+	}
 
 	// View Accounting Dashboard page
 	@RequestMapping("/accountmgt")
@@ -159,7 +166,7 @@ public class TransactionController {
 	}
 
 	// View Search page
-	@RequestMapping("/search")
+	@RequestMapping("/searchTransaction")
 	public ModelAndView searchAccountMgt() {
 
 		ModelAndView object = new ModelAndView("accountingManagement/search.jsp");
@@ -197,18 +204,98 @@ public class TransactionController {
 	}
 
 	// Search Transaction By Date method
-//	@RequestMapping(value = "/searchByDate", method = RequestMethod.GET)
-//	public ModelAndView transactionByDate(@RequestParam String startdate, @RequestParam String enddate) {
-//
-//		System.out.println("==========searchByDate Called==========");
-//
-//		ModelAndView object = new ModelAndView("/accountingManagement/search.jsp");
-//		List<Transaction> transactionList = getTransactionByDate(startdate, enddate);
-//		object.addObject("transactionList", transactionList);
-//
-//		System.out.println("==========searchByDate Executed==========\n");
-//
-//		return object;
-//	}
+	@RequestMapping(value = "/searchByDate", method = RequestMethod.GET)
+	public ModelAndView transactionByDate(@RequestParam String date) {
 
+		System.out.println("==========searchByDate Called==========");
+
+		ModelAndView object = new ModelAndView("/accountingManagement/search.jsp");
+		List<Transaction> transactionList = getTransactionByDate(date);
+		object.addObject("transactionList", transactionList);
+
+		System.out.println("==========searchByDate Executed==========\n");
+
+		return object;
+	}
+
+	// View Report page
+	@RequestMapping("/reportTransaction")
+	public ModelAndView reportTransaction() {
+
+		ModelAndView object = new ModelAndView("accountingManagement/report.jsp");
+		return object;
+	}
+
+	// Report Generate for Type
+	@RequestMapping(value = "/reportType", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	public ResponseEntity<InputStreamResource> transactionTypeReport(@RequestParam String type) throws IOException {
+
+		System.out.println("==========transactionTypeReport Called==========");
+
+		List<Transaction> transactionList = (List<Transaction>) getTransactionByType(type);
+		ByteArrayInputStream bais = GenerateAccountingReport.accountingReport(transactionList);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition", "inline; filename=transactionreportbytype.pdf");
+
+		System.out.println("==========transactionTypeReport Executed==========\n");
+
+		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
+				.body(new InputStreamResource(bais));
+
+	}
+
+	// Report Generate for Categories
+	@RequestMapping(value = "/reportCategories", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	public ResponseEntity<InputStreamResource> transactionCategoriesReport(@RequestParam String categorie)
+			throws IOException {
+
+		System.out.println("==========transactionCategoriesReport Called==========");
+
+		List<Transaction> transactionList = (List<Transaction>) getTransactionByCategorie(categorie);
+		ByteArrayInputStream bais = GenerateAccountingReport.accountingReport(transactionList);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition", "inline; filename=transactionreportbycategorie.pdf");
+
+		System.out.println("==========transactionCategoriesReport Executed==========\n");
+
+		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
+				.body(new InputStreamResource(bais));
+
+	}
+
+	// Report Generate for Date
+	@RequestMapping(value = "/reportDate", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	public ResponseEntity<InputStreamResource> transactionDateReport(@RequestParam String date) throws IOException {
+
+		System.out.println("==========transactionDateReport Called==========");
+
+		List<Transaction> transactionList = (List<Transaction>) getTransactionByDate(date);
+		ByteArrayInputStream bais = GenerateAccountingReport.accountingReport(transactionList);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition", "inline; filename=transactionreportbydate.pdf");
+
+		System.out.println("==========transactionDateReport Executed==========\n");
+
+		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
+				.body(new InputStreamResource(bais));
+
+	}
+
+	// Report Generate for All Transactions
+	@RequestMapping(value = "/reportAllTransaction", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	public ResponseEntity<InputStreamResource> allTransactionReport() throws IOException {
+
+		System.out.println("==========allTransactionReport Called==========");
+
+		List<Transaction> transactionList = (List<Transaction>) getAllTransaction();
+		ByteArrayInputStream bais = GenerateAccountingReport.accountingReport(transactionList);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition", "inline; filename=alltransactionreport.pdf");
+
+		System.out.println("==========allTransactionReport Executed==========\n");
+
+		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
+				.body(new InputStreamResource(bais));
+
+	}
 }

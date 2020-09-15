@@ -22,14 +22,15 @@
 <style type="text/css">
 .srhdiv {
 	border: 2px solid #3e3e3e;
-	height: 290px;
+	height: 220px;
+	width: 300px;
 	padding: 20px;
 	margin-left: 20px;
 	margin-right: 10px;
 	margin-bottom: 10px;
 	margin-top: 10px;
 	background-color: white;
-	border-radius: 5px;
+	border-radius: 10px;
 }
 </style>
 <title>Dhammika Hotel | Account Management</title>
@@ -78,9 +79,9 @@
 					class="fa fa-navicon"></em> New Transaction</a></li>
 			<li><a class="" href="/showTransactionList"><em
 					class="fa fa-navicon"></em> Transaction History</a></li>
-			<li class="active"><a class="" href="/search"><em
+			<li class="active"><a class="" href="/searchTransaction"><em
 					class="fa fa-navicon"></em> Search</a></li>
-			<li><a class="" href="/report"><em class="fa fa-navicon"></em>
+			<li><a class="" href="/reportTransaction"><em class="fa fa-navicon"></em>
 					Report</a></li>
 			<li><a href="/logout"><em class="fa fa-power-off">&nbsp;</em>
 					Logout</a></li>
@@ -107,29 +108,26 @@
 			</div>
 		</div>
 		<!--/.row-->
-
+		
+		<!-- 
 		<div class="panel panel-container"></div>
-
+		 -->
+		 
 		<div class="row">
 			<div class="col-md-3 srhdiv">
 				<form action="/searchByDate">
-					<caption>Search Transactions by Period</caption>
+					<caption>Search Transactions by Date</caption>
 					<br> <br>
 					<div class="form-group">
-						<label for="startdate">Start Date:</label> <input type="date"
-							id="startdate" name="startdate" class="form-control">
-					</div>
-					<div class="form-group">
-						<label for="enddate">End Date:</label>
-						</td> <input type="date" id="enddate" name="enddate"
-							class="form-control">
+						<label for="date">Start Date:</label> <input type="date" id="date"
+							name="date" class="form-control">
 					</div>
 					<button type="submit" class="btn btn-primary">Search</button>
 				</form>
 			</div>
 			<div class="col-md-3 srhdiv">
 				<form action="/searchByType" method="get">
-					<caption>Search by Type</caption>
+					<caption>Search Transactions by Type</caption>
 					<br> <br>
 					<div class="form-group">
 						<label for="type">Select Type:</label> <select name="type"
@@ -143,7 +141,7 @@
 			</div>
 			<div class="col-md-3 srhdiv">
 				<form action="/searchByCategorie" method="get">
-					<caption>Search by Categories</caption>
+					<caption>Search Transactions by Categories</caption>
 					<br> <br>
 					<div class="form-group">
 						<label for="categorie">Select Categorie:</label> <select
@@ -171,9 +169,9 @@
 					<div class="container-table100">
 						<div class="wrap-table100">
 							<div class="table100">
-								<table>
+								<table class="table-fill">
 									<thead>
-										<tr class="table100-head">
+										<tr>
 											<th class="column1">Transaction ID</th>
 											<th class="column2">Date & Time</th>
 											<th class="column3">Type</th>
@@ -186,12 +184,12 @@
 									<tbody>
 										<c:forEach items="${transactionList}" var="transaction">
 											<tr>
-												<td>${transaction.id }</td>
-												<td>${transaction.date }</td>
-												<td>${transaction.type }</td>
-												<td>${transaction.categorie }</td>
-												<td>${transaction.description }</td>
-												<td>${transaction.amount }</td>
+												<td class="text-center">${transaction.id }</td>
+												<td class="text-center">${transaction.date }</td>
+												<td class="text-center">${transaction.type }</td>
+												<td class="text-center">${transaction.categorie }</td>
+												<td class="text-center">${transaction.description }</td>
+												<td class="text-center">${transaction.amount }</td>
 												<td><a href="/viewTransaction?id=${transaction.id }"
 													type="button">View</a></td>
 											</tr>

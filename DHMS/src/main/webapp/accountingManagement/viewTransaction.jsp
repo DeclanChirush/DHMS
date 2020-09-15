@@ -54,6 +54,19 @@
 	font-size: 12px;
 	border-radius: 2px;
 }
+
+.view-div {
+	border: 2px solid #3e3e3e;
+	height: 350px;
+	width: 450px;
+	padding: 20px;
+	margin-left: 20px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	background-color: white;
+	border-radius: 10px;
+}
 </style>
 </head>
 <body>
@@ -98,11 +111,11 @@
 					Dashboard</a></li>
 			<li><a class="" href="/addTransaction"><em
 					class="fa fa-navicon"></em> New Transaction</a></li>
-			<li class="active"><a class="" href="/showTransactionList"><em
+			<li><a class="" href="/showTransactionList"><em
 					class="fa fa-navicon"></em> Transaction History</a></li>
-			<li><a class="" href="/search"><em class="fa fa-navicon"></em>
+			<li><a class="" href="/searchTransaction"><em class="fa fa-navicon"></em>
 					Search</a></li>
-			<li><a class="" href="/report"><em class="fa fa-navicon"></em>
+			<li><a class="" href="/reportTransaction"><em class="fa fa-navicon"></em>
 					Report</a></li>
 			<li><a href="/logout"><em class="fa fa-power-off">&nbsp;</em>
 					Logout</a></li>
@@ -132,7 +145,7 @@
 
 		<div class="panel panel-container">
 			<div class="row">
-				<div class="col-xs-6 col-md-6 col-lg-3">
+				<div class="col-xs-6 col-md-6 col-lg-3 view-div">
 					<form:form modelAttribute="viewTransaction" method="post">
 						<table>
 							<tbody>
@@ -205,16 +218,5 @@
 	<script src="/accountingManagement/style/js/easypiechart-data.js"></script>
 	<script src="/accountingManagement/style/js/bootstrap-datepicker.js"></script>
 	<script src="/accountingManagement/style/js/custom.js"></script>
-	<script>
-		window.onload = function() {
-			var chart1 = document.getElementById("line-chart").getContext("2d");
-			window.myLine = new Chart(chart1).Line(lineChartData, {
-				responsive : true,
-				scaleLineColor : "rgba(0,0,0,.2)",
-				scaleGridLineColor : "rgba(0,0,0,.05)",
-				scaleFontColor : "#c5c7cc"
-			});
-		};
-	</script>
 </body>
 </html>
