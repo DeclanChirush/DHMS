@@ -46,22 +46,27 @@
 	rel="stylesheet" />
 <link href="/advertisementManagement/style/searchBarStyle/css/main.css"
 	rel="stylesheet" />
-	
-	<link href="/advertisementManagement/style/buttonStyle/button.css" rel = "stylesheet">
+
+<link href="/advertisementManagement/style/buttonStyle/button.css"
+	rel="stylesheet">
 
 <style type="text/css">
 .srhdiv {
-	border: 2px solid #3e3e3e;
+	border: 1px solid #3e3e3e;
 	height: 220px;
 	padding: 20px;
-	margin:auto;
+	margin-left: 20px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 10px;
 	background-color: white;
-	border-radius: 6px;
+	border-radius: 10px;
 }
+
 .center {
-  margin: auto;
-  width: 60%;
-  padding: 10px;
+	margin: auto;
+	width: 60%;
+	padding: 10px;
 }
 </style>
 
@@ -106,21 +111,22 @@
 		<div class="divider"></div>
 
 
-			<form action="/advertisementSearch" method="get">
-				<input class="form-control" type="text" placeholder="ex: food, booking" aria-label="Search"  name="type">
-				<br>
-				<button class="button ash" type="submit">Search</button>
-			</form> 
-		
+		<form action="/advertisementSearch" method="get">
+			<input class="form-control" type="text"
+				placeholder="ex: food, booking" aria-label="Search" name="type">
+			<br>
+			<button class="button ash" type="submit">Search</button>
+		</form>
+
 		<ul class="nav menu">
 
 			<li><a class="" href="/addAdvertisement/"><em
 					class="fa fa-navicon"></em> Add Advertisement</a></li>
 			<li><a class="" href="/advertisementList"><em
 					class="fa fa-navicon"></em> View List</a></li>
-			<li><a class="" href="/report"><em
-					class="fa fa-navicon"></em> Report</a></li>
-			
+			<li><a class="" href="/report"><em class="fa fa-navicon"></em>
+					Report</a></li>
+
 		</ul>
 
 	</div>
@@ -151,9 +157,24 @@
 			</div>
 			<!--/.row-->
 		</div>
+
+		<div class="row">
+
+			<div class="col-md-5 srhdiv">
+				<caption><u><b>All Advertisement</u></b></caption>
+				<br> <br>
+				<div class="form-group">
+					<label for="">Click Here:</label>
+				</div>
+				<br><br>
+				<button onclick="location.href='/reportAllAdvertisement'"
+					type="button" class="btn ash">Generate</button>
+			</div>
 	
-		<div class="col-md-12 srhdiv">
-			<form action="/reportType" method="get">
+	
+
+			<div class="col-md-5 srhdiv">
+				<form action="/reportType" method="get">
 					<caption><u><b>Advertisement by Type</u></b></caption>
 					<br> <br>
 					<div class="form-group">
@@ -163,12 +184,16 @@
 							<option value="booking">Booking</option>
 						</select>
 					</div>
-					<center><button type="submit" class="btn btn-primary">Generate</button></center>
-			</form>
+					<button type="submit" class="btn ash">Generate</button>
+				</form>
+			</div>
+
+
+
 		</div>
 		<!--/.row-->
-	
-	<!--/.main-->
+
+		<!--/.main-->
 	</div>
 
 	<script src="/backendDashboardStyle/js/jquery-1.11.1.min.js"></script>
