@@ -21,56 +21,53 @@ import com.dhms.service.PDFgenerator;
 @Controller
 public class PDFgeneratorController {
 
-	
-	
 	@RequestMapping(value = "/reportType", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
 	public ResponseEntity<InputStreamResource> advertisementReportByType(@RequestParam String type) throws IOException {
-
-		System.out.println("==========transactionDateReport Called==========");
 
 		List<Advertisement> advertisement = (List<Advertisement>) getAdvertisementType(type);
 		ByteArrayInputStream bais = PDFgenerator.advertsementReport(advertisement);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition", "inline; filename=advertisementByType.pdf");
 
-		System.out.println("==========transactionDateReport Executed==========\n");
+		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
+				.body(new InputStreamResource(bais));
+
+	}
+
+	@RequestMapping(value = "/reportAllAdvertisement", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	public ResponseEntity<InputStreamResource> advertisementAllReport() throws IOException {
+
+		List<Advertisement> advertisement = (List<Advertisement>) getAllAdvertisements();
+		ByteArrayInputStream bais = PDFgenerator.advertsementReport(advertisement);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition", "inline; filename=advertisementByType.pdf");
 
 		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
 				.body(new InputStreamResource(bais));
 
 	}
-	
-	
-	
+
 	@Autowired
 	AdvertisementRepo advertisementRepo;
 
-	
 	public List<Advertisement> getAllAdvertisements() {
 		return (List<Advertisement>) advertisementRepo.findAll();
 	}
 
-
 	public Advertisement getAdvertisementById(long id) {
-		return advertisementRepo.findById(id).get();	
+		return advertisementRepo.findById(id).get();
 	}
-
 
 	public void saveOrUpdate(Advertisement advertisement) {
 		advertisementRepo.save(advertisement);
 	}
 
-	
 	public void deleteAdvertisement(long id) {
-		advertisementRepo.deleteById(id);	
+		advertisementRepo.deleteById(id);
 	}
-	
 
 	public List<Advertisement> getAdvertisementType(String type) {
-		return (List<Advertisement>)advertisementRepo.findByType(type);	
+		return (List<Advertisement>) advertisementRepo.findByType(type);
 	}
 
-
-	
-	
 }
