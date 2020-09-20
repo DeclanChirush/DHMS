@@ -1,3 +1,5 @@
+// BY IT19180526
+
 package com.dhms.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,49 +27,64 @@ public class TransactionController {
 	@Autowired
 	TransactionDao dao;
 
+	/*
+	 * SERVICES IMPLEMENTATION
+	 */
+
+	// Create and Update Service
 	public void createAndUpdate(Transaction transaction) {
 
 		System.out.println("==========createAndUpdate Called==========");
 		dao.save(transaction);
 	}
 
+	// Get all Transaction Service
 	public List<Transaction> getAllTransaction() {
 
 		System.out.println("==========getAllTransaction Called==========");
 		return (List<Transaction>) dao.findAll();
 	}
 
+	// Delete Transaction By ID Service
 	public void deleteTransactionById(int id) {
 
 		System.out.println("==========deleteTransactionById Called==========");
 		dao.deleteById(id);
 	}
 
+	// Get Details of Transaction By ID Service
 	public Transaction getTransactionById(int id) {
 
 		System.out.println("==========getTransactionById Called==========");
 		return dao.findById(id).get();
 	}
 
+	// Get Details of Transaction By Type Service
 	public List<Transaction> getTransactionByType(String type) {
 
 		System.out.println("==========getTransactionByType Called==========");
 		return (List<Transaction>) dao.findByType(type);
 	}
 
+	// Get Details of Transaction By Categories Service
 	public List<Transaction> getTransactionByCategorie(String categorie) {
 
 		System.out.println("==========getTransactionByCategorie Called==========");
 		return (List<Transaction>) dao.findByCategorie(categorie);
 	}
 
+	// Get Details of Transaction By Date Service
 	public List<Transaction> getTransactionByDate(String date) {
 
 		System.out.println("==========getTransactionByDate Called==========");
 		return (List<Transaction>) dao.findByDate(date);
 	}
 
-	// View Accounting Dashboard page
+	/*
+	 * PAGE HANDLING
+	 */
+
+	// View Accounting Dash board page
 	@RequestMapping("/accountmgt")
 	public ModelAndView accountingManagement() {
 
@@ -87,6 +104,39 @@ public class TransactionController {
 
 		return object;
 	}
+
+	// View Report page
+	@RequestMapping("/reportTransaction")
+	public ModelAndView reportTransaction() {
+
+		ModelAndView object = new ModelAndView("accountingManagement/report.jsp");
+		return object;
+	}
+
+	// View Search page
+	@RequestMapping("/searchTransaction")
+	public ModelAndView searchAccountMgt() {
+
+		ModelAndView object = new ModelAndView("accountingManagement/search.jsp");
+		return object;
+	}
+
+	// View Delete confirm page
+	@RequestMapping(value = "/deleteConfirm", method = RequestMethod.GET)
+	public ModelAndView deleteTransactionConfirm(@RequestParam int id) {
+
+		ModelAndView object = new ModelAndView();
+		Transaction transaction = getTransactionById(id);
+
+		object.setViewName("/accountingManagement/deleteConfirmPage.jsp");
+		object.addObject("deleteTransaction", transaction);
+
+		return object;
+	}
+
+	/*
+	 * C R U D OPERATIONS
+	 */
 
 	// Insert Transaction Method
 	@RequestMapping(value = "/insertTransaction", method = RequestMethod.POST)
@@ -151,19 +201,6 @@ public class TransactionController {
 		return object;
 	}
 
-	// View Delete confirm page
-	@RequestMapping(value = "/deleteConfirm", method = RequestMethod.GET)
-	public ModelAndView deleteTransactionConfirm(@RequestParam int id) {
-
-		ModelAndView object = new ModelAndView();
-		Transaction transaction = getTransactionById(id);
-
-		object.setViewName("/accountingManagement/deleteConfirmPage.jsp");
-		object.addObject("deleteTransaction", transaction);
-
-		return object;
-	}
-
 	// Delete Transaction method
 	@RequestMapping(value = "/deleteTransaction", method = RequestMethod.GET)
 	public ModelAndView deleteTransaction(@RequestParam int id) {
@@ -178,13 +215,9 @@ public class TransactionController {
 		return object;
 	}
 
-	// View Search page
-	@RequestMapping("/searchTransaction")
-	public ModelAndView searchAccountMgt() {
-
-		ModelAndView object = new ModelAndView("accountingManagement/search.jsp");
-		return object;
-	}
+	/*
+	 * SEARCH OPERATIONS
+	 */
 
 	// Search Transaction By Type method
 	@RequestMapping(value = "/searchByType")
@@ -231,13 +264,9 @@ public class TransactionController {
 		return object;
 	}
 
-	// View Report page
-	@RequestMapping("/reportTransaction")
-	public ModelAndView reportTransaction() {
-
-		ModelAndView object = new ModelAndView("accountingManagement/report.jsp");
-		return object;
-	}
+	/*
+	 * REPORT GENERATION OPERATIONS
+	 */
 
 	// Report Generate for Type
 	@RequestMapping(value = "/reportType", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
@@ -311,4 +340,5 @@ public class TransactionController {
 				.body(new InputStreamResource(bais));
 
 	}
+
 }

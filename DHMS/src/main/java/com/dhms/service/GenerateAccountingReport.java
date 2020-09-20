@@ -1,15 +1,20 @@
+// BY IT19180526
+
 package com.dhms.service;
 
 import com.dhms.model.Transaction;
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
@@ -24,12 +29,29 @@ public class GenerateAccountingReport {
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 
 		try {
-
+			
 			PdfPTable table = new PdfPTable(6);
 			table.setWidthPercentage(100);
 			table.setWidths(new int[] { 1, 2, 2, 3, 2, 2 });
-
-			Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+			
+			// 1st Heading
+			Font heading = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+			heading.setSize(20);
+			heading.setColor(BaseColor.BLUE);
+			Paragraph hotelname = new Paragraph("DHAMMIKA HOTEL MANAGEMENT SYSTEM\n\n", heading);
+			hotelname.setAlignment(Paragraph.ALIGN_LEFT);
+			
+			// 2nd Heading
+			Font heading2 = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+			heading2.setSize(15);
+			heading2.setColor(BaseColor.BLUE);
+			Paragraph list = new Paragraph("Transactions List\n\n", heading2);
+	        list.setAlignment(Paragraph.ALIGN_LEFT);
+	        
+	        // Table Style
+	        Font headFont = FontFactory.getFont(FontFactory.TIMES);
+			headFont.setSize(10);
+	        
 
 			PdfPCell hcell;
 
@@ -61,36 +83,36 @@ public class GenerateAccountingReport {
 
 				PdfPCell cell;
 
-				cell = new PdfPCell(new Phrase(String.valueOf(transactions.getId())));
+				cell = new PdfPCell(new Phrase(String.valueOf(transactions.getId()),headFont));
 				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 				table.addCell(cell);
 
-				cell = new PdfPCell(new Phrase(transactions.getDate()));
+				cell = new PdfPCell(new Phrase(transactions.getDate(),headFont));
 				cell.setPaddingLeft(5);
 				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 				table.addCell(cell);
 
-				cell = new PdfPCell(new Phrase(transactions.getType()));
+				cell = new PdfPCell(new Phrase(transactions.getType(),headFont));
 				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 				cell.setPaddingRight(5);
 				table.addCell(cell);
 
-				cell = new PdfPCell(new Phrase(transactions.getCategorie()));
+				cell = new PdfPCell(new Phrase(transactions.getCategorie(),headFont));
 				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 				cell.setPaddingRight(5);
 				table.addCell(cell);
 
-				cell = new PdfPCell(new Phrase(transactions.getDescription()));
+				cell = new PdfPCell(new Phrase(transactions.getDescription(),headFont));
 				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 				cell.setPaddingRight(5);
 				table.addCell(cell);
 
-				cell = new PdfPCell(new Phrase(String.valueOf(transactions.getAmount())));
+				cell = new PdfPCell(new Phrase(String.valueOf(transactions.getAmount()),headFont));
 				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 				cell.setPaddingRight(5);
@@ -99,6 +121,8 @@ public class GenerateAccountingReport {
 
 			PdfWriter.getInstance(document, out);
 			document.open();
+			document.add(hotelname);
+			document.add(list);
 			document.add(table);
 			document.close();
 

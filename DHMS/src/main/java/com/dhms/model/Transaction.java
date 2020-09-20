@@ -1,3 +1,5 @@
+// BY IT19180526
+
 package com.dhms.model;
 
 import javax.persistence.Column;
@@ -22,7 +24,7 @@ public class Transaction {
 	private String categorie;
 	
 	@Column(name = "amount")
-	private int amount;
+	private double amount;
 	
 	@Column(name = "date")
 	private String date;
@@ -48,10 +50,10 @@ public class Transaction {
 	public void setCategorie(String categorie) {
 		this.categorie = categorie;
 	}
-	public int getAmount() {
+	public double getAmount() {
 		return amount;
 	}
-	public void setAmount(int amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 	public String getDate() {
