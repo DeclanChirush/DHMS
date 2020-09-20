@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Supplier Management System</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	
+</head>
+<body>
+
+	<div class="container mt-5">
+	<h1>Suppliers List<span><a th:href = "@{/addNewSupplierForm}" class="btn btn-success" style="margin-left: 655px;">Add Supplier</a></span></h1>
+	
+	
+	
+		<table class ="table mt-3">
+			<thead>
+				<tr>
+					<th>Supplier Name</th>
+					<th>Supplier Email</th>
+					<th>Supplier Address</th>
+					<th>Contact Person</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="supplier : ${listSuppliers}">
+					
+					<td th:text="${supplier.supplier_name}"></td>
+					<td th:text="${supplier.supplier_email}"></td>
+					<td th:text="${supplier.supplier_address}"></td>
+					<td th:text="${supplier.contact_person}"></td>
+					<td> <a  th:href="@{/supplierFormForUpdate/{id}(id=${supplier.supplier_id})}" class="btn btn-primary">Update</a>
+					    <a  th:href="@{/deleteSupplier/{id}(id=${supplier.supplier_id})}" class="btn btn-danger">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		
+	</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>

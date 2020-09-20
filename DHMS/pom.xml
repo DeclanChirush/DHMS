@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.3.3.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<version>2.2.9.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.dhms</groupId>
-	<artifactId>DHMS</artifactId>
+	<groupId>com.vinuri</groupId>
+	<artifactId>supplier-management</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>DHMS</name>
-	<description>Dhammika Hotel Management System</description>
+	<name>SupplierManagement</name>
+	<description>Spring Boot Supplier Management</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -25,32 +25,19 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-jasper</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>bootstrap</artifactId>
-			<version>4.0.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.lowagie</groupId>
-			<artifactId>itext</artifactId>
-			<version>4.2.2</version>
-		</dependency>
-
-
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
