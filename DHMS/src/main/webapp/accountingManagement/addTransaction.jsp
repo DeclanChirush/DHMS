@@ -116,23 +116,24 @@
 
 					<div class="form-group">
 						<form:hidden path="id" class="form-control" />
-						<!-- 
-							<label for="id">Transaction ID:</label>
-							<form:input path="id" class="form-control" />
-							 -->
-
 					</div>
 
 					<div class="form-group">
 
-						<label for="categorie">Transaction Categorie:</label>
+						<label for="categorie">Transaction Categories:</label>
 						<form:select path="categorie" class="form-control">
 
-							<form:option value="Sales" />
-							<form:option value="Purchases" />
+							<form:option value="Room" />
+							<form:option value="Food Sales" />
+							<form:option value="Beverage Sales" />
+							<form:option value="Telephone & Internet" />
+							<form:option value="Spa" />
+							<form:option value="Maintenance" />
+							<form:option value="Security" />
 							<form:option value="Office supplies expense" />
-							<form:option value="Misc. labor" />
+							<form:option value="Miscellaneous Labor" />
 							<form:option value="Inventory Purchases" />
+							<form:option value="Other Purchases" />
 
 						</form:select>
 
@@ -142,31 +143,30 @@
 
 						<label for="type">Transaction Type:</label> &nbsp; &nbsp; &nbsp;
 
-						<form:radiobutton path="type" value="Income" />
-						<label for="income">Income</label> &nbsp; &nbsp; &nbsp; &nbsp;
-
-						<form:radiobutton path="type" value="Expense" />
-						<label for="expense">Expense</label>
+						<form:radiobutton path="type" value="Income" label = "Income" checked = "checked" />
+						&nbsp; &nbsp; &nbsp; &nbsp;
+						<form:radiobutton path="type" value="Expense" label = "Expense"/>
+						
 					</div>
 
 					<div class="form-group">
 
 						<label for="amount">Amount:</label>
-						<form:input path="amount" class="form-control" />
+						<form:input type="number" path="amount" class="form-control" required="required" />
 
 					</div>
 
 					<div class="form-group">
 
 						<label for="date">Date:</label>
-						<form:input type="date" path="date" class="form-control" />
+						<form:input type="date" path="date" class="form-control" required="required" />
 
 					</div>
 
 					<div class="form-group">
 
 						<label for="description">Description:</label>
-						<form:input path="description" class="form-control" />
+						<form:input path="description" class="form-control" required="required" />
 
 					</div>
 
@@ -176,10 +176,11 @@
 				</form:form>
 
 			</div>
-
+			<!-- 
 			<div class="col-md-6 srhdiv">
 				<h1>Calendar Here</h1>
 			</div>
+			 -->
 		</div>
 		<!--/.row-->
 	</div>

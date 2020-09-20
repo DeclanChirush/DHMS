@@ -144,14 +144,21 @@
 					<caption>Search Transactions by Categories</caption>
 					<br> <br>
 					<div class="form-group">
-						<label for="categorie">Select Categorie:</label> <select
-							name="categorie" id="categorie" class="form-control">
-							<option value="Sales">Sales</option>
-							<option value="Purchases">Purchases</option>
-							<option value="Office supplies expense">Office supplies
-								expense</option>
-							<option value="Misc. labor">Misc. labor</option>
+						<label for="categorie">Select Categorie:</label>
+						<select name="categorie" id="categorie" class="form-control">
+						
+							<option value="Room">Room</option>
+							<option value="Food Sales">Food Sales</option>
+							<option value="Beverage Sales">Beverage Sales</option>
+							<option value="Telephone & Internet">Telephone & Internet</option>
+							<option value="Spa">Spa</option>
+							<option value="Maintenance">Maintenance</option>
+							<option value="Security">Security</option>
+							<option value="Office supplies expense">Office supplies expense</option>
+							<option value="Miscellaneous Labor">Miscellaneous Labor</option>
 							<option value="Inventory Purchases">Inventory Purchases</option>
+							<option value="Other Purchases">Other Purchases</option>
+							
 						</select>
 					</div>
 					<button type="submit" class="btn btn-primary">Search</button>
@@ -232,16 +239,6 @@
 	<script src="/accountingManagement/style/js/easypiechart-data.js"></script>
 	<script src="/accountingManagement/style/js/bootstrap-datepicker.js"></script>
 	<script src="/accountingManagement/style/js/custom.js"></script>
-	<script>
-		window.onload = function() {
-			var chart1 = document.getElementById("line-chart").getContext("2d");
-			window.myLine = new Chart(chart1).Line(lineChartData, {
-				responsive : true,
-				scaleLineColor : "rgba(0,0,0,.2)",
-				scaleGridLineColor : "rgba(0,0,0,.05)",
-				scaleFontColor : "#c5c7cc"
-			});
-		};
-	</script>
+	
 </body>
 </html>

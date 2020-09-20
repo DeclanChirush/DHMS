@@ -18,6 +18,19 @@
 <link href="/accountingManagement/style/css/styles.css" rel="stylesheet"
 	type="text/css">
 
+<style type="text/css">
+.editdiv {
+	border: 2px solid #3e3e3e;
+	padding: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	background-color: white;
+	border-radius: 10px;
+}
+</style>
+
 <meta charset="ISO-8859-1">
 <title>Dhammika Hotel | Account Management</title>
 </head>
@@ -63,12 +76,12 @@
 					Dashboard</a></li>
 			<li><a class="" href="/addTransaction"><em
 					class="fa fa-navicon"></em> New Transaction</a></li>
-			<li class="active"><a class="" href="/showTransactionList"><em
+			<li><a class="" href="/showTransactionList"><em
 					class="fa fa-navicon"></em> Transaction History</a></li>
-			<li><a class="" href="/searchTransaction"><em class="fa fa-navicon"></em>
-					Search</a></li>
-			<li><a class="" href="/reportTransaction"><em class="fa fa-navicon"></em>
-					Report</a></li>
+			<li><a class="" href="/searchTransaction"><em
+					class="fa fa-navicon"></em> Search</a></li>
+			<li><a class="" href="/reportTransaction"><em
+					class="fa fa-navicon"></em> Report</a></li>
 			<li><a href="/logout"><em class="fa fa-power-off">&nbsp;</em>
 					Logout</a></li>
 		</ul>
@@ -100,11 +113,13 @@
 			<!--/.row-->
 
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-6 editdiv">
 
 					<spring:url value="/insertTransaction" var="saveTransaction" />
 					<form:form modelAttribute="transactionobj" method="post"
 						action="${saveTransaction}">
+
+						<h3>Transaction ID : ${transactionobj.id}</h3>
 
 						<div class="form-group">
 							<form:hidden path="id" class="form-control" />
@@ -117,14 +132,20 @@
 
 						<div class="form-group">
 
-							<label for="categorie">Transaction Categorie:</label>
+							<label for="categorie">Transaction Categories:</label>
 							<form:select path="categorie" class="form-control">
 
-								<form:option value="Sales" />
-								<form:option value="Purchases" />
+								<form:option value="Room" />
+								<form:option value="Food Sales" />
+								<form:option value="Beverage Sales" />
+								<form:option value="Telephone & Internet" />
+								<form:option value="Spa" />
+								<form:option value="Maintenance" />
+								<form:option value="Security" />
 								<form:option value="Office supplies expense" />
-								<form:option value="Misc. labor" />
+								<form:option value="Miscellaneous Labor" />
 								<form:option value="Inventory Purchases" />
+								<form:option value="Other Purchases" />
 
 							</form:select>
 
@@ -196,16 +217,6 @@
 	<script src="/accountingManagement/style/js/easypiechart-data.js"></script>
 	<script src="/accountingManagement/style/js/bootstrap-datepicker.js"></script>
 	<script src="/accountingManagement/style/js/custom.js"></script>
-	<script>
-		window.onload = function() {
-			var chart1 = document.getElementById("line-chart").getContext("2d");
-			window.myLine = new Chart(chart1).Line(lineChartData, {
-				responsive : true,
-				scaleLineColor : "rgba(0,0,0,.2)",
-				scaleGridLineColor : "rgba(0,0,0,.05)",
-				scaleFontColor : "#c5c7cc"
-			});
-		};
-	</script>
+	
 </body>
 </html>

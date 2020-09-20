@@ -138,14 +138,21 @@
 					<caption>Transactions by Categories</caption>
 					<br> <br>
 					<div class="form-group">
-						<label for="categorie">Select Categorie:</label> <select
-							name="categorie" id="categorie" class="form-control">
-							<option value="Sales">Sales</option>
-							<option value="Purchases">Purchases</option>
-							<option value="Office supplies expense">Office supplies
-								expense</option>
-							<option value="Misc. labor">Misc. labor</option>
+						<label for="categorie">Select Categorie:</label>
+						<select name="categorie" id="categorie" class="form-control">
+						
+							<option value="Room">Room</option>
+							<option value="Food Sales">Food Sales</option>
+							<option value="Beverage Sales">Beverage Sales</option>
+							<option value="Telephone & Internet">Telephone & Internet</option>
+							<option value="Spa">Spa</option>
+							<option value="Maintenance">Maintenance</option>
+							<option value="Security">Security</option>
+							<option value="Office supplies expense">Office supplies expense</option>
+							<option value="Miscellaneous Labor">Miscellaneous Labor</option>
 							<option value="Inventory Purchases">Inventory Purchases</option>
+							<option value="Other Purchases">Other Purchases</option>
+							
 						</select>
 					</div>
 					<button type="submit" class="btn btn-primary">Generate</button>

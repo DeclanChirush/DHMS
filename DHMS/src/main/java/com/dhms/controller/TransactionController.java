@@ -151,6 +151,19 @@ public class TransactionController {
 		return object;
 	}
 
+	// View Delete confirm page
+	@RequestMapping(value = "/deleteConfirm", method = RequestMethod.GET)
+	public ModelAndView deleteTransactionConfirm(@RequestParam int id) {
+
+		ModelAndView object = new ModelAndView();
+		Transaction transaction = getTransactionById(id);
+
+		object.setViewName("/accountingManagement/deleteConfirmPage.jsp");
+		object.addObject("deleteTransaction", transaction);
+
+		return object;
+	}
+
 	// Delete Transaction method
 	@RequestMapping(value = "/deleteTransaction", method = RequestMethod.GET)
 	public ModelAndView deleteTransaction(@RequestParam int id) {

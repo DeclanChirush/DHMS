@@ -1,10 +1,14 @@
 <!-- By IT19180526 -->
-<!DOCTYPE html>
-<html>
-<head>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <link href="/accountingManagement/style/css/bootstrap.min.css"
 	rel="stylesheet" type="text/css">
@@ -14,9 +18,73 @@
 	rel="stylesheet" type="text/css">
 <link href="/accountingManagement/style/css/styles.css" rel="stylesheet"
 	type="text/css">
+<link href="/accountingManagement/style/css/css.css" rel="stylesheet"
+	type="text/css">
+<link href="/accountingManagement/style/css/popup.css" rel="stylesheet"
+	type="text/css">
+
+<style type="text/css">
+.srhdiv {
+	border: 2px solid #3e3e3e;
+	padding: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	background-color: white;
+	border-radius: 10px;
+	width: 400px;
+	height: 220px;
+}
+
+.divconf {
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+	float: left;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	right: 0;
+}
+
+.btn-yes {
+	background-color: #555555;
+	border: none;
+	color: white;
+	padding: 6px;
+	width: 100px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 4px 2px;
+	cursor: pointer;
+	font-size: 12px;
+	border-radius: 2px;
+}
+
+.btn-no {
+	background-color: #ff0000;
+	border: none;
+	color: white;
+	padding: 6px;
+	width: 100px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 4px 2px;
+	cursor: pointer;
+	font-size: 12px;
+	border-radius: 2px;
+}
+</style>
 
 <meta charset="ISO-8859-1">
 <title>Dhammika Hotel | Account Management</title>
+
 </head>
 <body>
 
@@ -56,17 +124,17 @@
 		<div class="divider"></div>
 
 		<ul class="nav menu">
-			<li class="active"><a href="/accountmgt"><em
-					class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+			<li><a href="/accountmgt"><em class="fa fa-dashboard">&nbsp;</em>
+					Dashboard</a></li>
 			<li><a class="" href="/addTransaction"><em
 					class="fa fa-navicon"></em> New Transaction</a></li>
 			<li><a class="" href="/showTransactionList"><em
 					class="fa fa-navicon"></em> Transaction History</a></li>
 			<li><a class="" href="/searchTransaction"><em
 					class="fa fa-navicon"></em> Search</a></li>
-			<li><a class="" href="/reportTransaction"><em class="fa fa-navicon"></em>
-					Report</a></li>
-			<li><a href=""><em class="fa fa-power-off">&nbsp;</em>
+			<li><a class="" href="/reportTransaction"><em
+					class="fa fa-navicon"></em> Report</a></li>
+			<li><a href="/logout"><em class="fa fa-power-off">&nbsp;</em>
 					Logout</a></li>
 		</ul>
 
@@ -74,74 +142,73 @@
 	<!--/.sidebar-->
 
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+
 		<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#"> <em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Dashboard</li>
+				<li>Dashboard</li>
+				<li class="active">View Transaction</li>
 			</ol>
 		</div>
 		<!--/.row-->
 
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Dashboard</h1>
+				<h1 class="page-header">Transaction Details</h1>
 			</div>
 		</div>
 		<!--/.row-->
 
 		<div class="panel panel-container">
 			<div class="row">
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-teal panel-widget border-right">
-						<div class="row no-padding">
-							<em class="fa fa-xl fa-shopping-cart color-blue"></em>
-							<div class="large"></div>
-							<div class="text-muted">Orders</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-blue panel-widget border-right">
-						<div class="row no-padding">
-							<em class="fa fa-xl fa-money color-teal"></em>
-							<div class="large"></div>
-							<div class="text-muted">Total Expense</div>
-						</div>
-					</div>
+				<div class="col-md-12">
+					<form:form modelAttribute="deleteTransaction" method="post">
+						<h2>Are you want to delete Transaction ID :
+							${deleteTransaction.id }</h2>
+					</form:form>
 				</div>
 
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-blue panel-widget border-right">
-						<div class="row no-padding">
-							<em class="fa fa-xl fa-dollar color-orange"></em>
-							<div class="large"></div>
-							<div class="text-muted">Total Revenue</div>
+				<!--
+				<div class="col-md-12">
+					<form:form modelAttribute="deleteTransaction" method="post">
+						<h2>Are you want to delete Transaction ID :
+							${deleteTransaction.id }</h2>
+					</form:form>					
+					<div id="srhdiv">
+						<div id="dialog-bg">
+							<div id="dialog-title">Are you sure?</div>
+							<div id="dialog-description">Do you really want to delete
+								these records? This process cannot be undone.</div>
+							<div id="dialog-buttons">
+								<a href="/deleteTransaction?id=${deleteTransaction.id }"
+									class="large green button">Yes</a> <a
+									href="/viewTransaction?id=${deleteTransaction.id }"
+									class="large red button">No</a>
+							</div>
 						</div>
 					</div>
 				</div>
+				-->
 			</div>
 			<!--/.row-->
+			
+			<div  class="row">
+				<div class="divconf srhdiv">
+					<h4>Are you sure?</h4>
+					<h5>Do you really want to delete these records? This process
+						cannot be undone.</h5>
+						<br>
+						<br>
+					<button
+						onclick="location.href='/deleteTransaction?id=${deleteTransaction.id }'"
+						type="button" class="btn-yes">Yes</button>
+					<button
+						onclick="location.href='/viewTransaction?id=${deleteTransaction.id }'"
+						type="button" class="btn-no">No</button>
+				</div>
+			</div>
 		</div>
-
-		<div class="row">
-			<div class="col-md-12"></div>
-		</div>
-		<!--/.row-->
-
-
-		<div class="row">
-			<div class="col-xs-6 col-md-3"></div>
-			<div class="col-xs-6 col-md-3"></div>
-		</div>
-		<!--/.row-->
-
-		<div class="row">
-			<div class="col-md-6"></div>
-			<div class="col-sm-12"></div>
-		</div>
-		<!--/.row-->
-
 	</div>
 	<!--/.main-->
 
@@ -154,16 +221,5 @@
 	<script src="/accountingManagement/style/js/easypiechart-data.js"></script>
 	<script src="/accountingManagement/style/js/bootstrap-datepicker.js"></script>
 	<script src="/accountingManagement/style/js/custom.js"></script>
-	<script>
-		window.onload = function() {
-			var chart1 = document.getElementById("line-chart").getContext("2d");
-			window.myLine = new Chart(chart1).Line(lineChartData, {
-				responsive : true,
-				scaleLineColor : "rgba(0,0,0,.2)",
-				scaleGridLineColor : "rgba(0,0,0,.05)",
-				scaleFontColor : "#c5c7cc"
-			});
-		};
-	</script>
 </body>
 </html>
