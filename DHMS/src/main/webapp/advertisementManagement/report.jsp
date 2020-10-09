@@ -90,6 +90,11 @@
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
+	<br>
+	<br>
+	<br>
+	
+	<jsp:include page="/commonNavBar.jsp"></jsp:include>
 
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 

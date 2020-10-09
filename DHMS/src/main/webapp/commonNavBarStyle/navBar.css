@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+/* USING BOOTSTRAP 3.0.3 */
+
+nav {
+  .navbar-brand {font-size: 30px;}
+	.navbar-toggle {margin: 13px 15px 13px 0;}
+	a {
+		font-size: 18px;
+    transition: all 0.3s ease;
+	}
+}
+
+/*nav.navbar.shrink {
+	min-height: 35px;
+  .navbar-brand {font-size: 25px;}
+  a {
+    font-size: 15px;
+    padding-bottom: 10px !important;
+    padding-top: 10px !important;
+  }
+  .navbar-toggle {
+    margin: 8px 15px 8px 0;
+    padding: 4px 5px;
+  }
+} */

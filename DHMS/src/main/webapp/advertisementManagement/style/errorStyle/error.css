@@ -1,4 +1,5 @@
 @charset "ISO-8859-1";
+
 body{
 	
 	margin: 0;
@@ -41,4 +42,8 @@ body{
 	background: none;
 	color: white;
 	
+}
+.redColor{
+	color: red;
+	text-shadow:2px 5px 5px #fff;
 }
