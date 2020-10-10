@@ -37,6 +37,13 @@ public class AdvertisementController {
 			
 		}
 		
+		@RequestMapping(value = "/403error")
+		public ModelAndView error() {
+			ModelAndView model = new ModelAndView("/userLogs/403error.jsp");
+			return model;
+			
+		}
+		
 	
 
 //		@RequestMapping(value = "/view")
@@ -181,6 +188,8 @@ public class AdvertisementController {
 			return new ModelAndView("redirect:/advertisementList");
 			
 		}
+		
+		
 		
 		
 		@Autowired

@@ -179,7 +179,7 @@
 	
 
 			<div class="col-md-5 srhdiv">
-				<form action="/reportType" method="get">
+				<form action="/adReportType" method="get">
 					<caption><u><b>Advertisement by Type</u></b></caption>
 					<br> <br>
 					<div class="form-group">

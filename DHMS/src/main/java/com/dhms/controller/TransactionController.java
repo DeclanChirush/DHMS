@@ -13,6 +13,8 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+
 import java.util.List;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -21,7 +23,7 @@ import com.dhms.service.GenerateAccountingReport;
 import com.dhms.dao.TransactionDao;
 import com.dhms.model.Transaction;
 
-@RestController
+@Controller
 public class TransactionController {
 
 	@Autowired
