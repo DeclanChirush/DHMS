@@ -42,6 +42,7 @@ public class UsersLoginSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
            //.antMatchers("/").hasAnyAuthority("USER", "CREATOR", "EDITOR", "ADMIN")
+        	//Ashan
             .antMatchers("/addEmployee/**").hasAnyAuthority("ADMIN", "EMPLOYEE")
             .antMatchers("/editEmployee/**").hasAnyAuthority("ADMIN", "EMPLOYEE")
             .antMatchers("/deleteEmployee/**").hasAuthority("ADMIN")

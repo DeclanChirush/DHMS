@@ -20,7 +20,7 @@ public class EmployeeController {
 
 		
 		
-		@RequestMapping(value = "/", method = RequestMethod.GET)
+		@RequestMapping(value = "/employeeList", method = RequestMethod.GET)
 		public ModelAndView list() {
 			
 			ModelAndView model = new ModelAndView("/employeeManagement/EmployeeList.jsp");
@@ -62,7 +62,7 @@ public class EmployeeController {
 		public ModelAndView save(@ModelAttribute("employeeForm")Employee employee) {
 			saveOrUpdate(employee);
 			
-			return new ModelAndView("redirect:/");
+			return new ModelAndView("redirect:/employeeList");
 		}
 		
 	
@@ -70,7 +70,7 @@ public class EmployeeController {
 		public ModelAndView delete(@RequestParam("id")long id) {
 			deleteEmployee(id);
 			
-			return new ModelAndView("redirect:/");
+			return new ModelAndView("redirect:/employeeList");
 			
 		}
 		
