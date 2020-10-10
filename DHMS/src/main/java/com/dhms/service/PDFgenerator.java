@@ -20,6 +20,7 @@ public class PDFgenerator {
 
 	public static ByteArrayInputStream advertsementReport(List<Advertisement> advertisement) {
 
+		
 		Document document = new Document();
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 

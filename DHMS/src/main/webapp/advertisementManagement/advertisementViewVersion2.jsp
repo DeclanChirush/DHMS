@@ -23,6 +23,7 @@
 
 
 
+
 	<c:forEach items="${advertisementList2}" var="advertisement">
 
 		<div class="banner animate__animated animate__rubberBand">

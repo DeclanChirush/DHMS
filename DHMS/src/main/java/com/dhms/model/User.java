@@ -40,7 +40,6 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id")
             )
 	
-	
     public Set<Role> roles = new HashSet<>();
 	
 	

@@ -87,6 +87,7 @@ public class AdvertisementController {
 //		      
 //		    }
 		
+		
 		 @RequestMapping(value = "/advertisementSearch")
 			public ModelAndView search(@RequestParam String type) {
 					

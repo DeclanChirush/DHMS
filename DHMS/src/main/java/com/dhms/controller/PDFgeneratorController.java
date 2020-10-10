@@ -46,6 +46,9 @@ public class PDFgeneratorController {
 				.body(new InputStreamResource(bais));
 
 	}
+	
+	
+	
 
 	@Autowired
 	AdvertisementRepo advertisementRepo;

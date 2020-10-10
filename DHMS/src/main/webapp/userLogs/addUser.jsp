@@ -10,6 +10,7 @@
 </head>
 <body>
 
+
 	<spring:url value="/saveUserLog" var="saveURL"/>
 	<form:form modelAttribute="userLogsForm" method="post" action="${saveURL}" cssClass="responstable">
 			<form:hidden path="id" />
