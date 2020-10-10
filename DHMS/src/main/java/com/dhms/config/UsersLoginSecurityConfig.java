@@ -47,6 +47,12 @@ public class UsersLoginSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/editEmployee/**").hasAnyAuthority("ADMIN", "EMPLOYEE")
             .antMatchers("/deleteEmployee/**").hasAuthority("ADMIN")
             
+            //Eranga
+            .antMatchers("/newPurchase/**").hasAnyAuthority("ADMIN", "PURCHASING")
+            .antMatchers("/purchaseList/**").hasAnyAuthority("ADMIN", "PURCHASING")
+            .antMatchers("/savePurchase/**").hasAnyAuthority("ADMIN", "PURCHASING")
+            .antMatchers("/deletePurchase/**").hasAuthority("ADMIN")
+            
             //lankeesh
             .antMatchers("/addTransaction/**").hasAnyAuthority("ADMIN", "ACCOUNTS")
             .antMatchers("/insertTransaction/**").hasAnyAuthority("ADMIN", "ACCOUNTS")
@@ -55,6 +61,7 @@ public class UsersLoginSecurityConfig extends WebSecurityConfigurerAdapter {
             
             .antMatchers("/deleteAdvertisement/**").hasAnyAuthority("ADMIN")
             .antMatchers("/addAdvertisement/**").hasAnyAuthority("ADMIN")
+            
             .anyRequest().authenticated()
             .and()
             .formLogin().permitAll()

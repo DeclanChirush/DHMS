@@ -38,14 +38,14 @@ public class PurchaseController {
 	@GetMapping("/purchaseList")
 	public String showAllPurchase(HttpServletRequest request) {
 		request.setAttribute("purchases", purchaseService.showAllPurchase());
-		return "purchasingManagement/purchaseList";
+		return "purchasingManagement/purchaseList.jsp";
 	}
 
 	@RequestMapping("/deletePurchase")
 	public String deletePurchase(@RequestParam int id, HttpServletRequest request) {
 		purchaseService.deletePurchase(id);
 		request.setAttribute("purchases", purchaseService.showAllPurchase());
-		return "purchasingManagement/purchaseList";
+		return "purchasingManagement/purchaseList.jsp";
 	}
 		
 }
