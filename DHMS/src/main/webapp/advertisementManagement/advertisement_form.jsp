@@ -69,7 +69,11 @@
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
-
+	<br>
+	<br>
+	<br>
+	<jsp:include page="/commonNavBar.jsp"></jsp:include>
+	
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 
 		<div class="profile-sidebar">
@@ -117,7 +121,7 @@
 				<li><a href="#"> <em class="fa fa-home"></em>
 				</a></li>
 				<li>Dashboard</li>
-				<li class="active">Report</li>
+				<li class="active">Add Advertisement</li>
 			</ol>
 		</div>
 		<!--/.row-->

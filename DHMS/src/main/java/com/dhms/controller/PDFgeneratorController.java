@@ -21,7 +21,7 @@ import com.dhms.service.PDFgenerator;
 @Controller
 public class PDFgeneratorController {
 
-	@RequestMapping(value = "/reportType", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	@RequestMapping(value = "/adReportType", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
 	public ResponseEntity<InputStreamResource> advertisementReportByType(@RequestParam String type) throws IOException {
 
 		List<Advertisement> advertisement = (List<Advertisement>) getAdvertisementType(type);

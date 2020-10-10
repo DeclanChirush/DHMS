@@ -36,7 +36,11 @@
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
-
+	
+	<jsp:include page="/commonNavBar.jsp"></jsp:include>
+	
+	
+	
 	
 </body>
 </html>
