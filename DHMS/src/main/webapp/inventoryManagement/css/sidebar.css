@@ -1,0 +1,36 @@
+.sidebar {
+    height: 100%;
+    width: 16.6666666%;
+    position: fixed;
+    z-index: 1;
+    top: 10;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+    background-image: linear-gradient(to bottom right, white, aqua, blue);
+  }
+  
+  .sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+  }
+   
+  .sidebar a.active {
+    background-color: darkblue;
+    color: white;
+  }
+  
+  .sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+  
+  div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+  }
+  
+  /*comment*/
