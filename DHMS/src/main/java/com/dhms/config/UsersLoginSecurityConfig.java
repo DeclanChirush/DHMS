@@ -42,7 +42,7 @@ public class UsersLoginSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-           //.antMatchers("/").hasAnyAuthority("USER", "CREATOR", "EDITOR", "ADMIN")
+           //.antMatchers("/processRetreive").hasAuthority("ADMIN")
         	//Ashan
             .antMatchers("/addEmployee/**").hasAnyAuthority("ADMIN", "EMPLOYEE")
             .antMatchers("/editEmployee/**").hasAnyAuthority("ADMIN", "EMPLOYEE")
@@ -60,8 +60,12 @@ public class UsersLoginSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/editTransaction/**").hasAnyAuthority("ADMIN", "ACCOUNTS")
             .antMatchers("/deleteTransaction/**").hasAuthority("ADMIN")
             
+            //hirush
             .antMatchers("/deleteAdvertisement/**").hasAnyAuthority("ADMIN")
             .antMatchers("/addAdvertisement/**").hasAnyAuthority("ADMIN")
+            
+            //ravindu
+            .antMatchers("/addCountableItem/**").hasAnyAuthority("ADMIN")
             
             .anyRequest().authenticated()
             .and()

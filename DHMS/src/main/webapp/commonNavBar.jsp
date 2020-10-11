@@ -26,7 +26,7 @@
       <ul class="nav navbar-nav pull-right">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="/addAdvertisement/">Advertise</a></li>
-        <li><a href="">Inventory</a></li>
+        <li><a href="/inventory">Inventory</a></li>
          <li><a href="/accountmgt">Accounts</a></li>
           <li><a href="/newPurchase">Purchase</a></li>
            <li><a href="/addEmployee/">Employee</a></li>
