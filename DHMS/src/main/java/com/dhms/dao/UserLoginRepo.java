@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import com.dhms.model.User;
 
+
+// This is for get relevant role username and this is for Login 
 @Repository
 public interface UserLoginRepo extends CrudRepository<User, Integer>{
 

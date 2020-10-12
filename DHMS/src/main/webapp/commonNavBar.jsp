@@ -30,7 +30,7 @@
          <li><a href="/accountmgt">Accounts</a></li>
           <li><a href="/newPurchase">Purchase</a></li>
            <li><a href="/addEmployee/">Employee</a></li>
-           <li><a href="/addUser/">UserLogs</a></li>
+           <li><a href="/userLogs">UserLogs</a></li>
             <li><a href="/logout">Log out</a><li>
       </ul>
     </div><!--/.nav-collapse -->

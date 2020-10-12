@@ -5,6 +5,7 @@ import org.springframework.security.authentication.dao.*;
 import org.springframework.security.config.annotation.authentication.builders.*;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.*;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -29,7 +30,8 @@ public class UsersLoginSecurityConfig extends WebSecurityConfigurerAdapter {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService());
         authProvider.setPasswordEncoder(passwordEncoder());
-         
+     
+        
         return authProvider;
     }
  
@@ -63,6 +65,7 @@ public class UsersLoginSecurityConfig extends WebSecurityConfigurerAdapter {
             //hirush
             .antMatchers("/deleteAdvertisement/**").hasAnyAuthority("ADMIN")
             .antMatchers("/addAdvertisement/**").hasAnyAuthority("ADMIN")
+            .antMatchers("/userLogs/**").hasAnyAuthority("ADMIN")
             
             //ravindu 
             //countable items

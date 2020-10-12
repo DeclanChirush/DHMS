@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dhms.dao.AdvertisementRepo;
+import com.dhms.dao.UserLogsRepo;
 import com.dhms.model.Advertisement;
+import com.dhms.model.UserLogs;
 import com.dhms.service.PDFgenerator;
+import com.dhms.service.PDFgeneratorUserLogs;
 
 @Controller
 public class PDFgeneratorController {
@@ -47,6 +50,18 @@ public class PDFgeneratorController {
 
 	}
 	
+	@RequestMapping(value = "/AlluserLogs", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	public ResponseEntity<InputStreamResource> getuserLogs() throws IOException {
+
+		List<UserLogs> userlogs = (List<UserLogs>) getAllUserlogs();
+		ByteArrayInputStream bais = PDFgeneratorUserLogs.userLogsReport(userlogs);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition", "inline; filename=AlluserLogs.pdf");
+
+		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
+				.body(new InputStreamResource(bais));
+
+	}
 	
 	
 
@@ -71,6 +86,15 @@ public class PDFgeneratorController {
 
 	public List<Advertisement> getAdvertisementType(String type) {
 		return (List<Advertisement>) advertisementRepo.findByType(type);
+	}
+	
+	
+	@Autowired
+	UserLogsRepo userLogsRepo;
+	
+	public List<UserLogs> getAllUserlogs(){
+		
+		return (List<UserLogs>) userLogsRepo.findAll();
 	}
 
 }
