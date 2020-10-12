@@ -60,9 +60,9 @@
 									<td>${purchase.item}</td>
 									<td>${purchase.quantity}</td>									
 									<td>${purchase.price}</td>									
-									<td>${purchase.total}</td>									
-									<td><a href="/deletePurchase?id=${purchase.id }"><span
-											class="glyphicon glyphicon-trash"></span></a></td>
+									<td>${purchase.total}</td>
+									<td><a href="/updatePurchase?id=${purchase.id }">Update</a></td>									
+									<td><a href="/deletePurchase?id=${purchase.id }">Delete</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
