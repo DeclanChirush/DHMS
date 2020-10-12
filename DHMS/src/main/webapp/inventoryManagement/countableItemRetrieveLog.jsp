@@ -21,7 +21,7 @@
 <meta charset="ISO-8859-1">
 <title>Countable Items Retrieve Logs</title>
 </head>
-<body>
+<body style="background-color:#DDDDE8;">
 
 <jsp:include page="/inventoryManagement/topDivs.jsp"></jsp:include>
 <jsp:include page="/inventoryManagement/normalSideNav.jsp"></jsp:include>

@@ -5,9 +5,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Inventory Dashboard</title>
+
+
 </head>
-<body>
-<jsp:include page="/commonNavBar.jsp"></jsp:include>
+<body style="background-color:#DDDDE8;">
+<jsp:include page="/inventoryManagement/navbar.jsp"></jsp:include>
 	
 	
 	<div class="container-fluid" >

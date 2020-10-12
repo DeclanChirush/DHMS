@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/inventoryManagement/css/confirmModal.css">
 
 </head>
-<body>
+<body style="background-color:#DDDDE8;">
 <jsp:include page="/inventoryManagement/topDivs.jsp"></jsp:include>
 <jsp:include page="/inventoryManagement/normalSideNav.jsp"></jsp:include>
 

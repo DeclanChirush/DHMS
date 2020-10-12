@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Confirm Clearing</title>
 </head>
-<body>
+<body style="background-color:#DDDDE8;">
 <h1>Clear the logs for uncountable items?</h1><br/>
 <a href="processDeleteUncountableLogs">Yes</a>
 <a href="inventory">No</a>
