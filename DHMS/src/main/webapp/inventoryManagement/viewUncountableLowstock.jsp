@@ -21,7 +21,9 @@
 <!--  -->
 <div class="col-10">
 
-<h1>Low Stock- Uncountable Items</h1>
+<h1>Low Stock- Uncountable Items</h1> <br/>
+
+<a href="reportUncountableLowStock">Generate report</a>
 
 <table class="table table-striped">
 		<tr> 

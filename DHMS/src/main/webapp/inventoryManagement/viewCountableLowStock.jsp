@@ -22,7 +22,9 @@
 <!--  -->
 <div class="col-10">
 
-<h1>Low Stock - Countable Items</h1>
+<h1>Low Stock - Countable Items</h1> <br/>
+
+<a href="reportCountableLowStock">Generate report</a>
 
 <table class="table table-striped">
 		<tr> 

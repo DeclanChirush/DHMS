@@ -1,12 +1,15 @@
 package com.dhms.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,7 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dhms.dao.UncountableItemRepo;
 import com.dhms.dao.UncountableLowStockRepo;
+import com.dhms.dao.UncountableRetrieveLogRepo;
 import com.dhms.model.CountableItems;
+import com.dhms.model.UncountableItemRetrieveLog;
 import com.dhms.model.UncountableItems;
 import com.dhms.model.UncountableLowStock;
 
@@ -26,6 +31,9 @@ public class UncountableItemController {
 	
 	@Autowired
 	UncountableLowStockRepo ulowrepo;
+	
+	@Autowired
+	UncountableRetrieveLogRepo uncountableRetrieveLogRepo;
 	
 	@RequestMapping("/addUncountableItem")   // add anew uncountable item
 	public String addUncountableItem(UncountableItems uitem)
@@ -91,7 +99,8 @@ public class UncountableItemController {
 	}
 	
 	@RequestMapping("/processRetrieveU")   // process the retrieval of uncountable items
-	public String processRetrieve(UncountableItems uitem, HttpServletRequest request, HttpServletResponse response)
+	public String processRetrieve(UncountableItems uitem, HttpServletRequest request, HttpServletResponse response,
+			UncountableItemRetrieveLog uncountableItemRetrieveLog)
 	{
 		String  itemId = request.getParameter("itemId"); 
 		double retrieveAmount = Double.parseDouble(request.getParameter("retieveAmount"));
@@ -121,6 +130,22 @@ public class UncountableItemController {
 		
 		uitem1.setRemainingAmount(newAmount);
 		urepo.save(uitem1);
+		
+		//getting username from session
+		final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
+		System.out.println("user: "+ currentUserName);
+				
+		//getting current date
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+		Date date = new Date(); 
+		String currentDatetime = formatter.format(date);
+		
+		uncountableItemRetrieveLog.setItemId(itemId);
+		uncountableItemRetrieveLog.setItemName(itemName);
+		uncountableItemRetrieveLog.setUsername(currentUserName);
+		uncountableItemRetrieveLog.setAmount(retrieveAmount);
+		uncountableItemRetrieveLog.setDateTime(currentDatetime);
+		uncountableRetrieveLogRepo.save(uncountableItemRetrieveLog);
 		
 		return "/viewAllUncountableItems";
 	}
@@ -193,6 +218,32 @@ public class UncountableItemController {
 		map.put("itemList", urepo.findAll());
 		return "inventoryManagement/viewAllUncountableItems.jsp";
 	}
+	
+	
+	@RequestMapping(value = "/uncountableItemRetrieveLogs" /*, method = RequestMethod.GET*/)
+	public String viewUncountableItemRetreiveLogs(Map<String, Object> map)  //displaying all logs
+	{
+		map.put("logList", uncountableRetrieveLogRepo.findAll());
+		System.out.println("Viewing all uncountable logs ");
+		
+		return "inventoryManagement/uncountableItemRetrieveLog.jsp";
+	}
+	
+	@RequestMapping(value = "/deleteUncountableItemRetrieveLogs" /*, method = RequestMethod.GET*/)
+	public String deleteUncountableItemRetrieveLogs()
+	{
+		return "inventoryManagement/confirmDeleteUncountableItemRetreiveLogs.jsp";
+	}
+	
+	@RequestMapping(value = "/processDeleteUncountableLogs" /*, method = RequestMethod.GET*/)
+	public String processDeleteCountableItemRetreiveLogs()
+	{
+		uncountableRetrieveLogRepo.deleteAll();
+		System.out.println("Deleted uncountable logs");
+		return "inventoryManagement/inventoryMain.jsp";
+	}
+	
+	
 	
 	@RequestMapping(value="/uncountableItemsAdvanced")
 	public String uncountableItemsAdvanced(Map<String, Object> map)

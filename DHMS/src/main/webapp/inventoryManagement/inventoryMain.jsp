@@ -53,7 +53,8 @@
 			            
 			            <a href="viewAllCountableItems" class="btn btn-secondary btn-block"> View All Countable Items</a> <br/> 
 						<a href="viewCountableLowStock" class="btn btn-secondary btn-block">View Low stock for countable items</a> <br/> 
-						<a href="countableItemsAdvanced" class="btn btn-secondary btn-block">Advanced functions on countable items</a> <br/> 
+						<a href="countableItemsAdvanced" class="btn btn-secondary btn-block">Advanced functions on countable items</a> <br/>
+						<a href="countableItemRetrieveLogs" class="btn btn-secondary btn-block">Countable Items Retrieve logs</a> <br/> 
 						
 					</div> <!-- End jumbotron -->
 					</div> <!-- End of countable items column -->
@@ -76,7 +77,8 @@
 		             	
 		             	<a href="viewAllUncountableItems" class="btn btn-secondary btn-block"> View All Uncountable Items</a> <br/> 
 						<a href="viewUncountableLowStock" class="btn btn-secondary btn-block">View Low stock for uncountable items</a> <br/> 
-						<a href="uncountableItemsAdvanced" class="btn btn-secondary btn-block">Advanced functions on uncountable items</a> <br/> 
+						<a href="uncountableItemsAdvanced" class="btn btn-secondary btn-block">Advanced functions on uncountable items</a> <br/>
+						<a href="uncountableItemRetrieveLogs" class="btn btn-secondary btn-block">Uncountable Items retrieve logs</a> <br/> 
 		             	
 		             	
 		            </div>	<!-- End jumbotron -->
