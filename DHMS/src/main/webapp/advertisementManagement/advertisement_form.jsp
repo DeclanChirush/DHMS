@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 
 <!DOCTYPE html>
 <html>
@@ -100,7 +101,11 @@
 					class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name"></div>
+				<div class="profile-usertitle-name">  
+					<%final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName(); %>
+					<span class="badge badge-pill badge-secondary">User: <%=currentUserName %></span>
+					
+				</div>
 				<div class="profile-usertitle-status">
 					<span class="indicator label-success"></span>Online
 				</div>

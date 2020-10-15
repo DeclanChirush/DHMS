@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>  
-
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,7 +89,10 @@
 					class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name"></div>
+				<div class="profile-usertitle-name">
+					<%final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName(); %>
+					<span class="badge badge-pill badge-secondary">User: <%=currentUserName %></span>
+				</div>
 				<div class="profile-usertitle-status">
 					<span class="indicator label-success"></span>Online
 				</div>
