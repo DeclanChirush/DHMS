@@ -17,6 +17,10 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,29 +33,51 @@ public class GenerateAccountingReport {
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 
 		try {
-			
+
 			PdfPTable table = new PdfPTable(6);
 			table.setWidthPercentage(100);
 			table.setWidths(new int[] { 1, 2, 2, 3, 2, 2 });
-			
+
 			// 1st Heading
 			Font heading = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
 			heading.setSize(20);
 			heading.setColor(BaseColor.BLUE);
 			Paragraph hotelname = new Paragraph("DHAMMIKA HOTEL MANAGEMENT SYSTEM\n\n", heading);
 			hotelname.setAlignment(Paragraph.ALIGN_LEFT);
-			
+
 			// 2nd Heading
 			Font heading2 = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
 			heading2.setSize(15);
 			heading2.setColor(BaseColor.BLUE);
 			Paragraph list = new Paragraph("Transactions List\n\n", heading2);
-	        list.setAlignment(Paragraph.ALIGN_LEFT);
-	        
-	        // Table Style
-	        Font headFont = FontFactory.getFont(FontFactory.TIMES);
+			list.setAlignment(Paragraph.ALIGN_LEFT);
+
+			// Table Style
+			Font headFont = FontFactory.getFont(FontFactory.TIMES);
 			headFont.setSize(10);
-	        
+
+			// Address
+			Font addressLine = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+			addressLine.setSize(10);
+			addressLine.setColor(BaseColor.BLUE);
+			Paragraph address = new Paragraph("\n\n\nDhammika Hotel,\nDambulla Road,\nBakamuna.\n\n\n", addressLine);
+			address.setAlignment(Paragraph.ALIGN_LEFT);
+
+			// Date
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+			Calendar dateTime = Calendar.getInstance();
+			Font dateLine = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+			dateLine.setSize(10);
+			dateLine.setColor(BaseColor.BLUE);
+			Paragraph date = new Paragraph("Date : " + dateFormat.format(dateTime.getTime()), dateLine);
+			date.setAlignment(Paragraph.ALIGN_LEFT);
+
+			// Signature
+			Font signatureLine = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+			signatureLine.setSize(10);
+			signatureLine.setColor(BaseColor.BLUE);
+			Paragraph signature = new Paragraph("Signature : ...........................", signatureLine);
+			signature.setAlignment(Paragraph.ALIGN_RIGHT);
 
 			PdfPCell hcell;
 
@@ -83,36 +109,36 @@ public class GenerateAccountingReport {
 
 				PdfPCell cell;
 
-				cell = new PdfPCell(new Phrase(String.valueOf(transactions.getId()),headFont));
+				cell = new PdfPCell(new Phrase(String.valueOf(transactions.getId()), headFont));
 				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 				table.addCell(cell);
 
-				cell = new PdfPCell(new Phrase(transactions.getDate(),headFont));
+				cell = new PdfPCell(new Phrase(transactions.getDate(), headFont));
 				cell.setPaddingLeft(5);
 				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 				table.addCell(cell);
 
-				cell = new PdfPCell(new Phrase(transactions.getType(),headFont));
+				cell = new PdfPCell(new Phrase(transactions.getType(), headFont));
 				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 				cell.setPaddingRight(5);
 				table.addCell(cell);
 
-				cell = new PdfPCell(new Phrase(transactions.getCategorie(),headFont));
+				cell = new PdfPCell(new Phrase(transactions.getCategorie(), headFont));
 				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 				cell.setPaddingRight(5);
 				table.addCell(cell);
 
-				cell = new PdfPCell(new Phrase(transactions.getDescription(),headFont));
+				cell = new PdfPCell(new Phrase(transactions.getDescription(), headFont));
 				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 				cell.setPaddingRight(5);
 				table.addCell(cell);
 
-				cell = new PdfPCell(new Phrase(String.valueOf(transactions.getAmount()),headFont));
+				cell = new PdfPCell(new Phrase(String.valueOf(transactions.getAmount()), headFont));
 				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 				cell.setPaddingRight(5);
@@ -124,6 +150,9 @@ public class GenerateAccountingReport {
 			document.add(hotelname);
 			document.add(list);
 			document.add(table);
+			document.add(address);
+			document.add(date);
+			document.add(signature);
 			document.close();
 
 		} catch (DocumentException ex) {

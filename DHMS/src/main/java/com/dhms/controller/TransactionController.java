@@ -80,6 +80,13 @@ public class TransactionController {
 		return (List<Transaction>) dao.findByDate(date);
 	}
 
+	// Get Sum of Expense Transaction
+	public Transaction getSumofTransactionbyExpense() {
+
+		System.out.println("==========getSumofTransactionbyExpense Called==========");
+		return dao.getSumOfExpense();
+	}
+
 	/*
 	 * PAGE HANDLING
 	 */
