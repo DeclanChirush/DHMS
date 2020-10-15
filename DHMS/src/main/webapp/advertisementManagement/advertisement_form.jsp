@@ -18,7 +18,7 @@
 	type="text/css">
 <link href="/backendDashboardStyle/css/css.css" rel="stylesheet"
 	type="text/css">
-	
+
 
 <link
 	href="/advertisementManagement/style/formStyle/vendor/mdi-font/css/material-design-iconic-font.min.css"
@@ -47,8 +47,9 @@
 	rel="stylesheet" />
 <link href="/advertisementManagement/style/searchBarStyle/css/main.css"
 	rel="stylesheet" />
-	
-	<link href="/advertisementManagement/style/buttonStyle/button.css" rel = "stylesheet">
+
+<link href="/advertisementManagement/style/buttonStyle/button.css"
+	rel="stylesheet">
 
 <meta charset="ISO-8859-1">
 <title>Dhammika Hotel | Dashboard</title>
@@ -64,8 +65,23 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/accountmgt"><span>Dhammika
+				<a class="navbar-brand" href="/"><span>Dhammika
 						Hotel </span>Management System</a>
+				<a class="navbar-brand">  </a>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav pull-left">
+						<li><a href="/backendHome" style="color:white">Home</a></li>
+						<li><a href="/addAdvertisement/" style="color:white">Advertise</a></li>
+						<li><a href="/addEmployee/" style="color:white">Employee</a></li>
+						<li><a href="/inventory" style="color:white">Inventory</a></li>
+						<li><a href="/accountmgt" style="color:white">Accounting</a></li>
+						<li><a href="/newPurchase" style="color:white">Purchasing</a></li>
+						<li><a href="#" style="color:white">Suppling</a></li>
+						<li><a href="/userLogs" style="color:white">UserLogs</a></li>
+						<li><a href="/logout" style="color:red">Logout</a>
+						<li>
+					</ul>
+				</div>
 			</div>
 		</div>
 		<!-- /.container-fluid -->
@@ -73,8 +89,8 @@
 	<br>
 	<br>
 	<br>
-	<jsp:include page="/commonNavBar.jsp"></jsp:include>
-	
+	<!-- <jsp:include page="/commonNavBar.jsp"></jsp:include> -->
+
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 
 		<div class="profile-sidebar">
@@ -95,21 +111,22 @@
 		<div class="divider"></div>
 
 
-			<form action="/advertisementSearch" method="get">
-				<input class="form-control" type="text" placeholder="ex: food, booking" aria-label="Search"  name="type">
-				<br>
-				<button class="button ash" type="submit">Search</button>
-			</form> 
-		
+		<form action="/advertisementSearch" method="get">
+			<input class="form-control" type="text"
+				placeholder="ex: food, booking" aria-label="Search" name="type">
+			<br>
+			<button class="button ash" type="submit">Search</button>
+		</form>
+
 		<ul class="nav menu">
 
 			<li><a class="" href="/addAdvertisement/"><em
 					class="fa fa-navicon"></em> Add Advertisement</a></li>
 			<li><a class="" href="/advertisementList"><em
 					class="fa fa-navicon"></em> View List</a></li>
-			<li><a class="" href="/report"><em
-					class="fa fa-navicon"></em> Report</a></li>
-			
+			<li><a class="" href="/report"><em class="fa fa-navicon"></em>
+					Report</a></li>
+
 		</ul>
 
 	</div>
@@ -149,46 +166,48 @@
 						<spring:url value="/saveAdvertisement" var="saveURL" />
 						<h2>
 							<u>Add Advertisement </u>
-							
+
 						</h2>
-						<br>
-						<br>
-						<br>
+						<br> <br> <br>
 						<form:form modelAttribute="advertisementForm" method="post"
 							action="${saveURL}">
-							
+
 							<div class="row row-space">
 								<div class="col-2">
 									<div class="input-group">
 										<form:hidden path="id" />
 
 										<label class="label">Title</label>
-										<form:input path="title" class="input--style-4" required="required"/>
-										
+										<form:input path="title" class="input--style-4"
+											required="required" />
+
 
 									</div>
 								</div>
 								<div class="col-2">
 									<div class="input-group">
 										<label class="label">Offer percentage</label>
-										<form:input path="percentage" class="input--style-4" required="required" />
-										
+										<form:input path="percentage" class="input--style-4"
+											required="required" />
+
 									</div>
 								</div>
 
 								<div class="col-2">
 									<div class="input-group">
 										<label class="label">Time period</label>
-										<form:input path="timePeriod" class="input--style-4" required="required"/>
-									
+										<form:input path="timePeriod" class="input--style-4"
+											required="required" />
+
 									</div>
 								</div>
 
 								<div class="col-2">
 									<div class="input-group">
 										<label class="label">Description</label>
-										<form:textarea path="description" class="input--style-4" required="required"/>
-										
+										<form:textarea path="description" class="input--style-4"
+											required="required" />
+
 									</div>
 								</div>
 								<div class="col-2">

@@ -2,6 +2,7 @@ package com.dhms.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dhms.dao.UserLogsRepo;
+import com.dhms.model.Advertisement;
 import com.dhms.model.UserLogs;
 
 @Controller
@@ -49,10 +51,17 @@ public class headController {
 	public ModelAndView userLogs() {
 
 		ModelAndView model = new ModelAndView("/userLogs/userLogs.jsp");
+		List<UserLogs> userLogList = getAlluserLogs();
+		model.addObject("userLogList", userLogList);
 		return model;
 
 	}
-
+	
+	//get all user logs from data base
+	public List<UserLogs> getAlluserLogs() {
+		return (List<UserLogs>) userLogsRepo.findAll();
+	}
+	
 //	@RequestMapping("/internal")
 //	public String internalSys()
 //	{
@@ -63,5 +72,10 @@ public class headController {
 	@RequestMapping("/inventory")
 	public String inventoryMain() {
 		return "inventoryManagement/inventoryMain.jsp";
+	}
+	
+	@RequestMapping("/backendHome")
+	public String backendHome() {
+		return "backendDashboard.jsp";
 	}
 }

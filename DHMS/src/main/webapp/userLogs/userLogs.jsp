@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 
 <!DOCTYPE html>
 <html>
@@ -117,24 +118,6 @@
 		<div class="divider"></div>
 
 
-	<!-- 	<form action="/advertisementSearch" method="get">
-			<input class="form-control" type="text"
-				placeholder="ex: food, booking" aria-label="Search" name="type">
-			<br>
-			<button class="button ash" type="submit">Search</button>
-		</form>
-
-		<ul class="nav menu">
-
-			<li><a class="" href="/addAdvertisement/"><em
-					class="fa fa-navicon"></em> Add Advertisement</a></li>
-			<li><a class="" href="/advertisementList"><em
-					class="fa fa-navicon"></em> View List</a></li>
-			<li><a class="" href="/report"><em class="fa fa-navicon"></em>
-					Report</a></li>
-
-		</ul> -->
-
 	</div>
 	<!--/.sidebar-->
 
@@ -166,21 +149,57 @@
 
 		<div class="row">
 
-		
-			<div class="col-md-5 srhdiv">
-				<caption><u><b>UserLogs</u></b></caption>
-				<br> <br>
+			
+			<div class="col-md-12 srhdiv">
+				<center><br> <br>
 				<div class="form-group">
-					<label for="">Click Here:</label>
+					<label style="font-size:2vw;">Click here to get Userlogs pdf :</label>
 				</div>
-				<br><br>
 				<button onclick="location.href='/AlluserLogs'"
-					type="button" class="btn ash">Generate</button>
+					type="button" class="btn ash">Generate</button> </center>
 			</div>
 
 
 		</div>
 		<!--/.row-->
+		<div class="row">
+				<div class="col-md-12">
+					<div class="limiter">
+						<div class="container-table100">
+							<div class="wrap-table100">
+								<div class="table100">
+									<table>
+									<thead>
+										<tr class="table100-head">
+										
+											<th scope="row" class="column1">User ID</th>
+											<th scope="row" class="column1">Username</th>
+											<th scope="row" class="column2">Date & Time</th>
+	
+											
+										</tr>
+									</thead>
+									<tbody>
+									
+										<c:forEach items="${userLogList }" var="userLog">
+											<tr>
+												
+												<td class="column1">${userLog.id}</td>
+												<td class="column2">${userLog.username}</td>
+												<td class="column3">${userLog.date}</td>
+							
+			
+						    	
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
 
 		<!--/.main-->
 	</div>

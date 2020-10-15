@@ -54,8 +54,23 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/accountmgt"><span>Dhammika
+				<a class="navbar-brand" href="/"><span>Dhammika
 						Hotel </span>Management System</a>
+				<a class="navbar-brand">  </a>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav pull-left">
+						<li><a href="/backendHome" style="color:white">Home</a></li>
+						<li><a href="/addAdvertisement/" style="color:white">Advertise</a></li>
+						<li><a href="/addEmployee/" style="color:white">Employee</a></li>
+						<li><a href="/inventory" style="color:white">Inventory</a></li>
+						<li><a href="/accountmgt" style="color:white">Accounting</a></li>
+						<li><a href="/newPurchase" style="color:white">Purchasing</a></li>
+						<li><a href="#" style="color:white">Suppling</a></li>
+						<li><a href="/userLogs" style="color:white">UserLogs</a></li>
+						<li><a href="/logout" style="color:red">Logout</a>
+						<li>
+					</ul>
+				</div>
 			</div>
 		</div>
 		<!-- /.container-fluid -->
@@ -63,7 +78,7 @@
 	<br>
 	<br>
 	<br>
-	<jsp:include page="/commonNavBar.jsp"></jsp:include>
+	<!-- <jsp:include page="/commonNavBar.jsp"></jsp:include> -->
 	
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 
