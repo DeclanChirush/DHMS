@@ -21,6 +21,7 @@
 </head>
 <body>
 
+
 			
 				 <c:forEach items="${advertisementList1}" var="advertisement">
 					

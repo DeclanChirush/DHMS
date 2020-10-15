@@ -13,15 +13,22 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
+
+import java.util.Date;
 import java.util.List;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 import com.dhms.service.GenerateAccountingReport;
 import com.dhms.dao.TransactionDao;
+import com.dhms.dao.UserLogsRepo;
 import com.dhms.model.Transaction;
+import com.dhms.model.UserLogs;
 
-@RestController
+@Controller
 public class TransactionController {
 
 	@Autowired
@@ -91,9 +98,31 @@ public class TransactionController {
 	 * PAGE HANDLING
 	 */
 
+	@Autowired
+	private UserLogsRepo userLogsRepo;
+	
 	// View Accounting Dash board page
 	@RequestMapping("/accountmgt")
 	public ModelAndView accountingManagement() {
+		
+		//It19240848
+		//getting current user name
+		final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
+		System.out.println("user: "+ currentUserName);
+		
+		//getting current date
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+	    Date date = new Date(); 
+	    String currentDatetime = formatter.format(date);
+		
+		UserLogs userLogs = new UserLogs();
+		
+		userLogs.setUsername(currentUserName);
+		userLogs.setDate(currentDatetime);
+		
+		userLogsRepo.save(userLogs);
+		
+		// *************************** ///
 
 		ModelAndView object = new ModelAndView("accountingManagement/accountingmgt.jsp");
 		return object;

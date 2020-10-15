@@ -12,6 +12,5 @@ public interface AdvertisementRepo extends CrudRepository<Advertisement, Long>{
 
 	List<Advertisement> findByType(String type);
 	
-	
 }
  
