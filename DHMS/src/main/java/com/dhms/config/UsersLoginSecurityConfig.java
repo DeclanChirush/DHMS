@@ -88,6 +88,10 @@ public class UsersLoginSecurityConfig extends WebSecurityConfigurerAdapter {
             //countable low stock
             .antMatchers("/viewCountableLowStock").hasAnyAuthority("ADMIN","INVENTORY")
             
+            //countable items logs
+            .antMatchers("/countableItemRetrieveLogs").hasAnyAuthority("ADMIN","INVENTORY")
+            .antMatchers("/deleteCountableItemRetrieveLogs").hasAnyAuthority("ADMIN")
+            .antMatchers("/processDeleteCountableLogs").hasAnyAuthority("ADMIN")
             
             //uncountable items
             .antMatchers("/addUncountableItem").hasAnyAuthority("ADMIN")
@@ -107,6 +111,11 @@ public class UsersLoginSecurityConfig extends WebSecurityConfigurerAdapter {
             
             //uncountable low stock
             .antMatchers("/viewUncountableLowStock").hasAnyAuthority("ADMIN","INVENTORY")
+            
+            //uncountable items logs
+            .antMatchers("/uncountableItemRetrieveLogs").hasAnyAuthority("ADMIN","INVENTORY")
+            .antMatchers("/deleteUncountableItemRetrieveLogs").hasAnyAuthority("ADMIN")
+            .antMatchers("/processDeleteUncountableLogs").hasAnyAuthority("ADMIN")
             
             
             

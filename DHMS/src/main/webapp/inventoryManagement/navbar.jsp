@@ -12,7 +12,8 @@
 <!--  -->
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">Dhammika Hotel </a>
+  <a class="navbar-brand" href="/"><p style="color:red"> Dhammika Hotel  </p> </a>
+  <a class="navbar-brand" href="/"><p style="color:white"> Management System </p> </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -23,22 +24,22 @@
         <a class="nav-link" href="/addAdvertisement/">Advertise <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="/inventory">Inventory</a>
+        <a class="nav-link" href="/inventory"><p>Inventory</p></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/accountmgt">Accounts</a>
+        <a class="nav-link" href="/accountmgt"><p>Accounts</p></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/newPurchase">Purchase</a>
+        <a class="nav-link" href="/newPurchase"><p>Purchase</p></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/addEmployee/">Employee</a>
+        <a class="nav-link" href="/addEmployee/"><p>Employee</p></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/addUser/">User Logs</a>
+        <a class="nav-link" href="/addUser/"><p>User Logs</p></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/logout">Logout</a>
+        <a class="nav-link" href="/logout"><p>Logout</p></a>
       </li>
       
       

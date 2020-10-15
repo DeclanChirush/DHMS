@@ -34,6 +34,7 @@
         <%final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName(); %>
          <div class="container-fluid">
          	<!--  <a href="#" class="badge badge-primary"> User:<%=currentUserName %> </a>-->
+         	<img src="/inventoryManagement/images/user-image.png" alt="user-image" style="width:40px;height:40px;">
          	<span class="badge badge-pill badge-secondary">User:<%=currentUserName %></span>
          </div>
             <a data-toggle="collapse" href="#countableSubmenu" aria-expanded="false" role="button" aria-controls="collapseExample" class="dropdown-toggle active">Countable Items</a>

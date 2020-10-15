@@ -21,7 +21,7 @@
 
 			<div class="col-10">
 				
-				<h1>Inventory Management</h1> <br/><br/>
+				<h1>Inventory Management</h1> <br/>
 				<!--  
 				<h3>Countable Items</h3>
 				<a href="viewAllCountableItems"> View All Countable Items</a> <br/>
