@@ -10,35 +10,38 @@
 </head>
 <body>
 
-	<div class="responstable">
+	<div>
 		<spring:url value="/saveEmployee" var="saveURL"/>
 		<h2>ADD EMPLOYEE</h2>
-		<form:form modelAttribute="employeeForm" method="post" action="${saveURL}" cssClass="responstable">
+		<form:form modelAttribute="employeeForm" method="post" action="${saveURL}" >
 			<form:hidden path="id" />
-			<div class="form-group">
+			<div>
 				<label>Employee Name</label>
 				<form:input path="empName"  required = "required" />
 			</div>
-			<div class="form-group">
+			<div>
 				<label>employee address</label>
 				<form:input path="address" required = "required"/>
 			</div>
-			<div class="form-group">
+			<div>
 				<label>employee NIC</label>
-				<form:input path="nicNo" required = "required" />
+				<form:input path="nicNo" pattern="[0-9]{9}[V]" required = "required" />
 			</div>
-			<div class="form-group">
+			<div>
 				<label>Date of birth</label>
 				<form:input path="dob" required = "required" />
 			</div>
-			<div class="form-group">
+			<div>
 				<label>Designation</label>
 				<form:input path="designation" required = "required"/>
 			</div>
+			<div>
+				<label>Salary</label>
+				<form:input path="salary" required = "required"/>
+			</div>
 			
 			
-			
-			<button type="submit" class="btn btn-primary">Save</button>
+			<button type="submit">Save</button>
 		</form:form>
 
 	</div>

@@ -1,23 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>  
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 
 <meta charset="ISO-8859-1">
 <title>Dhammika Hotel | Employee Management</title>
 <link rel="stylesheet" href="Style.css">
 
-<link href="/employeeManagement/style/css/bootstrap.min.css" rel="stylesheet"
-	type="text/css">
-<link href="/employeeManagement/style/css/font-awesome.min.css" rel="stylesheet"
-	type="text/css">
-<link href="/employeeManagement/style/css/datepicker3.css" rel="stylesheet"
-	type="text/css">
+<link href="/employeeManagement/style/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css">
+<link href="/employeeManagement/style/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+<link href="/employeeManagement/style/css/datepicker3.css"
+	rel="stylesheet" type="text/css">
 <link href="/employeeManagement/style/css/styles.css" rel="stylesheet"
 	type="text/css">
 
-<link href="/employeeManagement/style/css/css3.css" rel="stylesheet"
+<link href="/employeeManagement/style/css/css.css" rel="stylesheet"
 	type="text/css">
 
 
@@ -92,55 +92,66 @@
 		<!--/.row-->
 
 		<div class="row">
-			<div class="col-lg-12">
-				
-			</div>
+			<div class="col-lg-12"></div>
 		</div>
 		<!--/.row-->
 
-	
-			
 
-<div>
-		<h2>Employee List</h2>
-		<table border = "1">
-			<thead>
-				<tr>
-					<th scope="row">id</th>
-					<th scope="row">Name</th>
-					<th scope="row">Address</th>
-					<th scope="row">NIC</th>
-					<th scope="row">DOB</th>
-					<th scope="row">Designation</th>
-					<th scope="row">Update</th>
-					<th scope="row">Delete</th>
-				</tr>
-			</thead>
-			<tbody>
-			
-				<c:forEach items="${employeeList }" var="employee">
-					<tr Class="responstable">
-						<td>${employee.id }</td>
-						<td>${employee.empName }</td>
-						<td>${employee.address }</td>
-						<td>${employee.nicNo }</td>
-						<td>${employee.dob }</td>
-						<td>${employee.designation }</td>
-						<td>
-							<a href="/editEmployee?id=${employee.id}" type="button">Update</a>
-						 </td>
-						<td>
-							<a href="/deleteEmployee?id=${employee.id}" type="button">Delete</a>
-						</td>
-    	
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		
-	</div> 
 
-	<div class="row">
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="limiter">
+					<div class="container-table100">
+						<div class="wrap-table100">
+							<div class="table100">
+								<h2>Employee List</h2>
+								<table>
+									<thead>
+										<tr class="table100-head">
+											<th scope="row" class="column1">id</th>
+											<th scope="row" class="column2">Name</th>
+											<th scope="row" class="column3">Address</th>
+											<th scope="row" class="column4">NIC</th>
+											<th scope="row" class="column5">DOB</th>
+											<th scope="row" class="column6">Designation</th>
+											<th scope="row" class="column7">Salary</th>
+											<th scope="row" class="column8">Update</th>
+											<th scope="row" class="column9">Delete</th>
+										</tr>
+									</thead>
+									<tbody>
+
+										<c:forEach items="${employeeList }" var="employee">
+											<tr>
+												<td class="column1">${employee.id }</td>
+												<td class="column2">${employee.empName }</td>
+												<td class="column3">${employee.address }</td>
+												<td class="column4">${employee.nicNo }</td>
+												<td class="column5">${employee.dob }</td>
+												<td class="column6">${employee.designation }</td>
+												<td class="column7">${employee.salary }</td>
+
+												<td class="column8"><a
+													href="/editEmployee?id=${employee.id}" type="button">Update</a>
+												</td>
+												<td class="column9"><a
+													href="/deleteEmployee?id=${employee.id}" type="button">Delete</a>
+												</td>
+
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
 			<div class="col-md-12"></div>
 		</div>
 		<!--/.row-->
@@ -156,7 +167,7 @@
 			<div class="col-md-6"></div>
 			<div class="col-sm-12"></div>
 		</div>
-		
+
 		<!--/.row-->
 
 	</div>
@@ -172,6 +183,9 @@
 	<script src="/employeeManagement/style/js/easypiechart-data.js"></script>
 	<script src="/employeeManagement/style/js/bootstrap-datepicker.js"></script>
 	<script src="/employeeManagement/style/js/custom.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 	<script>
 		window.onload = function() {
 			var chart1 = document.getElementById("line-chart").getContext("2d");
@@ -186,10 +200,10 @@
 
 
 
-	
-<br/>
-<br/>
-<br/>
+
+	<br />
+	<br />
+	<br />
 
 
 
