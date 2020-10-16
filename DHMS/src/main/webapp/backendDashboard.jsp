@@ -19,6 +19,33 @@
 <meta charset="ISO-8859-1">
 <title>Dhammika Hotel | Dashboard</title>
 </head>
+//ravindu1
+<!-- <body>
+
+	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/accountmgt"><span>Dhammika
+						Hotel </span>Management System</a>
+			</div>
+		</div>
+		<!-- /.container-fluid 
+	</nav>
+	
+	<jsp:include page="/commonNavBar.jsp"></jsp:include>
+	
+	
+	
+	
+	
+</body>
+======= -->
  <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">

@@ -3,13 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">  
-<title>Error!</title>
+<meta charset="ISO-8859-1">
+<title>Confirm Clearing</title>
 </head>
 <body style="background-color:#DDDDE8;">
-<jsp:include page="/navbar.jsp"></jsp:include>
-<h2>The id is already used</h2>
-<a href="addCountableItem.jsp">Re enter</a>
-
+<h1>Clear the logs for uncountable items?</h1><br/>
+<a href="processDeleteUncountableLogs">Yes</a>
+<a href="inventory">No</a>
 </body>
 </html>

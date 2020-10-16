@@ -1,6 +1,8 @@
 package com.dhms.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dhms.dao.CountableItemRepo;
+import com.dhms.dao.CountableItemRetrieveLogRepo;
 import com.dhms.dao.CountableLowstockRepo;
+import com.dhms.model.CountableItemRetrieveLog;
 import com.dhms.model.CountableItems;
 import com.dhms.model.CountableLowStock;
 
@@ -30,6 +35,9 @@ public class CountableItemController {
 	
 	@Autowired
 	CountableLowstockRepo clowrepo;
+	
+	@Autowired
+	CountableItemRetrieveLogRepo countableItemRetrieveLogRepo;
 	
 	/*@RequestMapping("/")
 	public String home()
@@ -142,7 +150,8 @@ public class CountableItemController {
 	}
 	
 	@RequestMapping("/processRetreive")
-	public String processRetrieve(CountableItems citem, HttpServletRequest request, HttpServletResponse response)
+	public String processRetrieve(CountableItems citem, HttpServletRequest request, HttpServletResponse response, CountableItemRetrieveLog
+			countableItemRetrieveLog)
 	{
 		String  itemId = request.getParameter("itemId"); 
 		int retrieveQuantity =  Integer.parseInt(request.getParameter("retrieveQuantity"));
@@ -170,6 +179,24 @@ public class CountableItemController {
 		
 		citem1.setRemainingQuantity(newQuantity);
 		crepo.save(citem1);
+		
+		//getting username from session
+		final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
+		System.out.println("user: "+ currentUserName);
+		
+		//getting current date
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+	    Date date = new Date(); 
+	    String currentDatetime = formatter.format(date);
+	    
+	    
+	    countableItemRetrieveLog.setItemId(itemId);
+	    countableItemRetrieveLog.setItemName(itemName);
+	    countableItemRetrieveLog.setUsername(currentUserName);
+	    countableItemRetrieveLog.setQuantity(retrieveQuantity);
+	    countableItemRetrieveLog.setDateTime(currentDatetime);
+	    countableItemRetrieveLogRepo.save(countableItemRetrieveLog);
+	    
 		
 		//getItem(itemId);
 		System.out.println("end of process retrieve");
@@ -248,6 +275,30 @@ public class CountableItemController {
 		//int itemId = getNextId();
 		//System.out.println("next countable id:" + itemId);
 		return "inventoryManagement/viewAllCountableItems.jsp";
+	}
+	
+	
+	@RequestMapping(value = "/countableItemRetrieveLogs" /*, method = RequestMethod.GET*/)
+	public String viewCountableItemRetreiveLogs(Map<String, Object> map)  //displaying all logs
+	{
+		map.put("logList", countableItemRetrieveLogRepo.findAll());
+		System.out.println("Viewing all countable logs ");
+		
+		return "inventoryManagement/countableItemRetrieveLog.jsp";
+	}
+	
+	@RequestMapping(value = "/deleteCountableItemRetrieveLogs" /*, method = RequestMethod.GET*/)
+	public String deleteCountableItemRetrieveLogs()
+	{
+		return "inventoryManagement/confirmDeleteCountableItemRetreiveLogs.jsp";
+	}
+	
+	@RequestMapping(value = "/processDeleteCountableLogs" /*, method = RequestMethod.GET*/)
+	public String processDeleteCountableItemRetreiveLogs()
+	{
+		countableItemRetrieveLogRepo.deleteAll();
+		System.out.println("Deleted countable logs");
+		return "inventoryManagement/inventoryMain.jsp";
 	}
 	
 	@RequestMapping(value = "/countableItemsAdvanced")

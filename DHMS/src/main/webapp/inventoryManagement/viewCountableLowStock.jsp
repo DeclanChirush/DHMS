@@ -16,13 +16,15 @@
 <meta charset="ISO-8859-1">
 <title>Low Stock Items - Countable Items</title>
 </head>
-<body>
+<body style="background-color:#DDDDE8;">
 <jsp:include page="/inventoryManagement/topDivs.jsp"></jsp:include>
 <jsp:include page="/inventoryManagement/normalSideNav.jsp"></jsp:include>
 <!--  -->
 <div class="col-10">
 
-<h1>Low Stock - Countable Items</h1>
+<h1>Low Stock - Countable Items</h1> <br/>
+
+<a href="reportCountableLowStock">Generate report</a>
 
 <table class="table table-striped">
 		<tr> 
