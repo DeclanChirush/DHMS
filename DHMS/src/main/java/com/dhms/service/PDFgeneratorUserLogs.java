@@ -2,6 +2,9 @@ package com.dhms.service;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,22 +22,19 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
+public class PDFgeneratorUserLogs {
 
-public class PDFgeneratorUserLogs  {
-	
 	public static ByteArrayInputStream userLogsReport(List<UserLogs> userlogs) {
-		
 
 		Document document = new Document();
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
-			
 
 		try {
 
 			PdfPTable table = new PdfPTable(3);
 			table.setWidthPercentage(100);
-			table.setWidths(new int[] { 1, 2, 3});
-			
+			table.setWidths(new int[] { 1, 2, 3 });
+
 			// 1st Heading
 			Font heading = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
 			heading.setSize(20);
@@ -51,6 +51,29 @@ public class PDFgeneratorUserLogs  {
 
 			Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
 
+			// Address
+			Font addressLine = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+			addressLine.setSize(10);
+			addressLine.setColor(BaseColor.BLACK);
+			Paragraph address = new Paragraph("\n\n\nDhammika Hotel,\nDambulla Road,\nBakamuna.\n\n\n", addressLine);
+			address.setAlignment(Paragraph.ALIGN_LEFT);
+
+			// Date
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+			Calendar dateTime = Calendar.getInstance();
+			Font dateLine = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+			dateLine.setSize(10);
+			dateLine.setColor(BaseColor.BLACK);
+			Paragraph date = new Paragraph("Date : " + dateFormat.format(dateTime.getTime()), dateLine);
+			date.setAlignment(Paragraph.ALIGN_LEFT);
+
+			// Signature
+			Font signatureLine = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+			signatureLine.setSize(10);
+			signatureLine.setColor(BaseColor.BLACK);
+			Paragraph signature = new Paragraph("Signature : ...........................", signatureLine);
+			signature.setAlignment(Paragraph.ALIGN_RIGHT);
+
 			PdfPCell hcell;
 
 			hcell = new PdfPCell(new Phrase("UserLog ID", headFont));
@@ -64,7 +87,6 @@ public class PDFgeneratorUserLogs  {
 			hcell = new PdfPCell(new Phrase("Date & Time", headFont));
 			hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
 			table.addCell(hcell);
-			
 
 			for (UserLogs userlog : userlogs) {
 
@@ -88,15 +110,17 @@ public class PDFgeneratorUserLogs  {
 				table.addCell(cell);
 
 			}
-			
 
 			PdfWriter.getInstance(document, out);
 			document.open();
 			document.add(hotelname);
 			document.add(list);
 			document.add(table);
+			document.add(address);
+			document.add(date);
+			document.add(signature);
 			document.close();
-			
+
 		} catch (DocumentException ex) {
 
 			Logger.getLogger(PDFgenerator.class.getName()).log(Level.SEVERE, null, ex);
