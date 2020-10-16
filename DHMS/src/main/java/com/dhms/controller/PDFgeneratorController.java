@@ -15,13 +15,29 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dhms.dao.AdvertisementRepo;
+//ravindu
+import com.dhms.dao.CountableLowstockRepo;
+import com.dhms.dao.UncountableLowStockRepo;
 import com.dhms.model.Advertisement;
+import com.dhms.model.CountableLowStock;
+import com.dhms.model.UncountableLowStock;
+import com.dhms.service.CountableLowStockPDFgenerator;
 import com.dhms.service.PDFgenerator;
+import com.dhms.service.UncountableLowStockPDFgenerator;
+/************************/
+//hirush
+import com.dhms.dao.UserLogsRepo;
+import com.dhms.model.Advertisement;
+import com.dhms.model.UserLogs;
+import com.dhms.service.PDFgenerator;
+import com.dhms.service.PDFgeneratorUserLogs;
+/*************************/
 
 @Controller
 public class PDFgeneratorController {
 
-	@RequestMapping(value = "/reportType", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	//hirush
+	@RequestMapping(value = "/adReportType", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
 	public ResponseEntity<InputStreamResource> advertisementReportByType(@RequestParam String type) throws IOException {
 
 		List<Advertisement> advertisement = (List<Advertisement>) getAdvertisementType(type);
@@ -46,7 +62,70 @@ public class PDFgeneratorController {
 				.body(new InputStreamResource(bais));
 
 	}
+	
 
+	//ravindu
+	@RequestMapping(value = "/AlluserLogs", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	public ResponseEntity<InputStreamResource> getuserLogs() throws IOException {
+
+		List<UserLogs> userlogs = (List<UserLogs>) getAllUserlogs();
+		ByteArrayInputStream bais = PDFgeneratorUserLogs.userLogsReport(userlogs);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition", "inline; filename=AlluserLogs.pdf");
+
+		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
+				.body(new InputStreamResource(bais));
+
+	}
+	
+	@RequestMapping(value = "/reportCountableLowStock", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	public ResponseEntity<InputStreamResource> countableLowStockReport() throws IOException {
+
+		List<CountableLowStock> countableLowStock = (List<CountableLowStock>) getAllCountableLowStock();
+		ByteArrayInputStream bais = CountableLowStockPDFgenerator.countableLowStockReport(countableLowStock);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition", "inline; filename=advertisementByType.pdf");
+
+		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
+				.body(new InputStreamResource(bais));
+
+	}
+	
+	@RequestMapping(value = "/reportUncountableLowStock", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	public ResponseEntity<InputStreamResource> uncountableLowStockReport() throws IOException {
+
+		List<UncountableLowStock> uncountableLowStock = (List<UncountableLowStock>) getAllUncountableLowStock();
+		ByteArrayInputStream bais = UncountableLowStockPDFgenerator.uncountableLowStockReport(uncountableLowStock);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition", "inline; filename=advertisementByType.pdf");
+
+		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
+				.body(new InputStreamResource(bais));
+
+	}
+	
+	
+	@Autowired
+	CountableLowstockRepo  countableLowstockRepo;
+	
+	@Autowired
+	UncountableLowStockRepo uncountableLowStockRepo;
+	
+	
+	//method to get all countable low stock items
+	public List<CountableLowStock> getAllCountableLowStock()
+	{
+		return (List<CountableLowStock>) countableLowstockRepo.findAll();
+	}
+	
+	//method to get all uncountable low stock items
+	public List<UncountableLowStock> getAllUncountableLowStock()
+	{
+		return (List<UncountableLowStock>) uncountableLowStockRepo.findAll();
+	}
+	
+
+	//hirush
 	@Autowired
 	AdvertisementRepo advertisementRepo;
 
@@ -68,6 +147,15 @@ public class PDFgeneratorController {
 
 	public List<Advertisement> getAdvertisementType(String type) {
 		return (List<Advertisement>) advertisementRepo.findByType(type);
+	}
+	
+	
+	@Autowired
+	UserLogsRepo userLogsRepo;
+	
+	public List<UserLogs> getAllUserlogs(){
+		
+		return (List<UserLogs>) userLogsRepo.findAll();
 	}
 
 }

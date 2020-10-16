@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>  
-
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +17,7 @@
 	type="text/css">
 <link href="/backendDashboardStyle/css/css.css" rel="stylesheet"
 	type="text/css">
+	
 	
 	<link href="/advertisementManagement/style/formStyle/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
     <link href="/advertisementManagement/style/formStyle/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -53,12 +54,32 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/accountmgt"><span>Dhammika
+				<a class="navbar-brand" href="/"><span>Dhammika
 						Hotel </span>Management System</a>
+				<a class="navbar-brand">  </a>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav pull-left">
+						<li><a href="/backendHome" style="color:white">Home</a></li>
+						<li><a href="/addAdvertisement/" style="color:white">Advertise</a></li>
+						<li><a href="/addEmployee/" style="color:white">Employee</a></li>
+						<li><a href="/inventory" style="color:white">Inventory</a></li>
+						<li><a href="/accountmgt" style="color:white">Accounting</a></li>
+						<li><a href="/newPurchase" style="color:white">Purchasing</a></li>
+						<li><a href="#" style="color:white">Suppling</a></li>
+						<li><a href="/userLogs" style="color:white">UserLogs</a></li>
+						<li><a href="/logout" style="color:red">Logout</a>
+						<li>
+					</ul>
+				</div>
 			</div>
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
+	<br>
+	<br>
+	<br>
+	<!-- <jsp:include page="/commonNavBar.jsp"></jsp:include> -->
+	
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 
 		<div class="profile-sidebar">
@@ -68,7 +89,10 @@
 					class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name"></div>
+				<div class="profile-usertitle-name">
+					<%final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName(); %>
+					<span class="badge badge-pill badge-secondary">User: <%=currentUserName %></span>
+				</div>
 				<div class="profile-usertitle-status">
 					<span class="indicator label-success"></span>Online
 				</div>

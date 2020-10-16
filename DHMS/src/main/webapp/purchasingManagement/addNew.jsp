@@ -34,6 +34,7 @@
 <h2 align="center">New Purchase Record</h2>
 
 <div class="container-fluid">
+
 <form class="form-horizontal" action="savePurchase" method="post">
 <fieldset>
 	<table border="0" width="100%">

@@ -11,8 +11,6 @@ import javax.persistence.Table;
 @Table(name = "advertisement")
 public class Advertisement {
 	
-	
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;

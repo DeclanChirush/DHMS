@@ -1,0 +1,51 @@
+@charset "ISO-8859-1";
+body{
+	
+	margin: 0;
+	padding: 0;
+	
+}
+.banner{
+	background : url(room1.jpg) no-repeat;
+	background-size: cover;
+	width:100%;
+	overflow: hidden;
+	color: white;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: sans-serif;
+	padding: 30px;
+	
+}
+.banner h1{
+	
+	margin:0;
+	font-size: 100px;
+}
+
+.banner h2{
+	
+	margin:0 0 20px 0;
+	font-size: 36px;
+}
+
+.banner a{
+	
+	display: inline-block;
+	padding: 10px 22px;
+	background: white;
+	color: #333;
+	font-size: 22px;
+	text-decoration: none;
+	transition: 0.3s;
+}
+.banner a:hover {
+
+	background: none;
+	color: white;
+	
+}
+.redColor{
+	color: red;
+	text-shadow:2px 5px 5px #fff;
+}

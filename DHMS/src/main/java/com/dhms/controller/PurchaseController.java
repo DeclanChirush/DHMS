@@ -37,7 +37,12 @@ public class PurchaseController {
 	@PostMapping("/savePurchase")
 	public String addPurchase(@ModelAttribute Purchase purchase, BindingResult bindingResult, HttpServletRequest request) {
 		purchaseService.savePurchase(purchase);
+//eranga
 		return "redirect:/purchaseList";
+    
+    //master
+		//return "purchasingManagement/purchaseList";
+    
 	}
 	
 	@GetMapping("/purchaseList")

@@ -12,9 +12,15 @@
 	  />
 
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/advertisementManagement/style/bannerStyle/banner.css" />
+<link rel="stylesheet" type="text/css" href="/advertisementManagement/style/bannerStyle/bannerVersion1.css" />
+<style>
+#more {
+	display: none;
+}
+</style>
 </head>
 <body>
+
 
 			
 				 <c:forEach items="${advertisementList1}" var="advertisement">
@@ -22,10 +28,35 @@
 					<div class="banner animate__animated animate__rubberBand">
 						<!-- ${advertisement.title }
 						${advertisement.description } -->
+					<h1>${advertisement.title}</h1>
+					<div class="redColor">
+						<h1>${advertisement.percentage}OFF</h1>
+					</div>
+					<h2>${advertisement.timePeriod } season offer</h2>
+					<h3>On All Hotels</h3>
+					<span id="dots"></span> 
+					<span id="more">${advertisement.description}</span>
+					<br>
+					<a onclick="myFunction()" id="myBtn">SHOW MORE</a>
 						
-					<h1>Up to ${advertisement.percentage} OFF</h1>
-					<h2>${advertisement.timePeriod } season offers</h2>
-					<a href="#">SHOW MORE</a>
+						
+						<script>
+							function myFunction() {
+							  var dots = document.getElementById("dots");
+							  var moreText = document.getElementById("more");
+							  var btnText = document.getElementById("myBtn");
+							
+							  if (dots.style.display === "none") {
+							    dots.style.display = "inline";
+							    btnText.innerHTML = "SHOW MORE"; 
+							    moreText.style.display = "none";
+							  } else {
+							    dots.style.display = "none";
+							    btnText.innerHTML = "CONTACT NOW!"; 
+							    moreText.style.display = "inline";
+							  }
+							}
+						</script>
 						
     				</div>
     				

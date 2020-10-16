@@ -1,11 +1,13 @@
 package com.dhms.service;
 
 import com.dhms.model.Advertisement;
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -28,6 +30,20 @@ public class PDFgenerator {
 			PdfPTable table = new PdfPTable(6);
 			table.setWidthPercentage(100);
 			table.setWidths(new int[] { 1, 3, 2, 2, 2, 6 });
+
+			// 1st Heading
+			Font heading = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+			heading.setSize(20);
+			heading.setColor(BaseColor.BLACK);
+			Paragraph hotelname = new Paragraph("DHAMMIKA HOTEL MANAGEMENT SYSTEM\n\n", heading);
+			hotelname.setAlignment(Paragraph.ALIGN_LEFT);
+
+			// 2nd Heading
+			Font heading2 = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+			heading2.setSize(15);
+			heading2.setColor(BaseColor.GRAY);
+			Paragraph list = new Paragraph("Advertisement List\n\n", heading2);
+			list.setAlignment(Paragraph.ALIGN_LEFT);
 
 			Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
 
@@ -97,8 +113,11 @@ public class PDFgenerator {
 				table.addCell(cell);
 			}
 
+
 			PdfWriter.getInstance(document, out);
 			document.open();
+			document.add(hotelname);
+			document.add(list);
 			document.add(table);
 			document.close();
 
