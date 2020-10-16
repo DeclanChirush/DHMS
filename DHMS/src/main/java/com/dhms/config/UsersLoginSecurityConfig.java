@@ -65,48 +65,9 @@ public class UsersLoginSecurityConfig extends WebSecurityConfigurerAdapter {
             //hirush
             .antMatchers("/deleteAdvertisement/**").hasAnyAuthority("ADMIN")
             .antMatchers("/addAdvertisement/**").hasAnyAuthority("ADMIN")
+            .antMatchers("/advertisementList/**").hasAnyAuthority("ADMIN") 
+            .antMatchers("/editAdvertisement/**").hasAnyAuthority("ADMIN")
             .antMatchers("/userLogs/**").hasAnyAuthority("ADMIN")
-            
-            //ravindu 
-            //countable items
-            .antMatchers("/addCountableItem").hasAnyAuthority("ADMIN")
-            .antMatchers("/addCountableItemPage").hasAnyAuthority("ADMIN")
-            .antMatchers("/getCountableItem").hasAnyAuthority("ADMIN","INVENTORY")
-            .antMatchers("/retrieveCountableItem").hasAnyAuthority("ADMIN","INVENTORY")
-            .antMatchers("/processRetreive").hasAnyAuthority("ADMIN", "INVENTORY")
-            
-            .antMatchers("replenishCountableItem").hasAnyAuthority("ADMIN")
-            .antMatchers("/processReplenish").hasAnyAuthority("ADMIN")
-            .antMatchers("/deleteCountableItem").hasAnyAuthority("ADMIN")
-            .antMatchers("/countableItemDeleteConfirm").hasAnyAuthority("ADMIN")
-            .antMatchers("/viewAllCountableItems").hasAnyAuthority("ADMIN","INVENTORY")
-            
-            .antMatchers("/countableItemsAdvanced").hasAnyAuthority("ADMIN")
-            .antMatchers("/editCountableItem").hasAnyAuthority("ADMIN")
-            .antMatchers("/processEditCountabltItem").hasAnyAuthority("ADMIN")
-            
-            //countable low stock
-            .antMatchers("/viewCountableLowStock").hasAnyAuthority("ADMIN","INVENTORY")
-            
-            
-            //uncountable items
-            .antMatchers("/addUncountableItem").hasAnyAuthority("ADMIN")
-            .antMatchers("/getUncountableItem").hasAnyAuthority("ADMIN", "INVENTORY")
-            .antMatchers("/retrieveUncountableItem").hasAnyAuthority("ADMIN","INVENTORY")
-            .antMatchers("/processRetrieveU").hasAnyAuthority("ADMIN", "INVENTORY")
-            
-            .antMatchers("/replenishUncountableItem").hasAnyAuthority("ADMIN")
-            .antMatchers("/processReplenishU").hasAnyAuthority("ADMIN")
-            .antMatchers("/deleteUncountableItem").hasAnyAuthority("ADMIN")
-            .antMatchers("/uncountableItemDeleteConfirm").hasAnyAuthority("ADMIN")
-            .antMatchers("/viewAllUncountableItems").hasAnyAuthority("ADMIN","INVENTORY")
-            
-            .antMatchers("/uncountableItemsAdvanced").hasAnyAuthority("ADMIN")
-            .antMatchers("/editUncountableItem").hasAnyAuthority("ADMIN")
-            .antMatchers("/processEditUncountabltItem").hasAnyAuthority("ADMIN")
-            
-
-            
             
             //ravindu
             
