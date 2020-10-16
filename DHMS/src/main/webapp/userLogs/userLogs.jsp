@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 
 <!DOCTYPE html>
 <html>
@@ -86,23 +86,8 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/"><span>Dhammika
+				<a class="navbar-brand" href="/accountmgt"><span>Dhammika
 						Hotel </span>Management System</a>
-				<a class="navbar-brand">  </a>
-				<div class="collapse navbar-collapse">
-					<ul class="nav navbar-nav pull-left">
-						<li><a href="/backendHome" style="color:white">Home</a></li>
-						<li><a href="/addAdvertisement/" style="color:white">Advertise</a></li>
-						<li><a href="/addEmployee/" style="color:white">Employee</a></li>
-						<li><a href="/inventory" style="color:white">Inventory</a></li>
-						<li><a href="/accountmgt" style="color:white">Accounting</a></li>
-						<li><a href="/newPurchase" style="color:white">Purchasing</a></li>
-						<li><a href="#" style="color:white">Suppling</a></li>
-						<li><a href="/userLogs" style="color:white">UserLogs</a></li>
-						<li><a href="/logout" style="color:red">Logout</a>
-						<li>
-					</ul>
-				</div>
 			</div>
 		</div>
 		<!-- /.container-fluid -->
@@ -111,7 +96,7 @@
 	<br>
 	<br>
 	
-	<!-- <jsp:include page="/commonNavBar.jsp"></jsp:include> -->
+	<jsp:include page="/commonNavBar.jsp"></jsp:include>
 
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 
@@ -122,10 +107,7 @@
 					class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">
-					<%final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName(); %>
-					<span class="badge badge-pill badge-secondary">User: <%=currentUserName %></span>
-				</div>
+				<div class="profile-usertitle-name"></div>
 				<div class="profile-usertitle-status">
 					<span class="indicator label-success"></span>Online
 				</div>
@@ -135,24 +117,6 @@
 
 		<div class="divider"></div>
 
-
-		<form action="/advertisementSearch" method="get">
-			<input class="form-control" type="text"
-				placeholder="ex: food, booking" aria-label="Search" name="type">
-			<br>
-			<button class="button ash" type="submit">Search</button>
-		</form>
-
-		<ul class="nav menu">
-
-			<li><a class="" href="/addAdvertisement/"><em
-					class="fa fa-navicon"></em> Add Advertisement</a></li>
-			<li><a class="" href="/advertisementList"><em
-					class="fa fa-navicon"></em> View List</a></li>
-			<li><a class="" href="/report"><em class="fa fa-navicon"></em>
-					Report</a></li>
-
-		</ul>
 
 	</div>
 	<!--/.sidebar-->
@@ -171,7 +135,7 @@
 
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Advertisement Report</h1>
+				<h1 class="page-header">UserLogs Report</h1>
 			</div>
 		</div>
 		<!--/.row-->
@@ -185,38 +149,57 @@
 
 		<div class="row">
 
-			<div class="col-md-5 srhdiv">
-				<caption><u><b>All Advertisement</u></b></caption>
-				<br> <br>
+			
+			<div class="col-md-12 srhdiv">
+				<center><br> <br>
 				<div class="form-group">
-					<label for="">Click Here:</label>
+					<label style="font-size:2vw;">Click here to get Userlogs pdf :</label>
 				</div>
-				<br><br>
-				<button onclick="location.href='/reportAllAdvertisement'"
-					type="button" class="btn ash">Generate</button>
+				<button onclick="location.href='/AlluserLogs'"
+					type="button" class="btn ash">Generate</button> </center>
 			</div>
-	
-	
-
-			<div class="col-md-5 srhdiv">
-				<form action="/adReportType" method="get">
-					<caption><u><b>Advertisement by Type</u></b></caption>
-					<br> <br>
-					<div class="form-group">
-						<label for="type">Select Type:</label> <select name="type"
-							id="type" class="form-control">
-							<option value="food">Food</option>
-							<option value="booking">Booking</option>
-						</select>
-					</div>
-					<button type="submit" class="btn ash">Generate</button>
-				</form>
-			</div>
-
 
 
 		</div>
 		<!--/.row-->
+		<div class="row">
+				<div class="col-md-12">
+					<div class="limiter">
+						<div class="container-table100">
+							<div class="wrap-table100">
+								<div class="table100">
+									<table>
+									<thead>
+										<tr class="table100-head">
+										
+											<th scope="row" class="column1">User ID</th>
+											<th scope="row" class="column1">Username</th>
+											<th scope="row" class="column2">Date & Time</th>
+	
+											
+										</tr>
+									</thead>
+									<tbody>
+									
+										<c:forEach items="${userLogList }" var="userLog">
+											<tr>
+												
+												<td class="column1">${userLog.id}</td>
+												<td class="column2">${userLog.username}</td>
+												<td class="column3">${userLog.date}</td>
+							
+			
+						    	
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
 
 		<!--/.main-->
 	</div>

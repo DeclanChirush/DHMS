@@ -5,6 +5,7 @@ import org.springframework.security.authentication.dao.*;
 import org.springframework.security.config.annotation.authentication.builders.*;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.*;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -29,7 +30,8 @@ public class UsersLoginSecurityConfig extends WebSecurityConfigurerAdapter {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService());
         authProvider.setPasswordEncoder(passwordEncoder());
-         
+     
+        
         return authProvider;
     }
  
@@ -58,12 +60,52 @@ public class UsersLoginSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/addTransaction/**").hasAnyAuthority("ADMIN", "ACCOUNTS")
             .antMatchers("/insertTransaction/**").hasAnyAuthority("ADMIN", "ACCOUNTS")
             .antMatchers("/editTransaction/**").hasAnyAuthority("ADMIN", "ACCOUNTS")
-            .antMatchers("/deleteTransaction/**").hasAuthority("ADMIN")
+            .antMatchers("/deleteTransaction/**").hasAnyAuthority("ADMIN")
             
             //hirush
             .antMatchers("/deleteAdvertisement/**").hasAnyAuthority("ADMIN")
             .antMatchers("/addAdvertisement/**").hasAnyAuthority("ADMIN")
+            .antMatchers("/userLogs/**").hasAnyAuthority("ADMIN")
             
+            //ravindu 
+            //countable items
+            .antMatchers("/addCountableItem").hasAnyAuthority("ADMIN")
+            .antMatchers("/addCountableItemPage").hasAnyAuthority("ADMIN")
+            .antMatchers("/getCountableItem").hasAnyAuthority("ADMIN","INVENTORY")
+            .antMatchers("/retrieveCountableItem").hasAnyAuthority("ADMIN","INVENTORY")
+            .antMatchers("/processRetreive").hasAnyAuthority("ADMIN", "INVENTORY")
+            
+            .antMatchers("replenishCountableItem").hasAnyAuthority("ADMIN")
+            .antMatchers("/processReplenish").hasAnyAuthority("ADMIN")
+            .antMatchers("/deleteCountableItem").hasAnyAuthority("ADMIN")
+            .antMatchers("/countableItemDeleteConfirm").hasAnyAuthority("ADMIN")
+            .antMatchers("/viewAllCountableItems").hasAnyAuthority("ADMIN","INVENTORY")
+            
+            .antMatchers("/countableItemsAdvanced").hasAnyAuthority("ADMIN")
+            .antMatchers("/editCountableItem").hasAnyAuthority("ADMIN")
+            .antMatchers("/processEditCountabltItem").hasAnyAuthority("ADMIN")
+            
+            //countable low stock
+            .antMatchers("/viewCountableLowStock").hasAnyAuthority("ADMIN","INVENTORY")
+            
+            
+            //uncountable items
+            .antMatchers("/addUncountableItem").hasAnyAuthority("ADMIN")
+            .antMatchers("/getUncountableItem").hasAnyAuthority("ADMIN", "INVENTORY")
+            .antMatchers("/retrieveUncountableItem").hasAnyAuthority("ADMIN","INVENTORY")
+            .antMatchers("/processRetrieveU").hasAnyAuthority("ADMIN", "INVENTORY")
+            
+            .antMatchers("/replenishUncountableItem").hasAnyAuthority("ADMIN")
+            .antMatchers("/processReplenishU").hasAnyAuthority("ADMIN")
+            .antMatchers("/deleteUncountableItem").hasAnyAuthority("ADMIN")
+            .antMatchers("/uncountableItemDeleteConfirm").hasAnyAuthority("ADMIN")
+            .antMatchers("/viewAllUncountableItems").hasAnyAuthority("ADMIN","INVENTORY")
+            
+            .antMatchers("/uncountableItemsAdvanced").hasAnyAuthority("ADMIN")
+            .antMatchers("/editUncountableItem").hasAnyAuthority("ADMIN")
+            .antMatchers("/processEditUncountabltItem").hasAnyAuthority("ADMIN")
+            
+
             
             
             //ravindu
@@ -120,6 +162,10 @@ public class UsersLoginSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/processDeleteUncountableLogs").hasAnyAuthority("ADMIN")
             
             
+
+            //uncountable low stock
+            .antMatchers("/viewUncountableLowStock").hasAnyAuthority("ADMIN","INVENTORY")
+
             
             .anyRequest().authenticated()
             .and()

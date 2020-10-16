@@ -1,6 +1,12 @@
 package com.dhms.service;
 
-import com.dhms.model.Advertisement;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import com.dhms.model.UserLogs;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -12,25 +18,23 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class PDFgenerator {
 
-	public static ByteArrayInputStream advertsementReport(List<Advertisement> advertisement) {
+public class PDFgeneratorUserLogs  {
+	
+	public static ByteArrayInputStream userLogsReport(List<UserLogs> userlogs) {
+		
 
 		Document document = new Document();
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
+			
 
 		try {
 
-			PdfPTable table = new PdfPTable(6);
+			PdfPTable table = new PdfPTable(3);
 			table.setWidthPercentage(100);
-			table.setWidths(new int[] { 1, 3, 2, 2, 2, 6 });
-
+			table.setWidths(new int[] { 1, 2, 3});
+			
 			// 1st Heading
 			Font heading = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
 			heading.setSize(20);
@@ -42,77 +46,49 @@ public class PDFgenerator {
 			Font heading2 = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
 			heading2.setSize(15);
 			heading2.setColor(BaseColor.GRAY);
-			Paragraph list = new Paragraph("Advertisement List\n\n", heading2);
+			Paragraph list = new Paragraph("UserLogs List\n\n", heading2);
 			list.setAlignment(Paragraph.ALIGN_LEFT);
 
 			Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
 
 			PdfPCell hcell;
 
-			hcell = new PdfPCell(new Phrase("ID", headFont));
+			hcell = new PdfPCell(new Phrase("UserLog ID", headFont));
 			hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
 			table.addCell(hcell);
 
-			hcell = new PdfPCell(new Phrase("Title", headFont));
+			hcell = new PdfPCell(new Phrase("User name", headFont));
 			hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
 			table.addCell(hcell);
 
-			hcell = new PdfPCell(new Phrase("Offer %", headFont));
+			hcell = new PdfPCell(new Phrase("Date & Time", headFont));
 			hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
 			table.addCell(hcell);
+			
 
-			hcell = new PdfPCell(new Phrase("Time Period", headFont));
-			hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
-			table.addCell(hcell);
-
-			hcell = new PdfPCell(new Phrase("Type", headFont));
-			hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
-			table.addCell(hcell);
-
-			hcell = new PdfPCell(new Phrase("Description", headFont));
-			hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
-			table.addCell(hcell);
-
-			for (Advertisement advertisements : advertisement) {
+			for (UserLogs userlog : userlogs) {
 
 				PdfPCell cell;
 
-				cell = new PdfPCell(new Phrase(String.valueOf(advertisements.getId())));
+				cell = new PdfPCell(new Phrase(String.valueOf(userlog.getId())));
 				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 				table.addCell(cell);
 
-				cell = new PdfPCell(new Phrase(advertisements.getTitle()));
+				cell = new PdfPCell(new Phrase(userlog.getUsername()));
 				cell.setPaddingLeft(5);
 				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 				table.addCell(cell);
 
-				cell = new PdfPCell(new Phrase(advertisements.getPercentage()));
+				cell = new PdfPCell(new Phrase(userlog.getDate()));
 				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 				cell.setPaddingRight(5);
 				table.addCell(cell);
 
-				cell = new PdfPCell(new Phrase(advertisements.getTimePeriod()));
-				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-				cell.setPaddingRight(5);
-				table.addCell(cell);
-
-				cell = new PdfPCell(new Phrase(advertisements.getType()));
-				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-				cell.setPaddingRight(5);
-				table.addCell(cell);
-
-				cell = new PdfPCell(new Phrase(String.valueOf(advertisements.getDescription())));
-				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-				cell.setPaddingRight(5);
-				table.addCell(cell);
 			}
-
+			
 
 			PdfWriter.getInstance(document, out);
 			document.open();
@@ -120,7 +96,7 @@ public class PDFgenerator {
 			document.add(list);
 			document.add(table);
 			document.close();
-
+			
 		} catch (DocumentException ex) {
 
 			Logger.getLogger(PDFgenerator.class.getName()).log(Level.SEVERE, null, ex);
@@ -128,4 +104,5 @@ public class PDFgenerator {
 		return new ByteArrayInputStream(out.toByteArray());
 
 	}
+
 }
