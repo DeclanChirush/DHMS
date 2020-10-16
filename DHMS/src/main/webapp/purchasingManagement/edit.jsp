@@ -34,7 +34,7 @@
 <h2 align="center">New Purchase Record</h2>
 
 <div class="container-fluid">
-<form class="form-horizontal" action="savePurchase">
+<form class="form-horizontal" action="savePurchase" method="post">
 <fieldset>
 	<table border="0" width="100%">
 	<tr>
@@ -44,7 +44,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="id">Purchase ID</label>  
 			  <div class="col-md-8">
-			  <input id="id" name="id" type="text" placeholder="Auto Generated" class="form-control input-md" value="${purchase.id }">
+			  <input id="id" name="id" type="text" class="form-control input-md" value="${purchase.id }">
 			  </div>
 			</div>
 			
@@ -53,9 +53,9 @@
 			  <label class="col-md-4 control-label" for="supplier">Supplier</label>
 			  <div class="col-md-8">
 			    <select id="supplier" name="supplier" class="form-control" value="${purchase.supplier }">
-			      <option value="1">HK Farm House</option>
-			      <option value="2">UDH Fish</option>
-			      <option value="2">Samantha Fresh vegetables</option>		      
+			      <option value="HK Farm House">HK Farm House</option>
+			      <option value="UDH Fish">UDH Fish</option>
+			      <option value="Samantha Fresh vegetables">Samantha Fresh vegetables</option>		      
 			    </select>
 			  </div>
 			</div>
@@ -97,7 +97,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="quantity">Quantity</label>  
 			  <div class="col-md-8">
-			  <input id="quantity" name="quantity" type="text" placeholder="Quantity" class="form-control input-md" value="${purchase.quantity }">
+			  <input id="quantity" name="quantity" type="text" placeholder="Quantity" class="form-control input-md">
 			  </div>
 			</div>
 			
@@ -125,7 +125,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="submit"></label>
 			  <div class="col-md-8">
-			    <button type="submit" class="btn btn-info btn-block my-4" value="Register">Add Record</button>
+			    <button type="submit" class="btn btn-info btn-block my-4" value="Register">Update</button>
 			  </div>
 			</div>
 		</td>
