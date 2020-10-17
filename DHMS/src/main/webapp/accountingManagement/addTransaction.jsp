@@ -8,7 +8,10 @@
 
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@page
+	import="org.springframework.security.core.context.SecurityContextHolder"%>
 <link href="/accountingManagement/style/css/bootstrap.min.css"
 	rel="stylesheet" type="text/css">
 <link href="/accountingManagement/style/css/font-awesome.min.css"
@@ -29,6 +32,39 @@
 	background-color: white;
 	border-radius: 10px;
 }
+
+.btn-demo {
+	background-color: #ff0000;
+	border: none;
+	color: white;
+	padding: 6px;
+	width: 100px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 4px 2px;
+	cursor: pointer;
+	font-size: 12px;
+	border-radius: 2px;
+}
+
+.demo-box {
+	position: relative;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+	width: 13.5%;
+	float: left
+}
+
+.navigation-bar {
+	color: white;
+	float: left;
+	height: 50px;
+	padding: 15px 15px;
+	font-size: 14px;
+	line-height: 20px;
+}
 </style>
 
 <meta charset="ISO-8859-1">
@@ -45,8 +81,12 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/accountmgt"><span>Dhammika
-						Hotel </span>Management System</a>
+				<a class="navbar-brand" href="/"><span>Dhammika Hotel </span>Management
+					System</a> <a href="/inventory" class="navigation-bar">Inventory</a> <a
+					href="/accountmgt" class="navigation-bar">Accounting</a> <a
+					href="/newPurchase" class="navigation-bar">Purchasing</a> <a
+					href="#" class="navigation-bar">Suppling</a> <a href="/logout"
+					class="navigation-bar" style="color: red">Logout</a>
 			</div>
 		</div>
 		<!-- /.container-fluid -->
@@ -61,7 +101,12 @@
 					class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name"></div>
+				<div class="profile-usertitle-name">
+					<%
+						final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
+					%>
+					<span class="badge badge-pill badge-secondary">User: <%=currentUserName%></span>
+				</div>
 				<div class="profile-usertitle-status">
 					<span class="indicator label-success"></span>Online
 				</div>
@@ -82,8 +127,6 @@
 					class="fa fa-navicon"></em> Search</a></li>
 			<li><a class="" href="/reportTransaction"><em
 					class="fa fa-navicon"></em> Report</a></li>
-			<li><a href="/logout"><em class="fa fa-power-off">&nbsp;</em>
-					Logout</a></li>
 		</ul>
 
 	</div>
@@ -143,49 +186,51 @@
 
 						<label for="type">Transaction Type:</label> &nbsp; &nbsp; &nbsp;
 
-						<form:radiobutton path="type" value="Income" label = "Income" checked = "checked" />
+						<form:radiobutton path="type" value="Income" label="Income"
+							checked="checked" />
 						&nbsp; &nbsp; &nbsp; &nbsp;
-						<form:radiobutton path="type" value="Expense" label = "Expense"/>
-						
+						<form:radiobutton path="type" value="Expense" label="Expense" />
+
 					</div>
 
 					<div class="form-group">
 
 						<label for="amount">Amount:</label>
-						<form:input type="number" path="amount" class="form-control" required="required" />
+						<form:input type="number" path="amount"
+							class="form-control variable1" required="required" />
 
 					</div>
 
 					<div class="form-group">
 
-						<label for="date">Date:</label>
-						<form:input type="date" path="date" class="form-control" required="required" />
+						<label for="date">Date & Time:</label>
+						<c:set var="dateTime" value="<%=new java.util.Date()%>" />
+						<fmt:formatDate type="both" value="${dateTime}" />
+						<form:input type="date" path="date" class="form-control"
+							required="required" />
 
 					</div>
 
 					<div class="form-group">
 
 						<label for="description">Description:</label>
-						<form:input path="description" class="form-control" required="required" />
+						<form:input path="description" class="form-control variable3"
+							required="required" />
 
 					</div>
 
 					<button type="submit" class="btn btn-primary">Add
 						Transaction</button>
-
 				</form:form>
-
 			</div>
-			<!-- 
-			<div class="col-md-6 srhdiv">
-				<h1>Calendar Here</h1>
+			<div class="demo-box srhdiv">
+				<button class="btn-demo"
+					onClick="autoFill(10000,'Cash'); return false;">DEMO</button>
 			</div>
-			 -->
 		</div>
 		<!--/.row-->
 	</div>
 	<!--/.main-->
-
 
 	<script src="/accountingManagement/style/js/jquery-1.11.1.min.js"></script>
 	<script src="/accountingManagement/style/js/bootstrap.min.js"></script>
@@ -195,6 +240,12 @@
 	<script src="/accountingManagement/style/js/easypiechart-data.js"></script>
 	<script src="/accountingManagement/style/js/bootstrap-datepicker.js"></script>
 	<script src="/accountingManagement/style/js/custom.js"></script>
+	<script type="text/javascript">
+		function autoFill(var1, var3) {
+			$('.variable1').val(var1);
+			$('.variable3').val(var3);
+		}
+	</script>
 
 </body>
 </html>
