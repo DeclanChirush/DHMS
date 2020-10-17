@@ -91,7 +91,7 @@
 				<a class="navbar-brand">  </a>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav pull-left">
-					
+						<li><a href="/backendHome" style="color:white">Home</a></li>
 						<li><a href="/addAdvertisement/" style="color:white">Advertise</a></li>
 						<li><a href="/addEmployee/" style="color:white">Employee</a></li>
 						<li><a href="/inventory" style="color:white">Inventory</a></li>
@@ -110,8 +110,6 @@
 	<br>
 	<br>
 	<br>
-	
-	<!-- <jsp:include page="/commonNavBar.jsp"></jsp:include> -->
 
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 
@@ -122,9 +120,7 @@
 					class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">
-					
-				</div>
+				<div class="profile-usertitle-name"></div>
 				<div class="profile-usertitle-status">
 					<span class="indicator label-success"></span>Online
 				</div>
@@ -134,16 +130,8 @@
 
 		<div class="divider"></div>
 
-
-		<form action="/advertisementSearch" method="get">
-			<input class="form-control" type="text"
-				placeholder="ex: food, booking" aria-label="Search" name="type">
-			<br>
-			<button class="button ash" type="submit">Search</button>
-		</form>
-
 		<ul class="nav menu">
-			<li><a class="active" href="/"><em class="fa fa-dashboard">&nbsp;</em>
+			<li><a class="active" href="/employeeList"><em class="fa fa-dashboard">&nbsp;</em>
 					Employee List</a></li>
 			<li class=""><a href="/addEmployee/"><em
 					class="fa fa-navicon"></em> Add Employees</a></li>
@@ -151,9 +139,9 @@
 					Approve Leaves</a></li>
 			<li><a class="" href="/search"><em class="fa fa-navicon"></em>
 					Salary</a></li>
-			<li><a class="" href="/empReport"><em class="fa fa-navicon"></em>
+			<li><a class="" href="/employeeReport"><em class="fa fa-navicon"></em>
 					Report</a></li>
-
+			
 		</ul>
 
 	</div>

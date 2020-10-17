@@ -115,7 +115,7 @@
 		<div class="divider"></div>
 
 		<ul class="nav menu">
-			<li><a class="active" href="/"><em class="fa fa-dashboard">&nbsp;</em>
+			<li><a class="active" href="/employeeList"><em class="fa fa-dashboard">&nbsp;</em>
 					Employee List</a></li>
 			<li class=""><a href="/addEmployee/"><em
 					class="fa fa-navicon"></em> Add Employees</a></li>
