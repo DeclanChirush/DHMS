@@ -17,7 +17,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -27,7 +26,7 @@ import java.util.logging.Logger;
 
 public class GenerateAccountingReport {
 
-	public static ByteArrayInputStream accountingReport(List<Transaction> transaction) {
+	public static ByteArrayInputStream accountingReport(List<Transaction> transaction,String reporttype) {
 
 		Document document = new Document();
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -48,8 +47,8 @@ public class GenerateAccountingReport {
 			// 2nd Heading
 			Font heading2 = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
 			heading2.setSize(15);
-			heading2.setColor(BaseColor.BLUE);
-			Paragraph list = new Paragraph("Transactions List\n\n", heading2);
+			heading2.setColor(BaseColor.RED);
+			Paragraph list = new Paragraph("Transactions List " + reporttype + " \n\n", heading2);
 			list.setAlignment(Paragraph.ALIGN_LEFT);
 
 			// Table Style
@@ -59,7 +58,7 @@ public class GenerateAccountingReport {
 			// Address
 			Font addressLine = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
 			addressLine.setSize(10);
-			addressLine.setColor(BaseColor.BLUE);
+			addressLine.setColor(BaseColor.DARK_GRAY);
 			Paragraph address = new Paragraph("\n\n\nDhammika Hotel,\nDambulla Road,\nBakamuna.\n\n\n", addressLine);
 			address.setAlignment(Paragraph.ALIGN_LEFT);
 
@@ -68,14 +67,14 @@ public class GenerateAccountingReport {
 			Calendar dateTime = Calendar.getInstance();
 			Font dateLine = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
 			dateLine.setSize(10);
-			dateLine.setColor(BaseColor.BLUE);
+			dateLine.setColor(BaseColor.DARK_GRAY);
 			Paragraph date = new Paragraph("Date : " + dateFormat.format(dateTime.getTime()), dateLine);
 			date.setAlignment(Paragraph.ALIGN_LEFT);
 
 			// Signature
 			Font signatureLine = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
 			signatureLine.setSize(10);
-			signatureLine.setColor(BaseColor.BLUE);
+			signatureLine.setColor(BaseColor.DARK_GRAY);
 			Paragraph signature = new Paragraph("Signature : ...........................", signatureLine);
 			signature.setAlignment(Paragraph.ALIGN_RIGHT);
 

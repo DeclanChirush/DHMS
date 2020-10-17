@@ -57,13 +57,22 @@
 	float: left
 }
 
-.navigation-bar {
+.time-box {
+	position: relative;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+	width: 20%;
+	float: left
+}
+
+.navigation-bar{
 	color: white;
 	float: left;
-	height: 50px;
-	padding: 15px 15px;
-	font-size: 14px;
-	line-height: 20px;
+  	height: 50px;
+  	padding: 15px 10px;
+  	font-size: 13px;
+  	line-height: 20px;
 }
 </style>
 
@@ -81,12 +90,15 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/"><span>Dhammika Hotel </span>Management
-					System</a> <a href="/inventory" class="navigation-bar">Inventory</a> <a
-					href="/accountmgt" class="navigation-bar">Accounting</a> <a
-					href="/newPurchase" class="navigation-bar">Purchasing</a> <a
-					href="#" class="navigation-bar">Suppling</a> <a href="/logout"
-					class="navigation-bar" style="color: red">Logout</a>
+				<a class="navbar-brand" href="/"><span>Dhammika Hotel </span>Management System</a>
+				<a href="/addAdvertisement/" class="navigation-bar">Advertise</a>
+				<a href="/addEmployee/" class="navigation-bar">Employee</a>
+				<a href="/inventory" class="navigation-bar">Inventory</a>
+				<a href="/accountmgt" class="navigation-bar">Accounting</a>
+				<a href="/newPurchase" class="navigation-bar">Purchasing</a>
+				<a href="#" class="navigation-bar">Suppling</a>
+				<a href="/userLogs" class="navigation-bar">UserLogs</a>
+				<a href="/logout" class="navigation-bar" style="color:red">Logout</a>
 			</div>
 		</div>
 		<!-- /.container-fluid -->
@@ -97,8 +109,8 @@
 		<div class="profile-sidebar">
 			<div class="profile-userpic">
 				<img
-					src="https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4-300x300.png"
-					class="img-responsive" alt="">
+					src="/accountingManagement/style/profile.png"
+					class="img-responsive" alt="Profile-Photo">
 			</div>
 			<div class="profile-usertitle">
 				<div class="profile-usertitle-name">
@@ -203,9 +215,7 @@
 
 					<div class="form-group">
 
-						<label for="date">Date & Time:</label>
-						<c:set var="dateTime" value="<%=new java.util.Date()%>" />
-						<fmt:formatDate type="both" value="${dateTime}" />
+						<label for="date">Date:</label>
 						<form:input type="date" path="date" class="form-control"
 							required="required" />
 
@@ -223,6 +233,12 @@
 						Transaction</button>
 				</form:form>
 			</div>
+			<div class="time-box srhdiv">
+				<H4>Date & Time</H4>
+					<c:set var="dateTime" value="<%=new java.util.Date()%>" />
+					<fmt:formatDate type="both" value="${dateTime}" />
+			</div>
+			<br>
 			<div class="demo-box srhdiv">
 				<button class="btn-demo"
 					onClick="autoFill(10000,'Cash'); return false;">DEMO</button>
