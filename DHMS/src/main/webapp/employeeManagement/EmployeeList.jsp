@@ -78,14 +78,14 @@
 		<div class="divider"></div>
 
 		<ul class="nav menu">
-			<li><a class="active" href="/"><em class="fa fa-dashboard">&nbsp;</em>
+			<li><a class="active" href="/employeeList"><em class="fa fa-dashboard">&nbsp;</em>
 					Employee List</a></li>
 			<li class=""><a href="/addEmployee/"><em
 					class="fa fa-navicon"></em> Add Employees</a></li>
 			<li><a class="" href="/categories"><em class="fa fa-navicon"></em>
 					Approve Leaves</a></li>
 			<li><a class="" href="/search"><em class="fa fa-navicon"></em>
-					Salary</a></li>
+					Search</a></li>
 			<li><a class="" href="/report"><em class="fa fa-navicon"></em>
 					Report</a></li>
 			

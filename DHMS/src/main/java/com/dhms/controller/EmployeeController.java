@@ -1,8 +1,14 @@
 package com.dhms.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dhms.dao.EmployeeRepo;
 import com.dhms.model.Employee;
+import com.dhms.model.Transaction;
+import com.dhms.service.GenerateAccountingReport;
 
 
 @Controller
@@ -74,8 +82,23 @@ public class EmployeeController {
 			
 		}
 		
-	
+	/*
+	// Search Transaction By Date method
+		@RequestMapping(value = "/searchEmpByName", method = RequestMethod.GET)
+		public ModelAndView transactionByName(@RequestParam String empName) {
+
+		//	System.out.println("==========searchByDate Called==========");
+
+			ModelAndView object = new ModelAndView("/employeeManagement/SearchEmployee.jsp");
+			String empname = getEmployeeByName(empName);
+			object.addObject("employeeList", empname);
+
+		//	System.out.println("==========searchByDate Executed==========\n");
+
+			return object;
+		}
 		
+*/
 		
 		@Autowired
 		EmployeeRepo employeeRepo;
@@ -100,6 +123,9 @@ public class EmployeeController {
 			employeeRepo.deleteById(id);	
 		}
 		
-		
-		
+/*
+		public String  getEmployeeByName(String empName) {
+			return  employeeRepo.findByName(empName).getEmpName();
+		}
+		*/
 }
