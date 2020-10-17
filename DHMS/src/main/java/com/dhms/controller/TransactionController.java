@@ -310,7 +310,8 @@ public class TransactionController {
 		System.out.println("==========transactionTypeReport Called==========");
 
 		List<Transaction> transactionList = (List<Transaction>) getTransactionByType(type);
-		ByteArrayInputStream bais = GenerateAccountingReport.accountingReport(transactionList);
+		String reportType = "by Type";
+		ByteArrayInputStream bais = GenerateAccountingReport.accountingReport(transactionList,reportType);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition", "inline; filename=transactionreportbytype.pdf");
 
@@ -329,7 +330,8 @@ public class TransactionController {
 		System.out.println("==========transactionCategoriesReport Called==========");
 
 		List<Transaction> transactionList = (List<Transaction>) getTransactionByCategorie(categorie);
-		ByteArrayInputStream bais = GenerateAccountingReport.accountingReport(transactionList);
+		String reportType = "by Categorie";
+		ByteArrayInputStream bais = GenerateAccountingReport.accountingReport(transactionList,reportType);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition", "inline; filename=transactionreportbycategorie.pdf");
 
@@ -347,7 +349,8 @@ public class TransactionController {
 		System.out.println("==========transactionDateReport Called==========");
 
 		List<Transaction> transactionList = (List<Transaction>) getTransactionByDate(date);
-		ByteArrayInputStream bais = GenerateAccountingReport.accountingReport(transactionList);
+		String reportType = "by Date";
+		ByteArrayInputStream bais = GenerateAccountingReport.accountingReport(transactionList,reportType);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition", "inline; filename=transactionreportbydate.pdf");
 
@@ -365,7 +368,8 @@ public class TransactionController {
 		System.out.println("==========allTransactionReport Called==========");
 
 		List<Transaction> transactionList = (List<Transaction>) getAllTransaction();
-		ByteArrayInputStream bais = GenerateAccountingReport.accountingReport(transactionList);
+		String reportType = "";
+		ByteArrayInputStream bais = GenerateAccountingReport.accountingReport(transactionList,reportType);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition", "inline; filename=alltransactionreport.pdf");
 

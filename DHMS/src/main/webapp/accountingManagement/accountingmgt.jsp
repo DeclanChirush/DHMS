@@ -20,8 +20,8 @@
 	color: white;
 	float: left;
   	height: 50px;
-  	padding: 15px 15px;
-  	font-size: 14px;
+  	padding: 15px 10px;
+  	font-size: 13px;
   	line-height: 20px;
 }
 </style>
@@ -40,10 +40,13 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="/"><span>Dhammika Hotel </span>Management System</a>
+				<a href="/addAdvertisement/" class="navigation-bar">Advertise</a>
+				<a href="/addEmployee/" class="navigation-bar">Employee</a>
 				<a href="/inventory" class="navigation-bar">Inventory</a>
 				<a href="/accountmgt" class="navigation-bar">Accounting</a>
 				<a href="/newPurchase" class="navigation-bar">Purchasing</a>
 				<a href="#" class="navigation-bar">Suppling</a>
+				<a href="/userLogs" class="navigation-bar">UserLogs</a>
 				<a href="/logout" class="navigation-bar" style="color:red">Logout</a>
 			</div>
 		</div>
@@ -55,8 +58,8 @@
 		<div class="profile-sidebar">
 			<div class="profile-userpic">
 				<img
-					src="https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4-300x300.png"
-					class="img-responsive" alt="">
+					src="/accountingManagement/style/profile.png"
+					class="img-responsive" alt="Profile-Photo">
 			</div>
 			<div class="profile-usertitle">
 				<div class="profile-usertitle-name">
