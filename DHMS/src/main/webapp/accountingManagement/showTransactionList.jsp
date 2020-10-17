@@ -4,7 +4,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +27,15 @@
 	background-color: white;
 	border-radius: 10px;
 }
+
+.navigation-bar{
+	color: white;
+	float: left;
+  	height: 50px;
+  	padding: 15px 15px;
+  	font-size: 14px;
+  	line-height: 20px;
+}
 </style>
 
 <meta charset="ISO-8859-1">
@@ -43,8 +52,12 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/accountmgt"><span>Dhammika
-						Hotel </span>Management System</a>
+				<a class="navbar-brand" href="/"><span>Dhammika Hotel </span>Management System</a>
+				<a href="/inventory" class="navigation-bar">Inventory</a>
+				<a href="/accountmgt" class="navigation-bar">Accounting</a>
+				<a href="/newPurchase" class="navigation-bar">Purchasing</a>
+				<a href="#" class="navigation-bar">Suppling</a>
+				<a href="/logout" class="navigation-bar" style="color:red">Logout</a>
 			</div>
 		</div>
 		<!-- /.container-fluid -->
@@ -59,7 +72,12 @@
 					class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name"></div>
+				<div class="profile-usertitle-name">
+					<%
+						final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
+					%>
+					<span class="badge badge-pill badge-secondary">User: <%=currentUserName%></span>
+				</div>
 				<div class="profile-usertitle-status">
 					<span class="indicator label-success"></span>Online
 				</div>
@@ -80,8 +98,6 @@
 					class="fa fa-navicon"></em> Search</a></li>
 			<li><a class="" href="/reportTransaction"><em
 					class="fa fa-navicon"></em> Report</a></li>
-			<li><a href="/logout"><em class="fa fa-power-off">&nbsp;</em>
-					Logout</a></li>
 		</ul>
 
 	</div>
@@ -136,18 +152,6 @@
 					</tbody>
 				</table>
 			</div>
-		</div>
-		<!--/.row-->
-
-
-		<div class="row">
-			<div class="col-xs-6 col-md-3"></div>
-		</div>
-		<!--/.row-->
-
-		<div class="row">
-			<div class="col-md-6"></div>
-			<div class="col-sm-12"></div>
 		</div>
 		<!--/.row-->
 	</div>

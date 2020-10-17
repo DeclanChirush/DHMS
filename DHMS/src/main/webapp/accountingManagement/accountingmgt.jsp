@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<meta charset="ISO-8859-1">
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <link href="/accountingManagement/style/css/bootstrap.min.css"
 	rel="stylesheet" type="text/css">
 <link href="/accountingManagement/style/css/font-awesome.min.css"
@@ -14,23 +14,37 @@
 	rel="stylesheet" type="text/css">
 <link href="/accountingManagement/style/css/styles.css" rel="stylesheet"
 	type="text/css">
-
-<meta charset="ISO-8859-1">
+	
+<style type="text/css">
+.navigation-bar{
+	color: white;
+	float: left;
+  	height: 50px;
+  	padding: 15px 15px;
+  	font-size: 14px;
+  	line-height: 20px;
+}
+</style>
 <title>Dhammika Hotel | Account Management</title>
+
 </head>
 <body>
 
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#sidebar-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/accountmgt"><span>Dhammika
-						Hotel </span>Management System</a>
+				<a class="navbar-brand" href="/"><span>Dhammika Hotel </span>Management System</a>
+				<a href="/inventory" class="navigation-bar">Inventory</a>
+				<a href="/accountmgt" class="navigation-bar">Accounting</a>
+				<a href="/newPurchase" class="navigation-bar">Purchasing</a>
+				<a href="#" class="navigation-bar">Suppling</a>
+				<a href="/logout" class="navigation-bar" style="color:red">Logout</a>
 			</div>
 		</div>
 		<!-- /.container-fluid -->
@@ -45,7 +59,12 @@
 					class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name"></div>
+				<div class="profile-usertitle-name">
+					<%
+						final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
+					%>
+					<span class="badge badge-pill badge-secondary">User: <%=currentUserName%></span>
+				</div>
 				<div class="profile-usertitle-status">
 					<span class="indicator label-success"></span>Online
 				</div>
@@ -64,10 +83,8 @@
 					class="fa fa-navicon"></em> Transaction History</a></li>
 			<li><a class="" href="/searchTransaction"><em
 					class="fa fa-navicon"></em> Search</a></li>
-			<li><a class="" href="/reportTransaction"><em class="fa fa-navicon"></em>
-					Report</a></li>
-			<li><a href=""><em class="fa fa-power-off">&nbsp;</em>
-					Logout</a></li>
+			<li><a class="" href="/reportTransaction"><em
+					class="fa fa-navicon"></em> Report</a></li>
 		</ul>
 
 	</div>
@@ -85,7 +102,7 @@
 
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Dashboard</h1>
+				<h1 class="page-header">Accounting Management Dashboard</h1>
 			</div>
 		</div>
 		<!--/.row-->
@@ -95,18 +112,15 @@
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-teal panel-widget border-right">
 						<div class="row no-padding">
-							<em class="fa fa-xl fa-shopping-cart color-blue"></em>
-							<div class="large"></div>
-							<div class="text-muted">Orders</div>
+							<a href="/addTransaction">Add new Transactions</a>
 						</div>
 					</div>
 				</div>
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-blue panel-widget border-right">
 						<div class="row no-padding">
-							<em class="fa fa-xl fa-money color-teal"></em>
-							<div class="large"></div>
-							<div class="text-muted">Total Expense</div>
+							<a href="/reportTransaction">Transactions Report<br>by Type
+							</a>
 						</div>
 					</div>
 				</div>
@@ -114,37 +128,63 @@
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-blue panel-widget border-right">
 						<div class="row no-padding">
-							<em class="fa fa-xl fa-dollar color-orange"></em>
-							<div class="large"></div>
-							<div class="text-muted">Total Revenue</div>
+							<a href="/reportTransaction">Transactions Report<br>by Date
+							</a>
 						</div>
 					</div>
 				</div>
-			</div>
-			<!--/.row-->
+
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-blue panel-widget border-right">
+						<div class="row no-padding">
+							<a href="/reportTransaction">Transactions Report<br>by Categories
+							</a>
+						</div>
+					</div>
+				</div>
+			</div><!--/.row-->
 		</div>
+		
+		<div class="panel panel-container">
+			<div class="row">
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-teal panel-widget border-right">
+						<div class="row no-padding">
+							<a href="/showTransactionList">All Transactions</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-blue panel-widget border-right">
+						<div class="row no-padding">
+							<a href="/searchTransaction">Transactions Search<br>by Type
+							</a>
+						</div>
+					</div>
+				</div>
 
-		<div class="row">
-			<div class="col-md-12"></div>
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-blue panel-widget border-right">
+						<div class="row no-padding">
+							<a href="/searchTransaction">Transactions Search<br>by Date
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-blue panel-widget border-right">
+						<div class="row no-padding">
+							<a href="/searchTransaction">Transactions Search<br>by Categories
+							</a>
+						</div>
+					</div>
+				</div>
+			</div><!--/.row-->
 		</div>
-		<!--/.row-->
-
-
-		<div class="row">
-			<div class="col-xs-6 col-md-3"></div>
-			<div class="col-xs-6 col-md-3"></div>
-		</div>
-		<!--/.row-->
-
-		<div class="row">
-			<div class="col-md-6"></div>
-			<div class="col-sm-12"></div>
-		</div>
-		<!--/.row-->
-
+		
 	</div>
 	<!--/.main-->
-
 
 	<script src="/accountingManagement/style/js/jquery-1.11.1.min.js"></script>
 	<script src="/accountingManagement/style/js/bootstrap.min.js"></script>
@@ -154,16 +194,6 @@
 	<script src="/accountingManagement/style/js/easypiechart-data.js"></script>
 	<script src="/accountingManagement/style/js/bootstrap-datepicker.js"></script>
 	<script src="/accountingManagement/style/js/custom.js"></script>
-	<script>
-		window.onload = function() {
-			var chart1 = document.getElementById("line-chart").getContext("2d");
-			window.myLine = new Chart(chart1).Line(lineChartData, {
-				responsive : true,
-				scaleLineColor : "rgba(0,0,0,.2)",
-				scaleGridLineColor : "rgba(0,0,0,.05)",
-				scaleFontColor : "#c5c7cc"
-			});
-		};
-	</script>
+
 </body>
 </html>
