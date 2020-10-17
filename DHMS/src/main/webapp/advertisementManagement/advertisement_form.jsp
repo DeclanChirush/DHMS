@@ -52,8 +52,7 @@
 <link href="/advertisementManagement/style/buttonStyle/button.css"
 	rel="stylesheet">
 
-<meta charset="ISO-8859-1">
-<title>Dhammika Hotel | Dashboard</title>
+
 
 <style type="text/css">
 .srhdiv {
@@ -91,15 +90,27 @@
 	float: left
 }
 
-.navigation-bar {
+.time-box {
+	position: relative;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+	width: 20%;
+	float: left
+}
+
+.navigation-bar{
 	color: white;
 	float: left;
-	height: 50px;
-	padding: 15px 15px;
-	font-size: 14px;
-	line-height: 20px;
+  	height: 50px;
+  	padding: 15px 10px;
+  	font-size: 13px;
+  	line-height: 20px;
 }
 </style>
+
+<meta charset="ISO-8859-1">
+<title>Dhammika Hotel | Dashboard</title>
 </head>
 <body>
 
@@ -112,23 +123,15 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/"><span>Dhammika
-						Hotel </span>Management System</a>
-				<a class="navbar-brand">  </a>
-				<div class="collapse navbar-collapse">
-					<ul class="nav navbar-nav pull-left">
-						<li><a href="/backendHome" style="color:white">Home</a></li>
-						<li><a href="/addAdvertisement/" style="color:white">Advertise</a></li>
-						<li><a href="/addEmployee/" style="color:white">Employee</a></li>
-						<li><a href="/inventory" style="color:white">Inventory</a></li>
-						<li><a href="/accountmgt" style="color:white">Accounting</a></li>
-						<li><a href="/newPurchase" style="color:white">Purchasing</a></li>
-						<li><a href="#" style="color:white">Suppling</a></li>
-						<li><a href="/userLogs" style="color:white">UserLogs</a></li>
-						<li><a href="/logout" style="color:red">Logout</a>
-						<li>
-					</ul>
-				</div>
+				<a class="navbar-brand" href="/"><span>Dhammika Hotel </span>Management System</a>
+				<a href="/addAdvertisement/" class="navigation-bar">Advertise</a>
+				<a href="/addEmployee/" class="navigation-bar">Employee</a>
+				<a href="/inventory" class="navigation-bar">Inventory</a>
+				<a href="/accountmgt" class="navigation-bar">Accounting</a>
+				<a href="/newPurchase" class="navigation-bar">Purchasing</a>
+				<a href="/addNewSupplierForm" class="navigation-bar">Suppling</a>
+				<a href="/userLogs" class="navigation-bar">UserLogs</a>
+				<a href="/logout" class="navigation-bar" style="color:red">Logout</a>
 			</div>
 		</div>
 		<!-- /.container-fluid -->

@@ -96,7 +96,7 @@
 				<a href="/inventory" class="navigation-bar">Inventory</a>
 				<a href="/accountmgt" class="navigation-bar">Accounting</a>
 				<a href="/newPurchase" class="navigation-bar">Purchasing</a>
-				<a href="#" class="navigation-bar">Suppling</a>
+				<a href="#" class="navigation-bar">Supplier</a>
 				<a href="/userLogs" class="navigation-bar">UserLogs</a>
 				<a href="/logout" class="navigation-bar" style="color:red">Logout</a>
 			</div>
