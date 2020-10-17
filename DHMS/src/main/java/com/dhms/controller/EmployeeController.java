@@ -18,7 +18,12 @@ import com.dhms.model.Employee;
 @Controller
 public class EmployeeController {
 
-		
+	@RequestMapping(value = "/empReport")
+	public ModelAndView reportByType() {
+		ModelAndView model = new ModelAndView("/employeeManagement/employeeReport.jsp");
+		return model;
+
+	}
 		
 		@RequestMapping(value = "/employeeList", method = RequestMethod.GET)
 		public ModelAndView list() {

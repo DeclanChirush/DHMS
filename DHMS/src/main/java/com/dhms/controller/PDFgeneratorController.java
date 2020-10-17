@@ -17,12 +17,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.dhms.dao.AdvertisementRepo;
 //ravindu
 import com.dhms.dao.CountableLowstockRepo;
+import com.dhms.dao.EmployeeRepo;
 import com.dhms.dao.UncountableLowStockRepo;
 import com.dhms.model.Advertisement;
 import com.dhms.model.CountableLowStock;
+import com.dhms.model.Employee;
 import com.dhms.model.UncountableLowStock;
 import com.dhms.service.CountableLowStockPDFgenerator;
 import com.dhms.service.PDFgenerator;
+import com.dhms.service.PDFgeneratorEmployee;
 import com.dhms.service.UncountableLowStockPDFgenerator;
 /************************/
 //hirush
@@ -97,13 +100,26 @@ public class PDFgeneratorController {
 		List<UncountableLowStock> uncountableLowStock = (List<UncountableLowStock>) getAllUncountableLowStock();
 		ByteArrayInputStream bais = UncountableLowStockPDFgenerator.uncountableLowStockReport(uncountableLowStock);
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Disposition", "inline; filename=advertisementByType.pdf");
+		headers.add("Content-Disposition", "inline; filename=Allemployee.pdf");
 
 		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
 				.body(new InputStreamResource(bais));
 
 	}
 	
+	//ashan
+	@RequestMapping(value = "/reportAllEmployee", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	public ResponseEntity<InputStreamResource> employeeAllReport() throws IOException {
+
+		List<Employee> employee = (List<Employee>) getAllemployee();
+		ByteArrayInputStream bais = PDFgeneratorEmployee.employeeReport(employee);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition", "inline; filename=advertisementByType.pdf");
+
+		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
+				.body(new InputStreamResource(bais));
+
+	}
 	
 	@Autowired
 	CountableLowstockRepo  countableLowstockRepo;
@@ -158,4 +174,10 @@ public class PDFgeneratorController {
 		return (List<UserLogs>) userLogsRepo.findAll();
 	}
 
+	@Autowired
+	EmployeeRepo employeeRepo;
+	
+	public List<Employee> getAllemployee() {
+		return (List<Employee>) employeeRepo.findAll();
+	}
 }

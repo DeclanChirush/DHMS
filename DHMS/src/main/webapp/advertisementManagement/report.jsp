@@ -91,7 +91,7 @@
 				<a class="navbar-brand">  </a>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav pull-left">
-						<li><a href="/backendHome" style="color:white">Home</a></li>
+					
 						<li><a href="/addAdvertisement/" style="color:white">Advertise</a></li>
 						<li><a href="/addEmployee/" style="color:white">Employee</a></li>
 						<li><a href="/inventory" style="color:white">Inventory</a></li>

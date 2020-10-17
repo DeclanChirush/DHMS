@@ -36,6 +36,7 @@ public class AdvertisementController {
 		System.out.println(type);
 
 		String t = "food";
+		
 
 		System.out.println(t);
 

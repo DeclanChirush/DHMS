@@ -52,54 +52,28 @@
 <link href="/advertisementManagement/style/buttonStyle/button.css"
 	rel="stylesheet">
 
-<meta charset="ISO-8859-1">
-<title>Dhammika Hotel | Dashboard</title>
-
 <style type="text/css">
 .srhdiv {
-	border: 2px solid #3e3e3e;
+	border: 1px solid #3e3e3e;
+	height: 220px;
 	padding: 20px;
 	margin-left: 20px;
-	margin-right: 20px;
-	margin-bottom: 20px;
-	margin-top: 20px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 10px;
 	background-color: white;
 	border-radius: 10px;
 }
 
-.btn-demo {
-	background-color: #ff0000;
-	border: none;
-	color: white;
-	padding: 6px;
-	width: 100px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	margin: 4px 2px;
-	cursor: pointer;
-	font-size: 12px;
-	border-radius: 2px;
-}
-
-.demo-box {
-	position: relative;
-	min-height: 1px;
-	padding-right: 15px;
-	padding-left: 15px;
-	width: 13.5%;
-	float: left
-}
-
-.navigation-bar {
-	color: white;
-	float: left;
-	height: 50px;
-	padding: 15px 15px;
-	font-size: 14px;
-	line-height: 20px;
+.center {
+	margin: auto;
+	width: 60%;
+	padding: 10px;
 }
 </style>
+
+<meta charset="ISO-8859-1">
+<title>Dhammika Hotel | Dashboard</title>
 </head>
 <body>
 
@@ -117,7 +91,7 @@
 				<a class="navbar-brand">  </a>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav pull-left">
-						<li><a href="/backendHome" style="color:white">Home</a></li>
+					
 						<li><a href="/addAdvertisement/" style="color:white">Advertise</a></li>
 						<li><a href="/addEmployee/" style="color:white">Employee</a></li>
 						<li><a href="/inventory" style="color:white">Inventory</a></li>
@@ -136,6 +110,7 @@
 	<br>
 	<br>
 	<br>
+	
 	<!-- <jsp:include page="/commonNavBar.jsp"></jsp:include> -->
 
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
@@ -147,9 +122,7 @@
 					class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">  
-					<%final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName(); %>
-					<span class="badge badge-pill badge-secondary">User: <%=currentUserName %></span>
+				<div class="profile-usertitle-name">
 					
 				</div>
 				<div class="profile-usertitle-status">
@@ -170,12 +143,15 @@
 		</form>
 
 		<ul class="nav menu">
-
-			<li><a class="" href="/addAdvertisement/"><em
-					class="fa fa-navicon"></em> Add Advertisement</a></li>
-			<li><a class="" href="/advertisementList"><em
-					class="fa fa-navicon"></em> View List</a></li>
-			<li><a class="" href="/report"><em class="fa fa-navicon"></em>
+			<li><a class="active" href="/"><em class="fa fa-dashboard">&nbsp;</em>
+					Employee List</a></li>
+			<li class=""><a href="/addEmployee/"><em
+					class="fa fa-navicon"></em> Add Employees</a></li>
+			<li><a class="" href="/categories"><em class="fa fa-navicon"></em>
+					Approve Leaves</a></li>
+			<li><a class="" href="/search"><em class="fa fa-navicon"></em>
+					Salary</a></li>
+			<li><a class="" href="/empReport"><em class="fa fa-navicon"></em>
 					Report</a></li>
 
 		</ul>
@@ -190,14 +166,14 @@
 				<li><a href="#"> <em class="fa fa-home"></em>
 				</a></li>
 				<li>Dashboard</li>
-				<li class="active">Add Advertisement</li>
+				<li class="active">Report</li>
 			</ol>
 		</div>
 		<!--/.row-->
 
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Advertisement</h1>
+				<h1 class="page-header">Employee Report</h1>
 			</div>
 		</div>
 		<!--/.row-->
@@ -208,87 +184,26 @@
 			</div>
 			<!--/.row-->
 		</div>
-		<div class="demo-box srhdiv">
-				<button class="btn-demo"
-					onClick="autoFill('NewYear offer','25%','jan-feb','Enjoy your next booking. 20 verified booking coupon and promo code, site wide booking.com coupon for September 2020. free cancellation. 50% off on holidays.'); return false;">DEMO</button>
-			</div>
 
-		<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
-			<div class="wrapper wrapper--w680">
-				<div class="card card-4">
-					<div class="card-body">
-						<spring:url value="/saveAdvertisement" var="saveURL" />
-						<h2>
-							<u>Add Advertisement </u>
+		<div class="row">
 
-						</h2>
-						<br> <br> <br>
-						<form:form modelAttribute="advertisementForm" method="post"
-							action="${saveURL}">
-
-							<div class="row row-space">
-								<div class="col-2">
-									<div class="input-group">
-										<form:hidden path="id" />
-
-										<label class="label">Title</label>
-										<form:input path="title" class="input--style-4 variable1"
-											required="required" />
-
-
-									</div>
-								</div>
-								<div class="col-2">
-									<div class="input-group">
-										<label class="label">Offer percentage</label>
-										<form:input path="percentage" class="input--style-4 variable3"
-											required="required" />
-
-									</div>
-								</div>
-
-								<div class="col-2">
-									<div class="input-group">
-										<label class="label">Time period</label>
-										<form:input path="timePeriod" class="input--style-4 variable4"
-											required="required" />
-
-									</div>
-								</div>
-
-								<div class="col-2">
-									<div class="input-group">
-										<label class="label">Description</label>
-										<form:textarea path="description" class="input--style-4 variable5"
-											required="required" />
-
-									</div>
-								</div>
-								<div class="col-2">
-									<div class="input-group">
-										<label class="label">Type</label> <select id="type"
-											name="type">
-											<option value="food">Food</option>
-											<option value="booking">Booking</option>
-										</select>
-										<!-- <form:input path="type" class="input--style-4"  /> -->
-									</div>
-								</div>
-								<div class="p-t-15">
-									<button type="submit" class="btn btn--radius-2 btn--blue">Save</button>
-								</div>
-							</div>
-						</form:form>
-
-					</div>
+			<div class="col-md-5 srhdiv">
+				<caption><u><b>All Employee list</u></b></caption>
+				<br> <br>
+				<div class="form-group">
+					<label for="">Click Here:</label>
 				</div>
+				<br><br>
+				<button onclick="location.href='/reportAllEmployee'"
+					type="button" class="btn ash">Generate</button>
 			</div>
+	
+
 		</div>
-
 		<!--/.row-->
-	</div>
-	<!--/.main-->
 
+		<!--/.main-->
+	</div>
 
 	<script src="/backendDashboardStyle/js/jquery-1.11.1.min.js"></script>
 	<script src="/backendDashboardStyle/js/bootstrap.min.js"></script>
@@ -311,14 +226,5 @@
 			});
 		};
 	</script>
-		<script type="text/javascript">
-		function autoFill(var1, var3, var4, var5) {
-			$('.variable1').val(var1);
-			$('.variable3').val(var3);
-			$('.variable4').val(var4);
-			$('.variable5').val(var5);
-		}
-	</script>
-	
 </body>
 </html>

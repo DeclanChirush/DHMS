@@ -123,7 +123,7 @@
 					Approve Leaves</a></li>
 			<li><a class="" href="/search"><em class="fa fa-navicon"></em>
 					Salary</a></li>
-			<li><a class="" href="/report"><em class="fa fa-navicon"></em>
+			<li><a class="" href="/empReport"><em class="fa fa-navicon"></em>
 					Report</a></li>
 
 		</ul>
