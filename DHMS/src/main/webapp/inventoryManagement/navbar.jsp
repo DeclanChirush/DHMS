@@ -23,24 +23,32 @@
       <li class="nav-item ">
         <a class="nav-link" href="/addAdvertisement/">Advertise <span class="sr-only">(current)</span></a>
       </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/addEmployee/"><p>Employee</p></a>
+      </li>
+      
       <li class="nav-item active">
         <a class="nav-link" href="/inventory"><p>Inventory</p></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/accountmgt"><p>Accounts</p></a>
+        <a class="nav-link" href="/accountmgt"><p>Accounting</p></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/newPurchase"><p>Purchase</p></a>
+        <a class="nav-link" href="/newPurchase"><p>Purchasing</p></a>
       </li>
+      
       <li class="nav-item">
-        <a class="nav-link" href="/addEmployee/"><p>Employee</p></a>
+        <a class="nav-link" href="/addNewSupplierForm"><p>Suppliers</p></a>
       </li>
+      
       <li class="nav-item">
         <a class="nav-link" href="/addUser/"><p>User Logs</p></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/logout"><p>Logout</p></a>
       </li>
+      
       
       
       
