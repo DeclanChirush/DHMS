@@ -13,14 +13,24 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dhms.dao.EmployeeRepo;
 import com.dhms.model.Employee;
+import com.dhms.model.Transaction;
 
 
 @Controller
 public class EmployeeController {
+	
+	
 
 	@RequestMapping(value = "/empReport")
 	public ModelAndView reportByType() {
 		ModelAndView model = new ModelAndView("/employeeManagement/employeeReport.jsp");
+		return model;
+
+	}
+	
+	@RequestMapping(value = "/empSearch")
+	public ModelAndView Search() {
+		ModelAndView model = new ModelAndView("/employeeManagement/empSearch.jsp");
 		return model;
 
 	}
@@ -79,7 +89,17 @@ public class EmployeeController {
 			
 		}
 		
-	
+		@RequestMapping(value = "/empSearchByType")
+		public ModelAndView transactionByType(@RequestParam String type) {
+
+			System.out.println("==========searchByType Called==========");
+
+			ModelAndView object = new ModelAndView("/employeeManagement/empSearch.jsp");
+			List<Employee> employeeLists = getEmployeeByType(type);
+			object.addObject("employeeLists", employeeLists);
+
+			return object;
+		}
 		
 		
 		@Autowired
@@ -105,6 +125,11 @@ public class EmployeeController {
 			employeeRepo.deleteById(id);	
 		}
 		
+		public List<Employee> getEmployeeByType(String type) {
+
+		
+			return (List<Employee>) employeeRepo.findByType(type);
+		}
 		
 		
 }

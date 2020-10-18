@@ -124,6 +124,8 @@
 					Salary</a></li>
 			<li><a class="" href="/empReport"><em class="fa fa-navicon"></em>
 					Report</a></li>
+			<li><a class="" href="/empSearch"><em class="fa fa-navicon"></em>
+					Search</a></li>		
 
 		</ul>
 
@@ -202,6 +204,25 @@
 								</div>
 							</div>
 						</div>
+						
+						<div class="form-row">
+							<label class="name" for="type">Type</label>
+							<div class="value">
+								<div class="input-group">
+								<form:select path="type" class="input--style-5">
+
+									<form:option value="inventory" />
+									<form:option value="accounts" />
+									<form:option value="supplier" />
+									<form:option value="purchasing" />
+									<form:option value="booking" />
+					
+
+							</form:select>
+							</div>
+							</div>
+						</div>
+						
 						<div>
 							<button class="btn btn--radius-2 btn--red" type="submit">Save</button>
 						</div>

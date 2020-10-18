@@ -88,6 +88,9 @@
 					Salary</a></li>
 			<li><a class="" href="/employeeReport"><em class="fa fa-navicon"></em>
 					Report</a></li>
+			<li><a class="" href="/empSearch"><em class="fa fa-navicon"></em>
+					Search</a></li>		
+					
 			
 		</ul>
 
@@ -129,8 +132,9 @@
 											<th scope="row" class="column5">DOB</th>
 											<th scope="row" class="column6">Designation</th>
 											<th scope="row" class="column7">Salary</th>
-											<th scope="row" class="column8">Update</th>
-											<th scope="row" class="column9">Delete</th>
+											<th scope="row" class="column8">Type</th>
+											<th scope="row" class="column9">Update</th>
+											<th scope="row" class="column10">Delete</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -144,11 +148,11 @@
 												<td class="column5">${employee.dob }</td>
 												<td class="column6">${employee.designation }</td>
 												<td class="column7">${employee.salary }</td>
-
-												<td class="column8"><a
+												<td class="column8">${employee.type}</td>
+												<td class="column9"><a
 													href="/editEmployee?id=${employee.id}" type="button">Update</a>
 												</td>
-												<td class="column9"><a
+												<td class="column10"><a
 													href="/deleteEmployee?id=${employee.id}" type="button">Delete</a>
 												</td>
 

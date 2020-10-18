@@ -34,6 +34,10 @@ public class Employee {
 	
 	@Column(name="Salary")
 	private String salary;
+	
+	@Column(name="Type")
+	private String type;
+	
 
 	public long getId() {
 		return id;
@@ -89,6 +93,14 @@ public class Employee {
 
 	public void setSalary(String salary) {
 		this.salary = salary;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	
