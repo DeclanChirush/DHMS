@@ -84,7 +84,7 @@
 					class="fa fa-navicon"></em> Add Employees</a></li>
 			<li><a class="" href="/categories"><em class="fa fa-navicon"></em>
 					Approve Leaves</a></li>
-			<li><a class="" href="/search"><em class="fa fa-navicon"></em>
+			<li><a class="" href="/searchEmployee"><em class="fa fa-navicon"></em>
 					Search</a></li>
 			<li><a class="" href="/report"><em class="fa fa-navicon"></em>
 					Report</a></li>

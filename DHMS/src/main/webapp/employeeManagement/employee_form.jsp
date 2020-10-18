@@ -177,7 +177,7 @@
 							</div>
 						</div>
 						<div class="form-row">
-							<div class="name">Date of birth</div>
+							<label for="date" class="name">Date of birth</label>
 							<div class="value">
 								<div class="input-group">
 									<form:input class="input--style-5" path="dob" type="date"
@@ -216,12 +216,9 @@
 	<script
 		src="/employeeManagement/style/cssemp/vendor/jquery/jquery.min.js"></script>
 	<!-- Vendor JS-->
-	<script
-		src="/employeeManagement/style/cssemp/vendor/select2/select2.min.js"></script>
-	<script
-		src="/employeeManagement/style/cssemp/vendor/datepicker/moment.min.js"></script>
-	<script
-		src="/employeeManagement/style/cssemp/vendor/datepicker/daterangepicker.js"></script>
+	<script src="/employeeManagement/style/cssemp/vendor/select2/select2.min.js"></script>
+	<script src="/employeeManagement/style/cssemp/vendor/datepicker/moment.min.js"></script>
+	<script src="/employeeManagement/style/cssemp/vendor/datepicker/daterangepicker.js"></script>
 
 	<!-- Main JS-->
 	<script src="/employeeManagement/style/cssemp/js/global.js"></script>
