@@ -96,7 +96,7 @@ public class PDFgeneratorEmployee {
 			hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
 			table.addCell(hcell);
 
-			hcell = new PdfPCell(new Phrase("Designation", headFont));
+			hcell = new PdfPCell(new Phrase("Categorie", headFont));
 			hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
 			table.addCell(hcell);
 
@@ -135,7 +135,7 @@ public class PDFgeneratorEmployee {
 				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 				table.addCell(cell);
 				
-				cell = new PdfPCell(new Phrase(employees.getDesignation()));
+				cell = new PdfPCell(new Phrase(employees.getCategorie()));
 				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 				cell.setPaddingRight(5);

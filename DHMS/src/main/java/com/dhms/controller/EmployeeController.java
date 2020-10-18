@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dhms.dao.EmployeeRepo;
 import com.dhms.model.Employee;
+import com.dhms.model.Transaction;
 
 
 @Controller
@@ -79,6 +80,17 @@ public class EmployeeController {
 			
 		}
 		
+		// Search Transaction By Categories method
+		@RequestMapping(value = "/searchCategorie", method = RequestMethod.GET)
+		public ModelAndView transactionByCategorie(@RequestParam String categorie) {
+
+			ModelAndView object = new ModelAndView("/accountingManagement/search.jsp");
+			List<Employee> transactionList = getEmployeeByCategorie(categorie);
+			object.addObject("transactionList", transactionList);
+
+			return object;
+		}
+		
 	
 		
 		
@@ -105,6 +117,9 @@ public class EmployeeController {
 			employeeRepo.deleteById(id);	
 		}
 		
-		
+		public List<Employee> getEmployeeByCategorie(String categorie) {
+
+			return (List<Employee>) employeeRepo.findByCategorie(categorie);
+		}
 		
 }

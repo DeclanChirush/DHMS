@@ -29,8 +29,8 @@ public class Employee {
 	@Column(name="DOB")
 	private String dob;
 	
-	@Column(name="Designation")
-	private String designation;
+	@Column(name="categorie")
+	private String categorie;
 	
 	@Column(name="Salary")
 	private String salary;
@@ -75,12 +75,11 @@ public class Employee {
 		this.dob = dob;
 	}
 
-	public String getDesignation() {
-		return designation;
+	public String getCategorie() {
+		return categorie;
 	}
-
-	public void setDesignation(String designation) {
-		this.designation = designation;
+	public void setCategorie(String categorie) {
+		this.categorie = categorie;
 	}
 
 	public String getSalary() {

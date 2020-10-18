@@ -115,8 +115,8 @@
 		<div class="divider"></div>
 
 		<ul class="nav menu">
-			<li><a class="active" href="/employeeList"><em class="fa fa-dashboard">&nbsp;</em>
-					Employee List</a></li>
+			<li><a class="active" href="/employeeList"><em
+					class="fa fa-dashboard">&nbsp;</em> Employee List</a></li>
 			<li class=""><a href="/addEmployee/"><em
 					class="fa fa-navicon"></em> Add Employees</a></li>
 			<li><a class="" href="/categories"><em class="fa fa-navicon"></em>
@@ -186,11 +186,23 @@
 							</div>
 						</div>
 						<div class="form-row">
-							<div class="name">Designation</div>
+							<div class="name">Employee Category</div>
 							<div class="value">
 								<div class="input-group">
-									<form:input class="input--style-5" path="designation"
-										type="text" required="required" />
+								
+									<form:select path="categorie" class="input--style-5" required="required" >
+
+										<form:option value="Advertise" />
+										<form:option value="Inventory" />
+										<form:option value="Accounting" />
+										<form:option value="Purchasing" />
+										<form:option value="Suppling" />
+										
+
+									</form:select>
+
+
+
 								</div>
 							</div>
 						</div>

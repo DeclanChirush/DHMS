@@ -127,7 +127,7 @@
 											<th scope="row" class="column3">Address</th>
 											<th scope="row" class="column4">NIC</th>
 											<th scope="row" class="column5">DOB</th>
-											<th scope="row" class="column6">Designation</th>
+											<th scope="row" class="column6">Categorie</th>
 											<th scope="row" class="column7">Salary</th>
 											<th scope="row" class="column8">Update</th>
 											<th scope="row" class="column9">Delete</th>
@@ -142,7 +142,7 @@
 												<td class="column3">${employee.address }</td>
 												<td class="column4">${employee.nicNo }</td>
 												<td class="column5">${employee.dob }</td>
-												<td class="column6">${employee.designation }</td>
+												<td class="column6">${employee.categorie }</td>
 												<td class="column7">${employee.salary }</td>
 
 												<td class="column8"><a
