@@ -38,7 +38,7 @@
   </div>
 </nav>  -->
 
-	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+	<!-- <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
@@ -65,9 +65,9 @@
 					</ul>
 				</div>
 			</div>
-		</div>
-		<!-- /.container-fluid -->
-	</nav>
+		</div> 
+		<!-- /.container-fluid 
+	</nav>  -->
 <script>
 $(window).scroll(function() {
   if ($(document).scrollTop() > 50) {

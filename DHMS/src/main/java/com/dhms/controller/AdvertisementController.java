@@ -29,6 +29,18 @@ public class AdvertisementController {
 		return model;
 
 	}
+	@RequestMapping(value = "/foodBanner")
+	public ModelAndView foodBanner() {
+		ModelAndView model = new ModelAndView("/advertisementManagement/advertisementViewVersion1.jsp");
+		return model;
+
+	}
+	@RequestMapping(value = "/bookingBanner")
+	public ModelAndView bookingBanner() {
+		ModelAndView model = new ModelAndView("/advertisementManagement/advertisementViewVersion2.jsp");
+		return model;
+
+	}
 
 	@RequestMapping(value = "/advertisementSearch")
 	public ModelAndView search(@RequestParam String type) {
