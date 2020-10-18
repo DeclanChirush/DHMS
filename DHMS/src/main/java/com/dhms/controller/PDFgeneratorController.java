@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dhms.dao.AdvertisementRepo;
+import com.dhms.dao.PurchaseRepo;
 import com.dhms.model.Advertisement;
+import com.dhms.model.Purchase;
 import com.dhms.service.PDFgenerator;
+import com.dhms.service.purchasePdfGenerator;
 
 @Controller
 public class PDFgeneratorController {
@@ -46,6 +49,20 @@ public class PDFgeneratorController {
 				.body(new InputStreamResource(bais));
 
 	}
+	
+	//Eranga
+	@RequestMapping(value = "/reportAllPurchase", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	public ResponseEntity<InputStreamResource> purchaseAllReport() throws IOException {
+
+		List<Purchase> purchase = (List<Purchase>) getAllPurchase();
+		ByteArrayInputStream bais = purchasePdfGenerator.purchaseReport(purchase);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition", "inline; filename=AllPurchaseRecords.pdf");
+
+		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
+				.body(new InputStreamResource(bais));
+
+	}	
 
 	@Autowired
 	AdvertisementRepo advertisementRepo;
@@ -70,4 +87,14 @@ public class PDFgeneratorController {
 		return (List<Advertisement>) advertisementRepo.findByType(type);
 	}
 
+	//Eranga
+	PurchaseRepo purchaseRepo;
+	
+	public List<Purchase> getAllPurchase() {
+		return (List<Purchase>) purchaseRepo.findAll();
+	}	
+	
+	public Purchase getPurchaseById(int id) {
+		return purchaseRepo.findById(id).get();
+	}	
 }

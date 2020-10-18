@@ -27,7 +27,7 @@
       <a class="nav-link" href="/purchaseList">View All</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Reports</a>
+      <a class="nav-link" href="/purchaseReport">Reports</a>
     </li>
   </ul>
 </nav><br>
@@ -87,8 +87,10 @@
 			  <div class="col-md-8">
 			    <select id="item" name="item" class="form-control" value="${purchase.item }" required>
 			      <option value="Chicken">Chicken</option>
+			      <option value="Egg">Egg</option>
 			      <option value="Thalapath">Thalapath</option>
-			      <option value="Onion">Onion</option>		      
+			      <option value="Onion">Onion</option>
+			      <option value="Carrot">Carrot</option>		      
 			    </select>
 			  </div>
 			</div>

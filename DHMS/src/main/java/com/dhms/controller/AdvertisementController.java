@@ -114,9 +114,6 @@ public class AdvertisementController {
 					return model3;
 				}
 					
-					
-				
-
 				
 			}
 		

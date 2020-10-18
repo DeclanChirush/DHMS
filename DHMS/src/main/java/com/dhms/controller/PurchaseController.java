@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.dhms.model.Advertisement;
 import com.dhms.model.Purchase;
 import com.dhms.service.PurchaseService;
 
@@ -36,8 +35,18 @@ public class PurchaseController {
 
 	@PostMapping("/savePurchase")
 	public String addPurchase(@ModelAttribute Purchase purchase, BindingResult bindingResult, HttpServletRequest request) {
-		purchaseService.savePurchase(purchase);
+		purchaseService.savePurchase(purchase);		
 		return "redirect:/purchaseList";
+    
+	}
+	
+	@RequestMapping(value = "/updatePurchase", method = RequestMethod.POST)
+	public ModelAndView updatePurchase(@ModelAttribute("purchases") Purchase purchase) {
+		
+		purchaseService.savePurchase(purchase);
+		ModelAndView object = new ModelAndView("redirect:/purchaseList");
+
+		return object;
 	}
 	
 	@GetMapping("/purchaseList")
@@ -54,33 +63,22 @@ public class PurchaseController {
 	}
 
 	
-/*--------------------------------------------------------------------------------------------------------	
-	@RequestMapping(value = "/updatePurchase")
-	public ModelAndView editPurchase(@RequestParam int id) {
-		
-		ModelAndView model = new ModelAndView();
-		Optional<Purchase> purchase = purchaseService.getPurchaseById(id);
-		
-		model.addObject("purchases", purchase);
-		model.setViewName("/purchasingManagement/edit.jsp");
-		
+	@RequestMapping(value = "/purchaseReport")
+	public ModelAndView reportByType() {
+		ModelAndView model = new ModelAndView("/purchasingManagement/reports.jsp");
 		return model;
-	}
-		@RequestMapping(value = "/savePurchase", method = RequestMethod.POST)
-	public ModelAndView savePurchase(@ModelAttribute("purchases")Purchase purchase) {
-		purchaseService.savePurchase(purchase);
 		
-		return new ModelAndView("redirect:/purchaseList");
-	}------------------------------------------------------------------------------------------------------*/
+	}
 	
 	
-	@RequestMapping("/updatePurchase")
-	public ModelAndView updatePurchase(@RequestParam int id, HttpServletRequest request) {
-		ModelAndView model = new ModelAndView();
+	@RequestMapping(value = "/updatePurchase", method = RequestMethod.GET)
+	public ModelAndView updatePurchase(@RequestParam int id) {
+		
+		ModelAndView model = new ModelAndView();		
 		Optional<Purchase> purchase = purchaseService.getPurchaseById(id);
 		
-		model.addObject("purchases", purchase);
 		model.setViewName("/purchasingManagement/edit.jsp");
+		model.addObject("purchases", purchase);
 		
 		return model;
 	}

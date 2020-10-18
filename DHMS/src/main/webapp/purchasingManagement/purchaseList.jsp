@@ -27,7 +27,7 @@
       <a class="nav-link" href="/purchaseList">View All</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Reports</a>
+      <a class="nav-link" href="/purchaseReport">Reports</a>
     </li>
   </ul>
 </nav><br>
@@ -46,7 +46,8 @@
 								<th>Item</th>
 								<th>Quantity</th>
 								<th>Price</th>
-								<th>Total</th>								
+								<th>Total</th>	
+								<th>Update</th>								
 								<th>Delete</th>
 							</tr>
 						</thead>
