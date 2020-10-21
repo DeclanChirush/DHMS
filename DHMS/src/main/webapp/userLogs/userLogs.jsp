@@ -54,21 +54,56 @@
 
 <style type="text/css">
 .srhdiv {
-	border: 1px solid #3e3e3e;
-	height: 220px;
+	border: 2px solid #3e3e3e;
 	padding: 20px;
 	margin-left: 20px;
-	margin-right: 10px;
-	margin-bottom: 10px;
-	margin-top: 10px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	margin-top: 20px;
 	background-color: white;
 	border-radius: 10px;
 }
 
-.center {
-	margin: auto;
-	width: 60%;
-	padding: 10px;
+.btn-demo {
+	background-color: #ff0000;
+	border: none;
+	color: white;
+	padding: 6px;
+	width: 100px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 4px 2px;
+	cursor: pointer;
+	font-size: 12px;
+	border-radius: 2px;
+}
+
+.demo-box {
+	position: relative;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+	width: 13.5%;
+	float: left
+}
+
+.time-box {
+	position: relative;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+	width: 20%;
+	float: left
+}
+
+.navigation-bar{
+	color: white;
+	float: left;
+  	height: 50px;
+  	padding: 15px 10px;
+  	font-size: 13px;
+  	line-height: 20px;
 }
 </style>
 
@@ -86,8 +121,15 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/accountmgt"><span>Dhammika
-						Hotel </span>Management System</a>
+				<a class="navbar-brand" href="/"><span>Dhammika Hotel </span>Management System</a>
+				<a href="/addAdvertisement/" class="navigation-bar">Advertise</a>
+				<a href="/addEmployee/" class="navigation-bar">Employee</a>
+				<a href="/inventory" class="navigation-bar">Inventory</a>
+				<a href="/accountmgt" class="navigation-bar">Accounting</a>
+				<a href="/newPurchase" class="navigation-bar">Purchasing</a>
+				<a href="/addNewSupplierForm" class="navigation-bar">Supplier</a>
+				<a href="/userLogs" class="navigation-bar">UserLogs</a>
+				<a href="/logout" class="navigation-bar" style="color:red">Logout</a>
 			</div>
 		</div>
 		<!-- /.container-fluid -->

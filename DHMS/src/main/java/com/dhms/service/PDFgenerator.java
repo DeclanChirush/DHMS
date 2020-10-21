@@ -14,6 +14,9 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,6 +49,29 @@ public class PDFgenerator {
 			list.setAlignment(Paragraph.ALIGN_LEFT);
 
 			Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+
+			// Address
+			Font addressLine = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+			addressLine.setSize(10);
+			addressLine.setColor(BaseColor.BLACK);
+			Paragraph address = new Paragraph("\n\n\nDhammika Hotel,\nDambulla Road,\nBakamuna.\n\n\n", addressLine);
+			address.setAlignment(Paragraph.ALIGN_LEFT);
+
+			// Date
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+			Calendar dateTime = Calendar.getInstance();
+			Font dateLine = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+			dateLine.setSize(10);
+			dateLine.setColor(BaseColor.BLACK);
+			Paragraph date = new Paragraph("Date : " + dateFormat.format(dateTime.getTime()), dateLine);
+			date.setAlignment(Paragraph.ALIGN_LEFT);
+
+			// Signature
+			Font signatureLine = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+			signatureLine.setSize(10);
+			signatureLine.setColor(BaseColor.BLACK);
+			Paragraph signature = new Paragraph("Signature : ...........................", signatureLine);
+			signature.setAlignment(Paragraph.ALIGN_RIGHT);
 
 			PdfPCell hcell;
 
@@ -113,12 +139,14 @@ public class PDFgenerator {
 				table.addCell(cell);
 			}
 
-
 			PdfWriter.getInstance(document, out);
 			document.open();
 			document.add(hotelname);
 			document.add(list);
 			document.add(table);
+			document.add(address);
+			document.add(date);
+			document.add(signature);
 			document.close();
 
 		} catch (DocumentException ex) {

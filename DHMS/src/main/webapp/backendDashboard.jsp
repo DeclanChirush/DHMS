@@ -34,7 +34,7 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/inventory">Inventory</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/accountmgt">Accounting</a></li>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/newPurchase">Purchasing</a></li>
-						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#">Suppling</a></li>
+						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/supplierList">Suppliers</a></li>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/userLogs">UserLogs</a></li>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/logout">Logout</a><li>
                     </ul>

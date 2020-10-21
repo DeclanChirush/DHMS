@@ -5,9 +5,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Inventory Dashboard</title>
+
+
 </head>
-<body>
-<jsp:include page="/commonNavBar.jsp"></jsp:include>
+<body style="background-color:#DDDDE8;">
+<jsp:include page="/inventoryManagement/navbar.jsp"></jsp:include>
 	
 	
 	<div class="container-fluid" >
@@ -19,7 +21,7 @@
 
 			<div class="col-10">
 				
-				<h2>Inventory Management</h2> <br/><br/>
+				<h1>Inventory Management</h1> <br/>
 				<!--  
 				<h3>Countable Items</h3>
 				<a href="viewAllCountableItems"> View All Countable Items</a> <br/>
@@ -53,7 +55,8 @@
 			            
 			            <a href="viewAllCountableItems" class="btn btn-secondary btn-block"> View All Countable Items</a> <br/> 
 						<a href="viewCountableLowStock" class="btn btn-secondary btn-block">View Low stock for countable items</a> <br/> 
-						<a href="countableItemsAdvanced" class="btn btn-secondary btn-block">Advanced functions on countable items</a> <br/> 
+						<a href="countableItemsAdvanced" class="btn btn-secondary btn-block">Advanced functions on countable items</a> <br/>
+						<a href="countableItemRetrieveLogs" class="btn btn-secondary btn-block">Countable Items Retrieve logs</a> <br/> 
 						
 					</div> <!-- End jumbotron -->
 					</div> <!-- End of countable items column -->
@@ -76,7 +79,8 @@
 		             	
 		             	<a href="viewAllUncountableItems" class="btn btn-secondary btn-block"> View All Uncountable Items</a> <br/> 
 						<a href="viewUncountableLowStock" class="btn btn-secondary btn-block">View Low stock for uncountable items</a> <br/> 
-						<a href="uncountableItemsAdvanced" class="btn btn-secondary btn-block">Advanced functions on uncountable items</a> <br/> 
+						<a href="uncountableItemsAdvanced" class="btn btn-secondary btn-block">Advanced functions on uncountable items</a> <br/>
+						<a href="uncountableItemRetrieveLogs" class="btn btn-secondary btn-block">Uncountable Items retrieve logs</a> <br/> 
 		             	
 		             	
 		            </div>	<!-- End jumbotron -->

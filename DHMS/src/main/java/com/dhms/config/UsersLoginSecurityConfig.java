@@ -65,9 +65,12 @@ public class UsersLoginSecurityConfig extends WebSecurityConfigurerAdapter {
             //hirush
             .antMatchers("/deleteAdvertisement/**").hasAnyAuthority("ADMIN")
             .antMatchers("/addAdvertisement/**").hasAnyAuthority("ADMIN")
+            .antMatchers("/advertisementList/**").hasAnyAuthority("ADMIN") 
+            .antMatchers("/editAdvertisement/**").hasAnyAuthority("ADMIN")
             .antMatchers("/userLogs/**").hasAnyAuthority("ADMIN")
             
-            //ravindu 
+            //ravindu
+            
             //countable items
             .antMatchers("/addCountableItem").hasAnyAuthority("ADMIN")
             .antMatchers("/addCountableItemPage").hasAnyAuthority("ADMIN")
@@ -85,9 +88,14 @@ public class UsersLoginSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/editCountableItem").hasAnyAuthority("ADMIN")
             .antMatchers("/processEditCountabltItem").hasAnyAuthority("ADMIN")
             
-            //countable low stock
+            //countable low stock and report generation
             .antMatchers("/viewCountableLowStock").hasAnyAuthority("ADMIN","INVENTORY")
+            .antMatchers("/reportCountableLowStock").hasAnyAuthority("ADMIN","INVENTORY")
             
+            //countable items logs
+            .antMatchers("/countableItemRetrieveLogs").hasAnyAuthority("ADMIN","INVENTORY")
+            .antMatchers("/deleteCountableItemRetrieveLogs").hasAnyAuthority("ADMIN")
+            .antMatchers("/processDeleteCountableLogs").hasAnyAuthority("ADMIN")
             
             //uncountable items
             .antMatchers("/addUncountableItem").hasAnyAuthority("ADMIN")
@@ -105,8 +113,20 @@ public class UsersLoginSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/editUncountableItem").hasAnyAuthority("ADMIN")
             .antMatchers("/processEditUncountabltItem").hasAnyAuthority("ADMIN")
             
+            //uncountable low stock and report generation
+            .antMatchers("/viewUncountableLowStock").hasAnyAuthority("ADMIN","INVENTORY")
+            .antMatchers("/reportUncountableLowStock").hasAnyAuthority("ADMIN","INVENTORY")
+            
+            //uncountable items logs
+            .antMatchers("/uncountableItemRetrieveLogs").hasAnyAuthority("ADMIN","INVENTORY")
+            .antMatchers("/deleteUncountableItemRetrieveLogs").hasAnyAuthority("ADMIN")
+            .antMatchers("/processDeleteUncountableLogs").hasAnyAuthority("ADMIN")
+            
+            
+
             //uncountable low stock
             .antMatchers("/viewUncountableLowStock").hasAnyAuthority("ADMIN","INVENTORY")
+
             
             .anyRequest().authenticated()
             .and()

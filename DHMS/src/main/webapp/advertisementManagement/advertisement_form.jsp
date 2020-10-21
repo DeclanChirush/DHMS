@@ -52,6 +52,63 @@
 <link href="/advertisementManagement/style/buttonStyle/button.css"
 	rel="stylesheet">
 
+
+
+<style type="text/css">
+.srhdiv {
+	border: 2px solid #3e3e3e;
+	padding: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	background-color: white;
+	border-radius: 10px;
+}
+
+.btn-demo {
+	background-color: #ff0000;
+	border: none;
+	color: white;
+	padding: 6px;
+	width: 100px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 4px 2px;
+	cursor: pointer;
+	font-size: 12px;
+	border-radius: 2px;
+}
+
+.demo-box {
+	position: relative;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+	width: 13.5%;
+	float: left
+}
+
+.time-box {
+	position: relative;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+	width: 20%;
+	float: left
+}
+
+.navigation-bar{
+	color: white;
+	float: left;
+  	height: 50px;
+  	padding: 15px 10px;
+  	font-size: 13px;
+  	line-height: 20px;
+}
+</style>
+
 <meta charset="ISO-8859-1">
 <title>Dhammika Hotel | Dashboard</title>
 </head>
@@ -66,23 +123,15 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/"><span>Dhammika
-						Hotel </span>Management System</a>
-				<a class="navbar-brand">  </a>
-				<div class="collapse navbar-collapse">
-					<ul class="nav navbar-nav pull-left">
-						<li><a href="/backendHome" style="color:white">Home</a></li>
-						<li><a href="/addAdvertisement/" style="color:white">Advertise</a></li>
-						<li><a href="/addEmployee/" style="color:white">Employee</a></li>
-						<li><a href="/inventory" style="color:white">Inventory</a></li>
-						<li><a href="/accountmgt" style="color:white">Accounting</a></li>
-						<li><a href="/newPurchase" style="color:white">Purchasing</a></li>
-						<li><a href="#" style="color:white">Suppling</a></li>
-						<li><a href="/userLogs" style="color:white">UserLogs</a></li>
-						<li><a href="/logout" style="color:red">Logout</a>
-						<li>
-					</ul>
-				</div>
+				<a class="navbar-brand" href="/"><span>Dhammika Hotel </span>Management System</a>
+				<a href="/addAdvertisement/" class="navigation-bar">Advertise</a>
+				<a href="/addEmployee/" class="navigation-bar">Employee</a>
+				<a href="/inventory" class="navigation-bar">Inventory</a>
+				<a href="/accountmgt" class="navigation-bar">Accounting</a>
+				<a href="/newPurchase" class="navigation-bar">Purchasing</a>
+				<a href="/addNewSupplierForm" class="navigation-bar">Supplier</a>
+				<a href="/userLogs" class="navigation-bar">UserLogs</a>
+				<a href="/logout" class="navigation-bar" style="color:red">Logout</a>
 			</div>
 		</div>
 		<!-- /.container-fluid -->
@@ -162,7 +211,10 @@
 			</div>
 			<!--/.row-->
 		</div>
-
+		<div class="demo-box srhdiv">
+				<button class="btn-demo"
+					onClick="autoFill('NewYear offer','25%','jan-feb','Enjoy your next booking. 20 verified booking coupon and promo code, site wide booking.com coupon for September 2020. free cancellation. 50% off on holidays.'); return false;">DEMO</button>
+			</div>
 
 		<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
 			<div class="wrapper wrapper--w680">
@@ -183,7 +235,7 @@
 										<form:hidden path="id" />
 
 										<label class="label">Title</label>
-										<form:input path="title" class="input--style-4"
+										<form:input path="title" class="input--style-4 variable1"
 											required="required" />
 
 
@@ -192,7 +244,7 @@
 								<div class="col-2">
 									<div class="input-group">
 										<label class="label">Offer percentage</label>
-										<form:input path="percentage" class="input--style-4"
+										<form:input path="percentage" class="input--style-4 variable3"
 											required="required" />
 
 									</div>
@@ -201,7 +253,7 @@
 								<div class="col-2">
 									<div class="input-group">
 										<label class="label">Time period</label>
-										<form:input path="timePeriod" class="input--style-4"
+										<form:input path="timePeriod" class="input--style-4 variable4"
 											required="required" />
 
 									</div>
@@ -210,7 +262,7 @@
 								<div class="col-2">
 									<div class="input-group">
 										<label class="label">Description</label>
-										<form:textarea path="description" class="input--style-4"
+										<form:textarea path="description" class="input--style-4 variable5"
 											required="required" />
 
 									</div>
@@ -262,5 +314,14 @@
 			});
 		};
 	</script>
+		<script type="text/javascript">
+		function autoFill(var1, var3, var4, var5) {
+			$('.variable1').val(var1);
+			$('.variable3').val(var3);
+			$('.variable4').val(var4);
+			$('.variable5').val(var5);
+		}
+	</script>
+	
 </body>
 </html>

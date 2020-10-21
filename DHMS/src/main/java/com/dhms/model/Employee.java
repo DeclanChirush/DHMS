@@ -31,6 +31,13 @@ public class Employee {
 	
 	@Column(name="Designation")
 	private String designation;
+	
+	@Column(name="Salary")
+	private String salary;
+	
+	@Column(name="Type")
+	private String type;
+	
 
 	public long getId() {
 		return id;
@@ -78,6 +85,22 @@ public class Employee {
 
 	public void setDesignation(String designation) {
 		this.designation = designation;
+	}
+
+	public String getSalary() {
+		return salary;
+	}
+
+	public void setSalary(String salary) {
+		this.salary = salary;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	
