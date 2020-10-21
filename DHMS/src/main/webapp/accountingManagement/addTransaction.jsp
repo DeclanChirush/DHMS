@@ -238,11 +238,13 @@
 					<c:set var="dateTime" value="<%=new java.util.Date()%>" />
 					<fmt:formatDate type="both" value="${dateTime}" />
 			</div>
-			<br>
+			
+			<!-- <br>
 			<div class="demo-box srhdiv">
 				<button class="btn-demo"
 					onClick="autoFill(10000,'Cash'); return false;">DEMO</button>
-			</div>
+			</div> -->
+			
 		</div>
 		<!--/.row-->
 	</div>
@@ -256,12 +258,13 @@
 	<script src="/accountingManagement/style/js/easypiechart-data.js"></script>
 	<script src="/accountingManagement/style/js/bootstrap-datepicker.js"></script>
 	<script src="/accountingManagement/style/js/custom.js"></script>
-	<script type="text/javascript">
+	
+	<!-- <script type="text/javascript">
 		function autoFill(var1, var3) {
 			$('.variable1').val(var1);
 			$('.variable3').val(var3);
 		}
-	</script>
+	</script> -->
 
 </body>
 </html>
