@@ -24,26 +24,26 @@ public class AdvertisementController {
 	}
 
 	@RequestMapping(value = "/403error")
-	public ModelAndView error() {
+	public ModelAndView errorPage() {
 		ModelAndView model = new ModelAndView("/userLogs/403error.jsp");
 		return model;
 
 	}
-	@RequestMapping(value = "/foodBanner")
-	public ModelAndView foodBanner() {
-		ModelAndView model = new ModelAndView("/advertisementManagement/advertisementViewVersion1.jsp");
-		return model;
-
-	}
-	@RequestMapping(value = "/bookingBanner")
-	public ModelAndView bookingBanner() {
-		ModelAndView model = new ModelAndView("/advertisementManagement/advertisementViewVersion2.jsp");
-		return model;
-
-	}
+//	@RequestMapping(value = "/foodBanner")
+//	public ModelAndView foodBanner() {
+//		ModelAndView model = new ModelAndView("/advertisementManagement/advertisementViewVersion1.jsp");
+//		return model;
+//
+//	}
+//	@RequestMapping(value = "/bookingBanner")
+//	public ModelAndView bookingBanner() {
+//		ModelAndView model = new ModelAndView("/advertisementManagement/advertisementViewVersion2.jsp");
+//		return model;
+//
+//	}
 
 	@RequestMapping(value = "/advertisementSearch")
-	public ModelAndView search(@RequestParam String type) {
+	public ModelAndView searchByType(@RequestParam String type) {
 
 		System.out.println(type);
 
@@ -77,18 +77,18 @@ public class AdvertisementController {
 
 	}
 
-	@RequestMapping(value = "/view")
-	public ModelAndView listView() {
-
-		ModelAndView model = new ModelAndView("/advertisementManagement/advertisementViewVersion1.jsp");
-		List<Advertisement> advertisementList1 = getAllAdvertisements();
-		model.addObject("advertisementList1", advertisementList1);
-
-		return model;
-	}
+//	@RequestMapping(value = "/view")
+//	public ModelAndView listView() {
+//
+//		ModelAndView model = new ModelAndView("/advertisementManagement/advertisementViewVersion1.jsp");
+//		List<Advertisement> advertisementList1 = getAllAdvertisements();
+//		model.addObject("advertisementList1", advertisementList1);
+//
+//		return model;
+//	}
 
 	@RequestMapping(value = "/advertisementList")
-	public ModelAndView list() {
+	public ModelAndView advertisementList() {
 
 		ModelAndView model = new ModelAndView("/advertisementManagement/advertisement_list.jsp");
 		List<Advertisement> advertisementList = getAllAdvertisements();
@@ -123,14 +123,14 @@ public class AdvertisementController {
 	}
 
 	@RequestMapping(value = "/saveAdvertisement", method = RequestMethod.POST)
-	public ModelAndView save(@ModelAttribute("advertisementForm") Advertisement advertisement) {
+	public ModelAndView saveAdvertisement(@ModelAttribute("advertisementForm") Advertisement advertisement) {
 		saveOrUpdate(advertisement);
 
 		return new ModelAndView("redirect:/advertisementList");
 	}
 
 	@RequestMapping(value = "/deleteAdvertisement")
-	public ModelAndView delete(@RequestParam("id") long id) {
+	public ModelAndView deleteAdvertise(@RequestParam("id") long id) {
 		deleteAdvertisement(id);
 
 		return new ModelAndView("redirect:/advertisementList");
