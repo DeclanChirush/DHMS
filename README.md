@@ -1,5 +1,7 @@
 # Dhammika Hotel Management System  
 
+## 2nd Year 2nd Semester - IT Project
+
 ## Group Details  
 
 | Name                      | Student ID | Username           |
